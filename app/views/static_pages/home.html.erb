@@ -1,2 +1,113 @@
-<h1>StaticPages#home</h1>
-<p>Find me in app/views/static_pages/home.html.erb</p>
+<h1>My StaticPages#home</h1>
+
+
+<style>
+ TABLE {border-collapse: collapse;}
+ TD { vertical-align:top; }
+ DIV.event { background-color:#F8F8F8; border: 1px solid #CCC; padding:3px; margin:2px; border-radius:3px; box-shadow: 3px;}
+ TABLE TR {    /* set your gradient code here */
+background: #ffffff; /* Old browsers */
+background: -moz-linear-gradient(top,  #ffffff 74%, #dbdbdb 97%, #4f4f4f 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(40px,#ffffff), color-stop(5px,#dbdbdb), color-stop(0px,#4f4f4f)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #ffffff 74%,#dbdbdb 97%,#4f4f4f 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #ffffff 74%,#dbdbdb 97%,#4f4f4f 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #ffffff 74%,#dbdbdb 97%,#4f4f4f 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #ffffff 74%,#dbdbdb 40px,#4f4f4f 50px); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#4f4f4f',GradientType=0 ); /* IE6-9 */
+
+
+ }
+
+ .event .time { font-weight:bold; font-size:1.1em; }
+ .event .am_pm { font-weight:normal; color:#777; }
+ .event .cnt { float:right; font-weight:bold; font-size:1.1em;}
+
+ .event .boat { font-size: 0.9em; color:#777; }
+ .event .captain { float:right; font-size: 0.9em; color:#777; }
+
+ .day { font-size: 1.1em; color:#888;}
+ .day .init_letter { font-weight:bold; font-size: 2em; }
+ .date { color:#777; font-size: 1.2em;}
+ TD.day_date { text-align:right; padding-right:5px;}
+
+
+ .add { font-size:1.3em; color:#444; text-align:right;}
+</style>
+<!-- Design: smallest has date, am, pm with stacked rows in am/pm.  when larger, show side-by-side -->
+<div class="row">
+<table style="width:100%"> 
+ <tr>
+  <td class="add">+</td>
+  <td class="day_date">
+   <div class="day"><span class="init_letter">S</span>un</div>
+   <div class="date">3/6</div>
+  </td>
+  <td>
+   <div class="event" style="border: 1 solid green;">
+    <span class="time">7:00<span class="am_pm">a</span></span> <span class="type">Rec</span> <span class="cnt">4</span>
+    <br/>
+    <span class="boat">Annie B</span><span class="captain">John</span>
+   </div>
+   <div class="event">
+    <span class="time">8:00<span class="am_pm">a</span></span> <span class="type">Race</span> <span class="cnt">2</span>
+    <br/>
+    <span class="boat">Siren Song</span><span class="captain">Mary</span>
+   </div>   
+  </td>
+  <td>
+   <div class="event">
+    <span class="time">5:00<span class="am_pm">p</span></span> <span class="type">Cond</span> <span class="cnt">6</span>
+    <br/>
+    <span class="boat">Gannet</span><span class="captain">TBD</span>
+   </div>
+  </td>
+ </tr>
+
+ <tr>
+  <td class="add">+</td>
+  <td class="day_date">
+   <div class="day"><span class="init_letter">M</span>on</div>
+   <div class="date">3/6</div>
+  </td>
+  <td>
+   <div class="event" style="border: 1 solid green;">
+    <span class="time">7:00<span class="am_pm">a</span></span> <span class="type">Rec</span> <span class="cnt">4</span>
+    <br/>
+    <span class="boat">Annie B</span><span class="captain">John</span>
+   </div>
+  </td>
+  <td>
+  </td>
+ </tr>
+
+
+ <tr>
+  <td class="add">+</td>
+  <td class="day_date">
+   <div class="day"><span class="init_letter">T</span>ue</div>
+   <div class="date">3/6</div>
+  </td>
+  <td>
+   <div class="event" style="border: 1 solid green;">
+    <span class="time">7:00<span class="am_pm">a</span></span> <span class="type">Rec</span> <span class="cnt">4</span>
+    <br/>
+    <span class="boat">Annie B</span><span class="captain">John</span>
+   </div>
+  </td>
+  <td>
+   <div class="event">
+    <span class="time">8:00<span class="am_pm">a</span></span> <span class="type">Race</span> <span class="cnt">2</span>
+    <br/>
+    <span class="boat">Siren Song</span><span class="captain">Mary</span>
+   </div>   
+   <div class="event">
+    <span class="time">5:00<span class="am_pm">p</span></span> <span class="type">Cond</span> <span class="cnt">6</span>
+    <br/>
+    <span class="boat">Gannet</span><span class="captain">TBD</span>
+   </div>
+  </td>
+ </tr>
+
+</table>
+
+</div>

@@ -1,3 +1,3 @@
 class User < ActiveRecord::Base
-	validates :email, :name
+	attr_accessible :email, :name
 end
