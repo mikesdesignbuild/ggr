@@ -32,6 +32,8 @@ gem 'jquery-rails'
 gem 'turbolinks'
 
 # Use bootstrap
+gem "therubyracer"
+gem "less-rails"
 gem 'less-rails-bootstrap'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
