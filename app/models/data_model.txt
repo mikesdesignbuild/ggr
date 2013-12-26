@@ -1,0 +1,46 @@
+Data model overview
+
+
+
+ belongs_to :example
+ validates
+ attr_accessible ;
+ has_many :
+ has_one
+ has_many :diseases, through: :variables_diseases
+
+——
+
+Member
+ attr_accessible :name, :email
+
+Participant
+ belongs_to :event
+ belongs_to :member
+ attr_accessible :role, :joined_on, :left_on, :participated
+
+ belongs_to: 
+
+Role
+ name: “coxswain”, “captain”, “rower”
+
+Event.boat
+ validates :on_date, :at_time
+ validates :captain, :coxswain
+
+ has_many :participants
+ 
+Boat
+ attr_accessible: name
+ seats: number
+ has_one :captain
+ has_many :coxswains  (user)
+ has_many :users
+
+
+Boat.gig
+ seats: 6
+ max_invite: 8
+
+Boat.dory
+ seats: 2
