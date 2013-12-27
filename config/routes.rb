@@ -1,4 +1,6 @@
 Ggr::Application.routes.draw do
+  resources :boats
+
   resources :participants
 
   resources :events
