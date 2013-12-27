@@ -11,12 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131227145730) do
+ActiveRecord::Schema.define(version: 20131227154315) do
 
   create_table "events", force: true do |t|
     t.date     "on_date"
     t.time     "at_time"
     t.integer  "boat"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "participants", force: true do |t|
+    t.integer  "user"
+    t.integer  "event"
+    t.boolean  "captain"
+    t.boolean  "coxswain"
+    t.boolean  "participated"
+    t.boolean  "late"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

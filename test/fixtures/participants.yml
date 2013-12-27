@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: 
+  event: 
+  captain: 
+  coxswain: 
+  participated: 
+  late: false
+
+two:
+  user: 
+  event: 
+  captain: 
+  coxswain: 
+  participated: 
+  late: false
