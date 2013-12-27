@@ -1,4 +1,6 @@
 Ggr::Application.routes.draw do
+  resources :events
+
   get "static_pages/home"
   get "static_pages/help"
   resources :users
