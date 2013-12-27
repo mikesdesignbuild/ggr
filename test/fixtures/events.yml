@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  on_date: 
+  at_time: 
+  boat: 1
+
+two:
+  on_date: 
+  at_time: 
+  boat: 1
