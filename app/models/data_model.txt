@@ -1,46 +1,45 @@
 Data model overview
 
-
-
- belongs_to :example
- validates
- attr_accessible ;
- has_many :
- has_one
- has_many :diseases, through: :variables_diseases
-
-——
+User
+ userid
+ password (hidden) 
 
 Member
- attr_accessible :name, :email
+ name
+ email
+ active: y/n
+ joined_on:
+ paid:
 
 Participant
  belongs_to :event
  belongs_to :member
- attr_accessible :role, :joined_on, :left_on, :participated
+ joined_on
+ left_on
+ participated
+ coxswain: y/n
+ captain: y/n
+ rower: y/n
 
- belongs_to: 
-
-Role
- name: “coxswain”, “captain”, “rower”
-
-Event.boat
- validates :on_date, :at_time
- validates :captain, :coxswain
-
- has_many :participants
- 
-Boat
- attr_accessible: name
+Event.Boat
+ name
  seats: number
- has_one :captain
+ captain: = oldest from captains
+ has_many :captains
  has_many :coxswains  (user)
- has_many :users
+ participants (has_many :members)
 
+boats: (name, seats, coxed)
+ Gannet, 6, y
+ Siren Song, 6, y
+ Annie B, 6, y
+ Dory1, 2, n
 
-Boat.gig
- seats: 6
- max_invite: 8
+----
+Race:
+who, what, where, when, how-much, description, check-in time, end_at, if_bad_weather, contact, results
 
-Boat.dory
- seats: 2
+Message:
+timestamp, message, subject?, from?, to?
+
+Photos: link, who, use stream (show last )

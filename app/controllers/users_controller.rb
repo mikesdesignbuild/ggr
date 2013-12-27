@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :set_current]
 
   # GET /users
   # GET /users.json
@@ -19,6 +19,15 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+  end
+
+  def set_current
+    # session["current"]=@user TODO
+    cookies[:current]=@user.id
+    respond_to do |format|
+      format.html { redirect_to users_url }
+      format.json { head :no_content }
+    end
   end
 
   # POST /users

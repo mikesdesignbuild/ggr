@@ -7,6 +7,8 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+ <h2><a href="/users">Users</a> | <a href="/events">Events</a> | <a href="/participants">Participants</a></h2>
+ <p>Current user: <%= cookies[:current_user] %></p>
  <div class="container">
   <%= yield %>
  </div>

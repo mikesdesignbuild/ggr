@@ -3,6 +3,7 @@
 <table>
   <thead>
     <tr>
+      <th>Id</th>
       <th>User</th>
       <th>Event</th>
       <th>Captain</th>
@@ -18,6 +19,7 @@
   <tbody>
     <% @participants.each do |participant| %>
       <tr>
+        <td><%= participant.id %></td>
         <td><%= participant.user %></td>
         <td><%= participant.event %></td>
         <td><%= participant.captain %></td>
