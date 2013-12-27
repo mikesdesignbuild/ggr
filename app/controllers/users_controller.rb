@@ -23,7 +23,7 @@ class UsersController < ApplicationController
 
   def set_current
     # session["current"]=@user TODO
-    cookies[:current]=@user.id
+    cookies[:current_user] = @user.id
     respond_to do |format|
       format.html { redirect_to users_url }
       format.json { head :no_content }
