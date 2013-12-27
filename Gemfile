@@ -7,6 +7,7 @@ group :development do   #, :test do
     gem "sqlite3"
     gem "better_errors"
     gem "binding_of_caller"
+    gem "faker"  # to create sample data 
 end
 
 group :production do # , :staging do
