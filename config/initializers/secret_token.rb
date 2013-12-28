@@ -10,3 +10,5 @@
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
 Ggr::Application.config.secret_key_base = '6d4047188a336aab898d719bc59ebb7b629ea06b72d1c4ecab4f2cdca25b1937f208b57e7acbb2185605e5d9a110e9e2b207d794cd6928ed3066f2b2934229bc'
+
+# TODO: search: how to keep a privte secret key secret when saving to Github??
