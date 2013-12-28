@@ -8,7 +8,7 @@ Ggr::Application.routes.draw do
   get "static_pages/home"
   get "static_pages/help"
 
-  root "events#index"
+  root to:"events#index"
 
   resources :users do
     member do
