@@ -1,0 +1,55 @@
+Public nav:
+
+home (root)     /index.html
+  featured photos and description of sections in nav. (PUBLIC)
+  recent messages  (MEMBER)
+  upcoming meetings and your next rows (MEMBER)
+
+Events                           /events
+  shows public events (races, some meetings, and rows today) (PUBLIC)
+  or:
+  shows all rows & other events and custom filters (MEMBER)
+
+Resources
+  Forms                            /forms (static)   
+     Registration. Race registration.  (PUBLIC)
+     Liability waiver (MEMBER)
+
+  Links                            /links            PUBLIC
+     other clubs, resources.       /links/3  
+
+  Rowing info (protocol)   MEMBER
+
+  Racing resources   MEMBER
+
+  Photos   /photos   MEMBER
+    Add new photo: /photos/new
+    Add photo album link: /photo_album/new
+
+Races. Last year, next year.     /races   (linked by resources?)  PUBLIC
+  Featured: Gloucester Harbor (race forms, course map)   /races/2   12 columns
+  Minor featured: Blackburn, Essex                                  6 cols
+  Cards with race info for new england races                        3 cols
+     Directions | Race Course | Registration   /registrations/2
+
+Contact
+  Contact to public leadership.  Subject, Body, From_name, from_email   (PUBLIC)
+  Search by name  (MEMBER)
+     Click to send GGR message, email, phone, or map to address.  Click to view contact info.
+  View directory (ADMIN)
+
+Join                             /join  (static)   PUBLIC
+   Encourage to submit info and link to   /registration/new
+      What interests you?  Name, email, times that you'd prefer to row, 
+   Map to Maritime Gloucester Docs.  Pictures.  /photos/2
+   Shows rows next day that has a row that is likely to go out (>5 rowers)   /rows/this_week
+   photos of new members?
+   # of members, # joined in last 12 months. 
+
+Sign in   /session/new (Devise?)  or account * Mike
+  /session/destroy  /session/signout
+
+
+
+Lazy registration:
+Can give 
