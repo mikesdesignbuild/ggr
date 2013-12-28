@@ -1,7 +1,7 @@
 Ggr::Application.routes.draw do
-  devise_for :users do
-    member get 'set_current'  # creates set_current_user_path
-  end
+  devise_for :members
+  devise_for :users 
+  
   resources :boats
 
   resources :participants

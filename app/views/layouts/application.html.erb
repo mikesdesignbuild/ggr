@@ -9,8 +9,10 @@
 <body>
  <p class="notice"><%= notice %></p>
  <p class="alert"><%= alert %></p>
- <h2><a href="/users">Users</a> | <a href="/events">Events</a> | <a href="/participants">Participants</a> | <a href="/boats">Boats</a> </h2>
- <p>Current user: <%= cookies[:current_user] %></p>
+ <h2><a href="/events">Events</a> | <a href="/participants">Participants</a> | <a href="/boats">Boats</a> </h2>
+ <p><%= link_to "Login", user_session_path %> | <%= link_to "Create Login", new_user_registration_path %> </p>
+
+ <!-- <p>Current user: <%= cookies[:current_user] %></p> -->
  <div class="container">
   <%= yield %>
  </div>
