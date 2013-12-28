@@ -1,5 +1,7 @@
 Ggr::Application.routes.draw do
-  devise_for :users
+  devise_for :users do
+    member get 'set_current'  # creates set_current_user_path
+  end
   resources :boats
 
   resources :participants
@@ -10,12 +12,6 @@ Ggr::Application.routes.draw do
   get "static_pages/help"
 
   root to:"events#index"
-
-  resources :users do
-    member do
-      get 'set_current'  # creates set_current_user_path
-    end
-  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
