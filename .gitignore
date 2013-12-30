@@ -18,3 +18,4 @@
 .DS_Store
 
 /config/initializers/mail.rb
+/config/environments/development.rb
