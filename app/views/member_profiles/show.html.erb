@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @member_profile.name %>
+</p>
+
+<%= link_to 'Edit', edit_member_profile_path(@member_profile) %> |
+<%= link_to 'Back', member_profiles_path %>

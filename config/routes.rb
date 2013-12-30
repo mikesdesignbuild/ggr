@@ -1,4 +1,6 @@
 Ggr::Application.routes.draw do
+  resources :member_profiles
+
   devise_for :members
   
   resources :boats
