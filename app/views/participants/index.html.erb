@@ -1,4 +1,4 @@
-<h1>Listing participants</h1>
+<h1>Listing participations</h1>
 
 <table>
   <thead>
@@ -17,18 +17,18 @@
   </thead>
 
   <tbody>
-    <% @participants.each do |participant| %>
+    <% @participations.each do |participation| %>
       <tr>
-        <td><%= participant.id %></td>
-        <td><%= participant.user %></td>
-        <td><%= participant.event %></td>
-        <td><%= participant.captain %></td>
-        <td><%= participant.coxswain %></td>
-        <td><%= participant.participated %></td>
-        <td><%= participant.late %></td>
-        <td><%= link_to 'Show', participant %></td>
-        <td><%= link_to 'Edit', edit_participant_path(participant) %></td>
-        <td><%= link_to 'Destroy', participant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= participation.id %></td>
+        <td><%= participation.user %></td>
+        <td><%= participation.event %></td>
+        <td><%= participation.captain %></td>
+        <td><%= participation.coxswain %></td>
+        <td><%= participation.participated %></td>
+        <td><%= participation.late %></td>
+        <td><%= link_to 'Show', participation %></td>
+        <td><%= link_to 'Edit', edit_participation_path(participation) %></td>
+        <td><%= link_to 'Destroy', participation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -36,4 +36,4 @@
 
 <br>
 
-<%= link_to 'New Participant', new_participant_path %>
+<%= link_to 'New Participation', new_participation_path %>

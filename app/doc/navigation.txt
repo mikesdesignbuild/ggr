@@ -1,18 +1,20 @@
 Public nav:
 
 home (root)     /index.html
-  featured photos and description of sections in nav. (PUBLIC)
+  upcoming meetings and your next rows (MEMBER and PUBLIC)
   recent messages  (MEMBER)
-  upcoming meetings and your next rows (MEMBER)
+  featured photos and description of sections in nav. (PUBLIC)
 
 Events                           /events
-  shows public events (races, some meetings, and rows today) (PUBLIC)
+  shows public events (races, open meetings, and rows today. Can't view row details. ) (PUBLIC)
   or:
-  shows all rows & other events and custom filters (MEMBER)
+  shows all rows & other events and custom filters. Can create and join rows. The captain or event creator can modify or cancel a row. (MEMBER)   Admin can delete an event.  
 
 Resources
   Forms                            /forms (static)   
-     Registration. Race registration.  (PUBLIC)
+     Membership renewal.
+     New member registration. 
+     Race registration.  (PUBLIC)
      Liability waiver (MEMBER)
 
   Links                            /links            PUBLIC
@@ -45,11 +47,42 @@ Join                             /join  (static)   PUBLIC
    Shows rows next day that has a row that is likely to go out (>5 rowers)   /rows/this_week
    photos of new members?
    # of members, # joined in last 12 months. 
+   Link to: new member registration and membership renewal.
 
-Sign in   /session/new (Devise?)  or account * Mike
-  /session/destroy  /session/signout
+Sign in  (PUBLIC)  or account * Mike (MEMBER)
+   Account shows: edit info, reset password, unlock, etc.
 
 
 
-Lazy registration:
-Can give 
+
+Registration and signup.
+Currently, users send an email and get assigned to up to three practice rows.  If they decide to join, someone sets up an account for them with a standard password.  Passwords can't be changed by a user.  Overall, very little automation and it requires a lot of administration time. 
+
+Proposed: 
+Easier to sigin up for rows and more automation.  Anyone visiting our site that lives nearby can see the upcoming rows and events and sign up as a guest member.  (only requires email and display name, and they are sent an email with an authorization link) After 3 rows, they can't signup for more rows until they join. When they join, they give some optional contact info and instructions for payment at MG.  MG (or another admin) has a web app that takes an email address and puts in their payment date.
+
+Any member can renew their membership if they have been a member in the past.  
+
+Let people see more/most information, but not signup or see people on a boat.  Much more is visible to them.
+
+Don't encourage people to "register" or "join" as a member, but rather encourage them to "join a row" (if they are local)
+  "Join a Row"
+    If you want to join, send your name, email, why, how did you hear about GGR?, rowing time preferences, creates account on that machine that is good for a few weeks.  By default, "remember me" is checked.  If not checked, then user needs to create a password or 
+
+    An email is sent to the new member coordinator.  Admin can click a link to use app to "assign guest" to a row.  When done, an email is sent to the guest letting them know they are on a row and a link to ggr.com that shows their upcoming rows.
+
+Members can see the names of the guest members and a link and their bio page. 
+
+New member rows show the guest member's name.  
+
+Should local guests see something different than non-local guests?  If someone comes from CA, should they see the same as Gloucester?  Yes, promote "try rowing" if they are local.  
+
+
+
+Do you live or work near Gloucester, Massachusetts, USA? 
+
+
+
+
+Lazy registration?
+

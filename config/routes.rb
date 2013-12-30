@@ -1,10 +1,9 @@
 Ggr::Application.routes.draw do
   devise_for :members
-  devise_for :users 
   
   resources :boats
 
-  resources :participants
+  resources :participations
 
   resources :events
 

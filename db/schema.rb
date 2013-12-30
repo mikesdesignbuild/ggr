@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131228205627) do
+ActiveRecord::Schema.define(version: 20131227201207) do
 
   create_table "boats", force: true do |t|
     t.string   "name"
@@ -28,18 +28,7 @@ ActiveRecord::Schema.define(version: 20131228205627) do
     t.datetime "updated_at"
   end
 
-  create_table "participants", force: true do |t|
-    t.integer  "user"
-    t.integer  "event"
-    t.boolean  "captain"
-    t.boolean  "coxswain"
-    t.boolean  "participated"
-    t.boolean  "late"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "users", force: true do |t|
+  create_table "members", force: true do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
@@ -54,7 +43,18 @@ ActiveRecord::Schema.define(version: 20131228205627) do
     t.datetime "updated_at"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "members", ["email"], name: "index_members_on_email", unique: true
+  add_index "members", ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true
+
+  create_table "participations", force: true do |t|
+    t.integer  "event_id"
+    t.integer  "member_id"
+    t.boolean  "captain"
+    t.boolean  "coxswain"
+    t.boolean  "participated"
+    t.boolean  "late"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

@@ -11,7 +11,7 @@ Member
  joined_on:
  paid:
 
-Participant
+Participation
  belongs_to :event
  belongs_to :member
  joined_on
@@ -27,7 +27,7 @@ Event.Boat
  captain: = oldest from captains
  has_many :captains
  has_many :coxswains  (user)
- participants (has_many :members)
+ participations (has_many :members)
 
 boats: (name, seats, coxed)
  Gannet, 6, y

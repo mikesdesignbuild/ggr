@@ -1,14 +1,14 @@
 require 'test_helper'
 
-class ParticipantsControllerTest < ActionController::TestCase
+class ParticipationsControllerTest < ActionController::TestCase
   setup do
-    @participant = participants(:one)
+    @participation = participations(:one)
   end
 
   test "should get index" do
     get :index
     assert_response :success
-    assert_not_nil assigns(:participants)
+    assert_not_nil assigns(:participations)
   end
 
   test "should get new" do
@@ -16,34 +16,34 @@ class ParticipantsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should create participant" do
-    assert_difference('Participant.count') do
-      post :create, participant: { captain: @participant.captain, coxswain: @participant.coxswain, event: @participant.event, late: @participant.late, participated: @participant.participated, user: @participant.user }
+  test "should create participation" do
+    assert_difference('Participation.count') do
+      post :create, participation: { captain: @participation.captain, coxswain: @participation.coxswain, event: @participation.event, late: @participation.late, participated: @participation.participated, user: @participation.user }
     end
 
-    assert_redirected_to participant_path(assigns(:participant))
+    assert_redirected_to participation_path(assigns(:participation))
   end
 
-  test "should show participant" do
-    get :show, id: @participant
+  test "should show participation" do
+    get :show, id: @participation
     assert_response :success
   end
 
   test "should get edit" do
-    get :edit, id: @participant
+    get :edit, id: @participation
     assert_response :success
   end
 
-  test "should update participant" do
-    patch :update, id: @participant, participant: { captain: @participant.captain, coxswain: @participant.coxswain, event: @participant.event, late: @participant.late, participated: @participant.participated, user: @participant.user }
-    assert_redirected_to participant_path(assigns(:participant))
+  test "should update participation" do
+    patch :update, id: @participation, participation: { captain: @participation.captain, coxswain: @participation.coxswain, event: @participation.event, late: @participation.late, participated: @participation.participated, user: @participation.user }
+    assert_redirected_to participation_path(assigns(:participation))
   end
 
-  test "should destroy participant" do
-    assert_difference('Participant.count', -1) do
-      delete :destroy, id: @participant
+  test "should destroy participation" do
+    assert_difference('Participation.count', -1) do
+      delete :destroy, id: @participation
     end
 
-    assert_redirected_to participants_path
+    assert_redirected_to participations_path
   end
 end

@@ -1,8 +1,9 @@
-class CreateParticipants < ActiveRecord::Migration
+class CreateParticipations < ActiveRecord::Migration
   def change
-    create_table :participants do |t|
-      t.integer :user
-      t.integer :event
+    create_table :participations do |t|
+      t.references :event
+      t.references :member
+
       t.boolean :captain
       t.boolean :coxswain
       t.boolean :participated
