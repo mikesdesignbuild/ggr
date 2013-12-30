@@ -3,7 +3,7 @@ class CreateEvents < ActiveRecord::Migration
     create_table :events do |t|
       t.date :on_date
       t.time :at_time
-      t.integer :boat
+      t.references :boat
 
       t.timestamps
     end
