@@ -1,4 +1,5 @@
 class BoatsController < ApplicationController
+  before_filter :authenticate_member!
   before_action :set_boat, only: [:show, :edit, :update, :destroy]
 
   # GET /boats

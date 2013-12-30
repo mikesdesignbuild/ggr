@@ -4,8 +4,8 @@ class Member < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :participations
-  has_many :events, through: :participations
+#  has_many :participations
+#  has_many :events, through: :participations
 
 #    t.string   "email",                  default: "", null: false
 #    t.string   "encrypted_password",     default: "", null: false
@@ -20,3 +20,4 @@ class Member < ActiveRecord::Base
 #    t.datetime "created_at"
 #    t.datetime "updated_at"
 end
+

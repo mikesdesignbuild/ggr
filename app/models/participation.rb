@@ -1,6 +1,6 @@
 class Participation < ActiveRecord::Base
-	belongs_to: event
-	belongs_to: member
+#	belongs_to: event
+#	belongs_to: member
 
 #   t.integer  "user"
 #   t.integer  "event"

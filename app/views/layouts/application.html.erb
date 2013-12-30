@@ -11,13 +11,13 @@
  <p class="alert"><%= alert %></p>
  <h2><a href="/events">Events</a> | <a href="/participations">Participations</a> | <a href="/boats">Boats</a> </h2>
 
- <% if user_signed_in? %>
-  <%= link_to current_user.email, "/static_pages/account" %>
+ <% if member_signed_in? %>
+  <%= link_to current_member.email, "/static_pages/account" %>
  <% else %>
-  <%= link_to "Login", user_session_path %> | <%= link_to "Create Login", new_user_registration_path %> </p>
+  <%= link_to "Login", member_session_path %> | <%= link_to "Create Login", new_member_registration_path %>
  <% end %>
 
- <!-- <p>Current user: <%= cookies[:current_user] %></p> -->
+ <p>Current user: <%#= cookies[:current_user] %></p>
  <div class="container">
   <%= yield %>
  </div>
