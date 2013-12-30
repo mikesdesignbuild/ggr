@@ -6,4 +6,4 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-# users = User.create([{ name:'Mike', email:'Foo' }, { name:'Mary', email:'Bar' } ])
+user = Member.new { |u| u.email = 'mikesdesignbuild@gmail.com'; u.password = 'x'; u.skip_confirmation! }.save

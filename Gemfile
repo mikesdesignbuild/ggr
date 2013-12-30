@@ -39,6 +39,8 @@ gem 'less-rails-bootstrap'
 
 gem 'devise'
 
+# to open all emails in development mode in a browser for review
+gem "letter_opener", :group => :development  
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'

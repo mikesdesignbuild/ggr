@@ -1,6 +1,6 @@
-<H1>Account <small>for <%= current_user.email %></small></H1>
+<H1>Account <small>for <%= current_member.email %></small></H1>
 <ul>
-	<li> <%= link_to "Change/reset password", edit_user_password_path %> </li>
-	<li> <%= link_to "Change account", edit_user_registration_path %> </li>
-	<li> <%= link_to "Logout", destroy_user_session_path, method: :delete, data: { confirm: 'Are you sure?' } %> </li>
+	<li> <%= link_to "Change/reset password", edit_member_password_path %> </li>
+	<li> <%= link_to "Change account", edit_member_registration_path %> </li>
+	<li> <%= link_to "Logout", destroy_member_session_path, method: :delete, data: { confirm: 'Are you sure?' } %> </li>
 </ul>
