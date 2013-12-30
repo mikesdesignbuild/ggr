@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131230184029) do
+ActiveRecord::Schema.define(version: 20131230201909) do
 
   create_table "boats", force: true do |t|
     t.string   "name"
@@ -23,17 +23,23 @@ ActiveRecord::Schema.define(version: 20131230184029) do
   create_table "events", force: true do |t|
     t.date     "on_date"
     t.time     "at_time"
-    t.integer  "boat"
+    t.integer  "boats_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "events", ["on_date"], name: "index_events_on_on_date"
+
   create_table "member_profiles", force: true do |t|
     t.integer  "member_id"
     t.string   "name"
+    t.string   "interests"
+    t.string   "purpose"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "member_profiles", ["name"], name: "index_member_profiles_on_name"
 
   create_table "members", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -46,6 +52,7 @@ ActiveRecord::Schema.define(version: 20131230184029) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.boolean  "admin"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -56,9 +63,9 @@ ActiveRecord::Schema.define(version: 20131230184029) do
   create_table "participations", force: true do |t|
     t.integer  "event_id"
     t.integer  "member_id"
-    t.boolean  "captain"
-    t.boolean  "coxswain"
-    t.boolean  "participated"
+    t.string   "captain"
+    t.string   "coxswain"
+    t.boolean  "missed"
     t.boolean  "late"
     t.datetime "created_at"
     t.datetime "updated_at"

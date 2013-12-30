@@ -1,4 +1,4 @@
-class CreateBaseSchema < ActiveRecord::Migration
+class CreateBaseSchemas < ActiveRecord::Migration
   def change
     create_table(:members) do |t|
 
@@ -41,6 +41,21 @@ class CreateBaseSchema < ActiveRecord::Migration
     # add_index :members, :confirmation_token,   :unique => true
     # add_index :members, :unlock_token,         :unique => true
 
+    create_table :member_profiles do |t|
+      t.references :member  # use just a member id
+      t.string :name
+      t.string :interests
+      t.string :purpose # why I like to row
+      # t.integer :coxswain  # what year did you get approved for a coxswain
+      # t.integer :captain   # what year did you get approved for a captain
+      # t.image :face_photo
+
+      t.timestamps
+    end
+    add_index :member_profiles, :name
+
+
+
     create_table :events do |t|
       t.date :on_date
       t.time :at_time
@@ -68,19 +83,6 @@ class CreateBaseSchema < ActiveRecord::Migration
 
       t.timestamps
     end
-
-    create_table :member_profiles do |t|
-      t.references :members
-      t.string :name
-      t.string :interests
-      t.string :purpose # why I like to row
-      t.integer :coxswain  # what year did you get approved for a coxswain
-      t.integer :captain   # what year did you get approved for a captain
-      # t.image :face_photo
-
-      t.timestamps
-    end
-    add_index :member_profiles, :name
         
   end
 end
