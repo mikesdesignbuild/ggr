@@ -1,3 +1,17 @@
+
+
+<!--
+  <div class="field">
+    <%#= f.label :member %><br>
+    <%#= f.number_field :member %>   default to current member (or perhaps show any authorized members for this machine)
+  </div>
+  Default to the current event
+  <div class="field">
+    <%#= f.label :event %><br>
+    <%#= f.number_field :event %>
+  </div>
+-->
+<fieldset style="border:1 solid green; background-color:#EEE;"><legend>Join?</legend>
 <%= form_for(@participation) do |f| %>
   <% if @participation.errors.any? %>
     <div id="error_explanation">
@@ -10,32 +24,11 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :user %><br>
-    <%= f.text_field :user %>
-  </div>
-  <div class="field">
-    <%= f.label :event %><br>
-    <%= f.text_field :event %>
-  </div>
-  <div class="field">
-    <%= f.label :captain %><br>
-    <%= f.text_field :captain %>
-  </div>
-  <div class="field">
-    <%= f.label :coxswain %><br>
-    <%= f.text_field :coxswain %>
-  </div>
-  <div class="field">
-    <%= f.label :participated %><br>
-    <%= f.text_field :participated %>
-  </div>
-  <div class="field">
-    <%= f.label :late %><br>
-    <%= f.check_box :late %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <!-- TODO: if member is qualified as captain (has role?) then -->
+  <div><%= f.check_box :captain %><%= f.label "Do you want to be captain?" %></div>
+  <!-- TODO: coxswain: would like, willing to -->
+  <div><%= f.check_box :coxswain %><%= f.label "Do you want to cox?" %></div>
+  <%= f.submit "Join as" %> <!-- as member dislay name -->
 <% end %>
+</fieldset>
+

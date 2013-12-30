@@ -4,9 +4,9 @@ class CreateParticipations < ActiveRecord::Migration
       t.references :event
       t.references :member
 
-      t.boolean :captain
-      t.boolean :coxswain
-      t.boolean :participated
+      t.string :captain
+      t.string :coxswain
+      t.boolean :missed
       t.boolean :late
 
       t.timestamps

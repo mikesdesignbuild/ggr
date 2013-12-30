@@ -11,6 +11,7 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
+    @participation = Participation.new  #MP TODO. Create Participation where event is this event. 
   end
 
   # GET /events/new

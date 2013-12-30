@@ -4,7 +4,7 @@
   <thead>
     <tr>
       <th>Id</th>
-      <th>User</th>
+      <th>Member</th>
       <th>Event</th>
       <th>Captain</th>
       <th>Coxswain</th>
@@ -20,7 +20,7 @@
     <% @participations.each do |participation| %>
       <tr>
         <td><%= participation.id %></td>
-        <td><%= participation.user %></td>
+        <td><%= participation.member %></td>
         <td><%= participation.event %></td>
         <td><%= participation.captain %></td>
         <td><%= participation.coxswain %></td>
