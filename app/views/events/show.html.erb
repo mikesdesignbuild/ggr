@@ -20,6 +20,11 @@
   <%= @event.boat %>
 </p>
 
+<ul>Participants
+<% for (@event.participants) |p| do %>
+ <li><%= p.member.name %></li> 
+<% end %>
+</ul>
 
 <%= render 'participations/form' %>
 
