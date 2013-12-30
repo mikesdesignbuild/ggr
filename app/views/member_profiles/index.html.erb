@@ -4,7 +4,7 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th></th>
+      <th>Email</th>
       <th></th>
       <th></th>
     </tr>
@@ -14,6 +14,7 @@
     <% @member_profiles.each do |member_profile| %>
       <tr>
         <td><%= member_profile.name %></td>
+        <td><%= member_profile.member.email %></td>
         <td><%= link_to 'Show', member_profile %></td>
         <td><%= link_to 'Edit', edit_member_profile_path(member_profile) %></td>
         <td><%= link_to 'Destroy', member_profile, method: :delete, data: { confirm: 'Are you sure?' } %></td>

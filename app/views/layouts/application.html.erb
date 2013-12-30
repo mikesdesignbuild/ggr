@@ -9,7 +9,7 @@
 <body>
  <p class="notice"><%= notice %></p>
  <p class="alert"><%= alert %></p>
- <h2><a href="/events">Events</a> | <a href="/participations">Participations</a> | <a href="/boats">Boats</a> </h2>
+ <h2><a href="/events">Events</a> | <a href="/member_profiles">Member profiles</a> | <a href="/boats">Boats</a> </h2>
 
  <% if member_signed_in? %>
   <%= link_to current_member.email, "/static_pages/account" %>

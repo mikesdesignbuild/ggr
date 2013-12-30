@@ -87,6 +87,5 @@ Requirements:
 When selecting a time, show the 10 most common times for rows.  
 Within an hour of the captain's last row, the app's home page shows the boat's rowers and lets them select "missed" or "late" for any member.
 
-
-
+List of captains
 

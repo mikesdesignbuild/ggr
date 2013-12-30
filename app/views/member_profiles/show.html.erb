@@ -1,8 +1,16 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
+  <strong>Name as others view you:</strong>
   <%= @member_profile.name %>
+</p>
+<p>
+  <strong>Interests:</strong>
+  <%= @member_profile.interests %>
+</p>
+<p>
+  <strong>Why I like to row:</strong>
+  <%= @member_profile.purpose %>
 </p>
 
 <%= link_to 'Edit', edit_member_profile_path(@member_profile) %> |

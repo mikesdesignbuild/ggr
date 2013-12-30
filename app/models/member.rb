@@ -6,6 +6,7 @@ class Member < ActiveRecord::Base
 
   has_many :participations
   has_many :events, through: :participations
+  has_one  :member_profile
 
 #    t.string   "email",                  default: "", null: false
 #    t.string   "encrypted_password",     default: "", null: false
@@ -19,5 +20,7 @@ class Member < ActiveRecord::Base
 #    t.string   "last_sign_in_ip"
 #    t.datetime "created_at"
 #    t.datetime "updated_at"
+
+#    t.boolean  "admin",
 end
 

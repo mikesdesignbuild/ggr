@@ -14,7 +14,7 @@ class MemberProfilesController < ApplicationController
 
   # GET /member_profiles/new
   def new
-    @member_profile = MemberProfile.new
+    @member_profile = MemberProfile.new # ( member: current_user )
   end
 
   # GET /member_profiles/1/edit
