@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140101005419) do
+ActiveRecord::Schema.define(version: 20140101140320) do
 
   create_table "boats", force: true do |t|
     t.string   "name"
@@ -20,8 +20,25 @@ ActiveRecord::Schema.define(version: 20140101005419) do
     t.datetime "updated_at"
   end
 
+  create_table "event_categories", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "event_locations", force: true do |t|
     t.string   "name"
+    t.string   "description"
+    t.string   "address"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "event_types", force: true do |t|
+    t.string   "name"
+    t.string   "long_name"
+    t.string   "description"
+    t.integer  "category_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

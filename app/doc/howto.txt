@@ -1,0 +1,6 @@
+Process and How-to
+
+How to start a database from scratch?
+  As part of development or for a new rowing group
+  Modify the db/seeds.db file with starting data.
+  rm db/development.sqlite3; rm db/schema.rb; rake db:migrate; rake db:reset; rake db:seed

@@ -62,6 +62,12 @@ class CreateBaseSchemas < ActiveRecord::Migration
       t.timestamps
     end
 
+    create_table :event_categories do |t|
+      t.string :name
+
+      t.timestamps
+    end
+
     create_table :event_types do |t|
       t.string :name
       t.string :long_name

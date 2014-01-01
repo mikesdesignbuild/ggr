@@ -4,6 +4,9 @@ class Event < ActiveRecord::Base
 
   has_one :participation
   accepts_nested_attributes_for :participation
+
+  has_one :event_type, as: :type
+  has_one :event_location, as: :location
   #has_one  :boat
 
 #    t.date     "on_date"

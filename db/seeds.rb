@@ -7,28 +7,40 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 Member.destroy_all
-Member.create([{ email: 'mikesdesignbuild@gmail.com', password: 'x'}])
-
-MemberProfile.destroy_all
-MemberProfile.create([{ member: Member.last, name: 'Mike', interests: 'books', purpose: 'time'}])
-
-Boat.destroy_all
-Boat.create([{ name: 'Gannet', seats: 6 }, { name: 'Annie B', seats: 6 }])
-
-EventLocation.destroy_all
-EventLocation.create([{ name: 'MG', description: 'dock at Maritime Gloucester', address: '1 Harbor Loop'}])
-
-EventCategory.create([
-{ name: 'row'},
-{ name: 'open_meeting'}
-{ name: 'open_meeting'}
+Member.create([
+{ email: 'mikesdesignbuild@gmail.com', password: 'x'}
 ])
 
+MemberProfile.destroy_all
+MemberProfile.create([
+{ member: Member.last, name: 'Mike', interests: 'books', purpose: 'time'}
+])
+
+Boat.destroy_all
+Boat.create([
+{ name: 'Gannet', seats: 6 }, { name: 'Annie B', seats: 6 }
+])
+
+EventLocation.destroy_all
+EventLocation.create([
+{ name: 'MG', description: 'dock at Maritime Gloucester', address: '1 Harbor Loop'},
+{ name: 'TC', description: 'Treble Cove', address: 'Gloucester, MA'}
+])
+
+EventCategory.destroy_all
+EventCategory.create([
+{ name: 'row'},
+{ name: 'open_meeting'},
+{ name: 'workout'},
+{ name: 'meeting'}
+])
+
+EventType.destroy_all
 EventType.create([
-{ name: 'Rec', long_name: 'Recreational row', description: 'Two breaks', category: 'row' },
-{ name: 'Cond', long_name: 'Conditioning row', description: 'One break', category: 'row' },
-{ name: 'Race', long_name: 'Race practice', description: 'an intense practice for a race', category: 'row' },
-{ name: 'RaceDay', long_name: 'Race on race day', description: 'Actual race on race day', category: 'row' }
+{ name: 'Rec', long_name: 'Recreational row', description: 'Two breaks' },  # , category: 'row'
+{ name: 'Cond', long_name: 'Conditioning row', description: 'One break' },
+{ name: 'Race', long_name: 'Race practice', description: 'an intense practice for a race' },
+{ name: 'RaceDay', long_name: 'Race on race day', description: 'Actual race on race day' }
 ])
 
 
