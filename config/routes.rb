@@ -1,4 +1,6 @@
 Ggr::Application.routes.draw do
+  resources :event_types
+
   resources :event_locations
 
   resources :member_profiles
