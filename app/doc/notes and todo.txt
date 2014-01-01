@@ -199,6 +199,78 @@ MP: couldn't find any existing utilities for this.  Not too important for now.  
 Should be tool that looks at field types in class and calls appropriate conversion.
 
 ----
+TODO: 1/1
+make event using type and location pull-downs.  Use date picker, but use default date.
+generate new views for event controller.  Can you use existing model and database to generate controller and views?
+  No.  
+
+Q: when creating associations, in migrations, use t.references :something_id or  t.integer :something  or  ???
+Q: how to find an object by its unique key?  event_type.by_name.row (or similar)
+
+
+class Book < ActiveRecord::Base
+  belongs_to :subject
+  validates_presence_of :title
+  validates_numericality_of :price, :message=>"Error Message"
+end
+
+How to generate create_table from model??
+
+$ rails generate migration AddUserRefToProducts user:references
+     creates user_id field
+
+$ rails generate migration AddDetailsToProducts price:decimal{5,2} supplier:references{polymorphic}
+
+
+limit Sets the maximum size of the string/text/binary/integer fields
+precision Defines the precision for the decimal fields
+scale Defines the scale for the decimal fields
+polymorphic Adds a type column for belongs_to associations
+null Allows or disallows NULL values in the column.
+
+validates :foreign_key, uniqueness: true 
+belongs_to :client, counter_cache: true
+
+Q: Should you modify models directly, or use generator to generate the migrations/create_table and models.  
+
+Client.find_by first_name: 'Lifo'   ===   Client.where(first_name: 'Lifo').take
+
+User.find_each(start: 2000, batch_size: 5000) do |user|
+  NewsLetter.weekly_deliver(user)
+end
+
+Client.where("orders_count = ? AND locked = ?", params[:orders], false)
+Client.where("created_at >= :start_date AND created_at <= :end_date",
+  {start_date: params[:start_date], end_date: params[:end_date]})
+
+  Author.joins(:posts).where(posts: {author: author})
+
+  Client.order(created_at: :desc)
+
+  Client.select(:name).distinct
+
+  Client.limit(5).offset(30)
+  Order.select("date(created_at) as ordered_date, sum(price) as total_price").group("date(created_at)")
+
+  .group("date(created_at)").having("sum(price) > ?", 100)
+
+  SomeModel.none # returns an empty Relation and fires no queries.
+  Client.readonly.first
+ 
+ Scoping allows you to specify commonly-used queries which can be referenced as method calls on the association objects or models.  Scopes are also chainable within scopes.
+
+ class Post < ActiveRecord::Base
+  def self.published
+    where(published: true)
+  end
+  def self.published_and_commented
+    published.where("comments_count > :x", {x: 3})   #  or published.where("comments_count > ?", 3)
+  end
+end
+
+
+
+
 
 
 

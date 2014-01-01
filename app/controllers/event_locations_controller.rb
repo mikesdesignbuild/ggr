@@ -69,6 +69,6 @@ class EventLocationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_location_params
-      params.require(:event_location).permit(:name)
+      params[:event_location]
     end
 end

@@ -54,6 +54,13 @@ class CreateBaseSchemas < ActiveRecord::Migration
     end
     add_index :member_profiles, :name
 
+    create_table :boats do |t|
+      t.string :name
+      t.integer :seats
+
+      t.timestamps
+    end
+
     create_table :event_locations do |t|
       t.string :name
       t.string :description
@@ -81,7 +88,10 @@ class CreateBaseSchemas < ActiveRecord::Migration
       t.date :on_date
       t.time :at_time
       #t.references :boat
-      t.string :boat
+      t.string :boat_id
+      #t.integer :event_types
+      t.integer :type_id
+      t.integer :location_id 
 
       t.timestamps
     end
@@ -95,13 +105,6 @@ class CreateBaseSchemas < ActiveRecord::Migration
       t.string :coxswain
       t.boolean :missed
       t.boolean :late
-
-      t.timestamps
-    end
-
-    create_table :boats do |t|
-      t.string :name
-      t.integer :seats
 
       t.timestamps
     end
