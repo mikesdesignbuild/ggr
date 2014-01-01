@@ -59,7 +59,7 @@ Registration and signup.
 Currently, users send an email and get assigned to up to three practice rows.  If they decide to join, someone sets up an account for them with a standard password.  Passwords can't be changed by a user.  Overall, very little automation and it requires a lot of administration time. 
 
 Proposed: 
-Easier to sigin up for rows and more automation.  Anyone visiting our site that lives nearby can see the upcoming rows and events and sign up as a guest member.  (only requires email and display name, and they are sent an email with an authorization link) After 3 rows, they can't signup for more rows until they join. When they join, they give some optional contact info and instructions for payment at MG.  MG (or another admin) has a web app that takes an email address and puts in their payment date.
+Easier to sigin up for Rows and more automation.  Anyone visiting our site that lives nearby can see the upcoming rows and events and sign up as a guest member.  (only requires email and display name, and they are sent an email with an authorization link) After 3 rows, they can't signup for more rows until they join. When they join, they give some optional contact info and instructions for payment at MG.  MG (or another admin) has a web app that takes an email address and puts in their payment date.
 
 Any member can renew their membership if they have been a member in the past.  
 

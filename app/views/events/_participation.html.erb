@@ -1,0 +1,30 @@
+<!-- TODO: if current user isn't a participant, show update participant data and click to remove myself from row (which sets field in participant for when_left -->
+<% if @event.new_record? %>
+
+ <fieldset>
+  <legend>Join row</legend>
+  <%= form_for @participation do |f| %>  <!-- how to specify a particular action to take? -->
+    <%= render 'errors' %>
+    <%= f.hidden_field :joined_on, value: Date.today %>
+    <!-- TODO: if member is qualified as captain (has role?) then -->
+    <div><%= f.check_box :captain %><%= f.label "Do you want to be captain?" %></div>
+    <!-- TODO: coxswain: would like, willing to -->
+    <div><%= f.check_box :coxswain %><%= f.label "Do you want to cox?" %></div>
+    <%= f.submit "Join as..." %> <!-- as member dislay name -->
+  <% end %>
+ </fieldset>  
+
+<% else %>
+
+ <fieldset>
+  <legend>Change participation</legend>
+  <%= form_for @participation do |f| %>  <!-- how to specify a particular action to take? -->
+    <%= render 'errors' %>
+    <div><%= f.check_box :captain %><%= f.label "Captain" %></div>
+    <div><%= f.check_box :coxswain %><%= f.label "Coxswain" %></div>
+    <%= f.submit "Update" %>  <%= link_to "foo/bar", "Leave row" %>  <!-- DELETE   how to get these button presses in an action -->
+  <% end %>
+ </fieldset>
+
+<% end %>
+

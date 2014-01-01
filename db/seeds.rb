@@ -7,9 +7,9 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 Member.create([{ email: 'mikesdesignbuild@gmail.com', password: 'x'}])
-# MemberProfile.create([{ member: Member.last, name: 'Mike', interests: 'books', purpose: 'time'}])
+MemberProfile.create([{ member: Member.last, name: 'Mike', interests: 'books', purpose: 'time'}])
 
-# Boat.create([{ name: 'Gannet', seats: 6 }, { name: 'Annie B', seats: 6 }])
+Boat.create([{ name: 'Gannet', seats: 6 }, { name: 'Annie B', seats: 6 }])
 # Event.create([{ on_date: '2013-12-25', at_time: '7:00', boat: Boat.last }])
 
 # Participation.create([{ event: Event.all[0].id, member: Member.all[0].id, captain: true }])

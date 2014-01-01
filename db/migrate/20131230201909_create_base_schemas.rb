@@ -59,7 +59,8 @@ class CreateBaseSchemas < ActiveRecord::Migration
     create_table :events do |t|
       t.date :on_date
       t.time :at_time
-      t.references :boats
+      #t.references :boat
+      t.string :boat
 
       t.timestamps
     end

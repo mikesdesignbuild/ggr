@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20131230201909) do
   create_table "events", force: true do |t|
     t.date     "on_date"
     t.time     "at_time"
-    t.integer  "boats_id"
+    t.string   "boat"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

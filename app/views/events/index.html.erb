@@ -19,7 +19,8 @@
         <td><%= event.id %></td>
         <td><%= event.on_date %></td>
         <td><%= event.at_time %></td>
-        <td><%= event.boat.name %></td>
+        <!--<td><%#= event.boat.name %></td> -->
+        <td><%= event.boat %></td>
         <td><%= link_to 'Show', event %></td>
         <td><%= link_to 'Edit', edit_event_path(event) %></td>
         <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>

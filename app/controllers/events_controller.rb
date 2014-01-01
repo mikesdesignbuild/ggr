@@ -11,7 +11,10 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
-    @participation = Participation.new  #MP TODO. Create Participation where event is this event. 
+    # if current member is not a participant, @my_participation = existing else @my_participation = new participation
+    @participation = Participation.new(event: @event)
+    # somehow set return view to be where member clicked on the event to show/view it
+    # @participants = [ Participation.last ] 
   end
 
   # GET /events/new
@@ -26,6 +29,7 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.json
   def create
+    # event_params[:event][:boat]=Boat.last  # MP HACK TEMP
     @event = Event.new(event_params)
 
     respond_to do |format|
@@ -53,6 +57,11 @@ class EventsController < ApplicationController
     end
   end
 
+  # from event.show and view _participation.html.erb
+  def process_participation
+    
+  end
+
   # DELETE /events/1
   # DELETE /events/1.json
   def destroy
@@ -64,6 +73,7 @@ class EventsController < ApplicationController
   end
 
   private
+
     # Use callbacks to share common setup or constraints between actions.
     def set_event
       @event = Event.find(params[:id])

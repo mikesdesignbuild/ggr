@@ -17,16 +17,18 @@
 
 <p>
   <strong>Boat:</strong>
-  <%= @event.boat.name %>
+  <%#= @event.boat.name %>
+  <%= @event.boat %>
 </p>
 
+
 <ul>Participants
-<% for (@event.participants) |p| do %>
- <li><%= p.member.name %></li> 
-<% end %>
+  <%# @event.participants.each do |p| %>
+   <li><%#= p.member.name %></li> 
+  <%# end %>
 </ul>
 
-<%= render 'participations/form' %>
+<%= render 'participation' %>
 
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>

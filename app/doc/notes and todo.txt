@@ -1,0 +1,185 @@
+GGR Git
+
+created new account at github.com
+
+generate local SSH RSA keys:
+
+ssh-keygen -t rsa -C "mikesdesignbuild@gmail.com”
+
+add SSH key to github and get content from file in .ssh/id_rsa.pub
+
+https://github.com/mikesdesignbuild/ggr.git
+
+git remote add origin https://github.com/mikesdesignbuild/ggr.git
+git push -u origin master 
+
+HEROKU setup:
+heroku keys:add
+heroku create --stack cedar
+
+http://vast-everglades-3866.herokuapp.com/
+git push heroku master
+heroku open
+heroku rename gloucestergigrowers
+
+ Gem::Installer::ExtensionBuildError: ERROR: Failed to build gem native extension.
+
+gem ‘sqlite3’   # should be:
+
+group :development, :test do
+    gem "sqlite3"
+    gem "better_errors"
+    gem "binding_of_caller"
+end
+
+group :production, :staging do
+    gem "pg"
+end
+
+How to bundle install with “development” option?
+bundle install --without production    # but it didn’t work. FIX: used gem ‘pg’ with version number.
+
+How to reset the database and erase all data in Ruby on Rails?
+rake db:reset    then    rake db:migrate 
+
+——
+Development:
+Creating static page:
+Creating controller:
+
+rails new ggr
+
+rails generate scaffold User name:string email:string
+TODO: commit after each generate command.
+rake db:migrate RAILS_ENV=development 
+
+TODO: create events, participants
+
+When application.js has //= require jquery   where does the jquery live? app? vendor? other?
+??? tried to put bootstrap in lib and vendor, but application.js could not find it.
+
+bundle exec rake -P
+
+——
+GOT application error on heroku.  Why?? How to view logs on heroku?
+WARNINGS:
+       Include 'rails_12factor' gem to enable all platform features
+
+—
+TODO: create events resource
+
+rails generate scaffold Participant user:integer event:integer captain:boolean coxswain:boolean participated:boolean late:boolean
+
+---
+TODO: show id’s on all resources: users, events, participants.  Done. Show only on index and show because they are read-only. DONE.
+
+set a current user as controller on user.
+
+where does a “edit_user_path” variable get defined?  routes.db
+—
+how to break at a line and show console in debug mode??  
+
+create sample events, sample participants, random numbers.
+
+/events   new=> create =>  /events/1
+when new event is created, show form for add participant
+
+/events/1/participants
+/events/1/participants/3 => /users/22       is 3 the user id or the participant number? 
+/events/1/participants/new  (use current user as default)
+
+add member directory.  
+
+member lookup count max per hour, day, week, month, year.  
+
+/members/1
+
+member can be publicly listed.  Encouraged for “public” figures such as training, committee chairs, etc.
+
+on any user, select options: phone call, email, text, message??
+
+rake db:migrate
+
+SQLite3::SQLException: duplicate column name: email: ALTER TABLE "users" ADD "email" varchar(255) DEFAULT '' NOT NULL/Library/Ruby/Gems/2.0.
+
+when calling rake db:reset, get:
+uninitialized constant Admin
+I had tried to get rid of all traces of Admin.  isn’t database deleted?
+
+
+
+When submitting from: http://localhost:3000/users/sign_in, get error;
+
+undefined method `encrypted_password=' for #<User:0x007ff796c51120>
+
+User.new.respond_to?(:encrypted_password=)   SHOULD return true.
+https://github.com/plataformatec/devise/issues/589
+
+user_signed_in?  current_user
+
+Done: got email to be sent out through console
+TODO: get email sent through web app in dev env
+
+TODO:
+use console to create a sample member, sample event, and then add a participation through the event.  
+
+TODO: show all participants on a row/event
+  add “name” to member DONE.
+
+TODO: create member profile using current member.  
+
+TODO: add “admin” field to member
+
+TODO: how to receive different button presses “Join” vs. “Update” vs. “Cancel”.  Which controller takes action?
+   
+
+accepts_nested_attributes_for   reject_if
+fields_for
+
+f.checkbox :_destroy
+
+Nested forms:
+http://railscasts.com/episodes/196-nested-model-form-part-1  
+http://railscasts.com/episodes/197-nested-model-form-part-2
+
+——
+TODO:
+Have a controller method on events that handles participation
+  /events/1/add_participation.html?captain=x&coxswain=y
+Use receives sub fields for x. 
+Make seed that creates some sample data
+
+REQ:
+auto cancel rows if <2 people the day of the row.
+REQ:
+notify member if tomorrow's row has seats available where user has asked 
+
+TODO:  <% render @participations %>   will use _participation.html.erb
+
+event.participation.create!
+                   .build takes keyed args
+                   .count 
+
+class Participation < ActiveRecord::Base
+  validates :event_id, presence: true
+
+create_table participations
+end
+add index :participations, [:event_id, :created_at]
+
+event
+  has_many :participations, dependent: destroy
+  has_one: type, as: event_type
+  has_one: location, as: event_location
+  has_one: category, as: event_category
+  
+
+1.hour.ago
+1.hour.from_now
+
+
+
+
+
+
+
