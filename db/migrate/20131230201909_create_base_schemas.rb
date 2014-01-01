@@ -54,7 +54,13 @@ class CreateBaseSchemas < ActiveRecord::Migration
     end
     add_index :member_profiles, :name
 
+    create_table :event_locations do |t|
+      t.string :name
+      t.string :description
+      t.string :address
 
+      t.timestamps
+    end
 
     create_table :events do |t|
       t.date :on_date

@@ -172,13 +172,33 @@ event
   has_one: type, as: event_type
   has_one: location, as: event_location
   has_one: category, as: event_category
-  
+
 
 1.hour.ago
 1.hour.from_now
 
+use seeds (or unknown???) to create data for database.
 
+-----
+make method that takes classes to export and it creates one file per class in the db/seed_data directory.  Typically called from command line manually:
 
+export_seed_data_for_classes (EventLocation, EventType)
+db/seed_data
+  event_locations.txt
+  event_type.txt
+
+event_locations.txt:
+mg|maritime|1 harbor loop
+
+method to read in data that is put in seeds.rb:
+
+import_seed_data_for_classes (EventLocation, EventType)
+https://github.com/kevTheDev/seed_dumper
+
+MP: couldn't find any existing utilities for this.  Not too important for now.  Could just use seed_dumper if ruby syntax is ok.
+Should be tool that looks at field types in class and calls appropriate conversion.
+
+----
 
 
 
