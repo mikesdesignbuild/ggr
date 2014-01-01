@@ -1,4 +1,8 @@
 Ggr::Application.routes.draw do
+  get "events/new"
+  get "events/create"
+  get "events/show"
+  get "events/index"
   resources :event_categories
 
   resources :event_types
