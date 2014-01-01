@@ -18,12 +18,20 @@ Boat.create([{ name: 'Gannet', seats: 6 }, { name: 'Annie B', seats: 6 }])
 EventLocation.destroy_all
 EventLocation.create([{ name: 'MG', description: 'dock at Maritime Gloucester', address: '1 Harbor Loop'}])
 
-EventType.create([
-{ name: 'Rec', long_name: 'Recreational row', description: 'Two breaks'},
-{ name: 'Cond', long_name: 'Conditioning row', description: 'One break'},
-{ name: 'Race', long_name: 'Race practice', description: 'an intense practice for a race'},
-{ name: 'RaceDay', long_name: 'Race on race day', description: 'Actual race on race day'}
+EventCategory.create([
+{ name: 'row'},
+{ name: 'open_meeting'}
+{ name: 'open_meeting'}
 ])
+
+EventType.create([
+{ name: 'Rec', long_name: 'Recreational row', description: 'Two breaks', category: 'row' },
+{ name: 'Cond', long_name: 'Conditioning row', description: 'One break', category: 'row' },
+{ name: 'Race', long_name: 'Race practice', description: 'an intense practice for a race', category: 'row' },
+{ name: 'RaceDay', long_name: 'Race on race day', description: 'Actual race on race day', category: 'row' }
+])
+
+
 
 # Event.create([{ on_date: '2013-12-25', at_time: '7:00', boat: Boat.last }])
 
