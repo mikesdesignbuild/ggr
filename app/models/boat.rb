@@ -1,20 +1,12 @@
 class Boat < ActiveRecord::Base 
-  validate_required :name
-  validate_number :seats
+  include ApplicationHelper
 
-  has_many :events
+  validates :name, presence: true, uniqueness: true, simple_word: true
+  validates :description, simple_text: true
+  validates :seats, presence: true, numericality: { only_integer: true, greater_than: 0, less_than: 100 }  # small_positive_integer  
 
-  def start_datetime 
-    # on_date + at_time
-  end
-  
-  def end_datetime
-    # start_datetime + duration
-  end
+  has_one     :location   # can be changed by captain 
+    validates :location, presence: true
 
-  def self.conflict_with_event?  # another_event : default 1 hour
-  	# ae = another_event
-    # events.where(start_datetime <= ae.end_datetime  && end_datetime >= ae.start_datetime).exists?  # where events' times overlap with 
-  end
-
+  has_many :events, inverse_of: :boat
 end

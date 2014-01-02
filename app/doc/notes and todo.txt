@@ -298,9 +298,6 @@ TODO: add roles using gem .
 
 EventTypes.find_by :first_name "mike"
 
-http://api.rubyonrails.org/classes/ActiveModel/Validations/HelperMethods.html
-validates_absence_of, validates_acceptance_of, validates_confirmation_of, validates_exclusion_of, validates_format_of, validates_inclusion_of, validates_length_of, validates_numericality_of, validates_presence_of, validates_size_of
-
 validates_uniqueness_of :user_name
 
 MS: should be able to generate create_table from model class definition.  Command line for scaffold would be difficult to maintain and isn't a good way to store the model.  A model should have all the info.  params should use model to identify inputs.  If you set the primary_key in a model, will it use that instead of creating "id" field?
