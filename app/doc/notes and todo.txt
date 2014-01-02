@@ -195,7 +195,7 @@ method to read in data that is put in seeds.rb:
 import_seed_data_for_classes (EventLocation, EventType)
 https://github.com/kevTheDev/seed_dumper
 
-MP: couldn't find any existing utilities for this.  Not too important for now.  Could just use seed_dumper if ruby syntax is ok.
+MS: couldn't find any existing utilities for this.  Not too important for now.  Could just use seed_dumper if ruby syntax is ok.
 Should be tool that looks at field types in class and calls appropriate conversion.
 
 ----
@@ -205,7 +205,7 @@ generate new views for event controller.  Can you use existing model and databas
   No.  
 
 Q: when creating associations, in migrations, use t.references :something_id or  t.integer :something  or  ???
-Q: how to find an object by its unique key?  event_type.by_name.row (or similar)
+Q: how to find an object by its unique key?  event_type.by_name.row (or similar)  EventType.find(:username "fred")
 
 
 class Book < ActiveRecord::Base
@@ -267,6 +267,60 @@ Client.where("created_at >= :start_date AND created_at <= :end_date",
     published.where("comments_count > :x", {x: 3})   #  or published.where("comments_count > ?", 3)
   end
 end
+
+Client.select(:name).distinct
+Client.select(:name, :created_by).distinct   ??? does this work??
+
+Post.joins(:category, :comments)
+SELECT posts.* FROM posts
+  INNER JOIN categories ON posts.category_id = categories.id
+  INNER JOIN comments ON comments.post_id = posts.id
+
+time_range = (Time.now.midnight - 1.day)..Time.now.midnight
+Client.joins(:orders).where(orders: {created_at: time_range})
+
+Post.includes(:category, :comments)
+
+Applying a default scope
+def self.default_scope
+    # Should return an ActiveRecord::Relation.
+end
+
+find_or_create_by returns either the record that already exists or the new record
+
+class Person < ActiveRecord::Base
+  self.primary_key = "person_id"
+end
+
+.exists?
+
+TODO: add roles using gem .
+
+EventTypes.find_by :first_name "mike"
+
+http://api.rubyonrails.org/classes/ActiveModel/Validations/HelperMethods.html
+validates_absence_of, validates_acceptance_of, validates_confirmation_of, validates_exclusion_of, validates_format_of, validates_inclusion_of, validates_length_of, validates_numericality_of, validates_presence_of, validates_size_of
+
+validates_uniqueness_of :user_name
+
+MS: should be able to generate create_table from model class definition.  Command line for scaffold would be difficult to maintain and isn't a good way to store the model.  A model should have all the info.  params should use model to identify inputs.  If you set the primary_key in a model, will it use that instead of creating "id" field?
+
+Would need a construct to define a field without any validations, but that would basically be a no-op, similar to not-null.
+Would need introspection to get at the names, types, and constrains on fields.
+A set of models SHOULD contain the information to create a complete schema.rb
+  All the join tables would be created automatically.
+  Doesn't seem to be a commonly used utility to do that. 
+Currently, Rails has three places to fully define a data model.  Model.rb, schema.rb & migrations, and the command-line from the generator.  I strongly feel that it should be one place -- the model.rb. 
+MS: workaround is to manually update the "base" migration.  
+
+migrate file: 20140101140320_schema.rb  will generate schema.rb with:
+  ActiveRecord::Schema.define(version: 20140101140320) do
+  Notice that the number
+
+
+
+
+
 
 
 
