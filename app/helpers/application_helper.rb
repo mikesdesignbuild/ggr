@@ -3,7 +3,7 @@ module ApplicationHelper
 
  class EmailValidator < ActiveModel::EachValidator  # used in models as:  validates :useremail, email: true
   def validate_each(record, attribute, value)
-    unless value =~ /\A([^@\s])@((?:[-a-z0-9]\.)[a-z]{2,})\z/i
+    if value && value =~ /\A([^@\s])@((?:[-a-z0-9]\.)[a-z]{2,})\z/i
       record.errors[attribute] << (options[:message] || "is not an email")
     end
   end
@@ -11,15 +11,17 @@ module ApplicationHelper
 
  class DatetimeValidator < ActiveModel::EachValidator  # used in models as:  validates :useremail, datetime: true
   def validate_each(record, attribute, value)
-    unless value =~ /\A([^@\s])@((?:[-a-z0-9]\.)[a-z]{2,})\z/i
-      record.errors[attribute] << (options[:message] || "is not an email")
-    end
+    if value && !DateTime.parse(value) 
+      record.errors[attribute] << "must be a valid datetime" 
+    end 
   end
  end
 
  class DateValidator < ActiveModel::EachValidator  # used in models as:  validates :on_date, date: true
   def validate_each(record, attribute, value)
-    record.errors[attribute] << "must be a valid datetime" unless (DateTime.parse(value) rescue nil)
+    if value && !DateTime.parse(value) 
+     record.errors[attribute] << "must be a valid date"
+    end
   end
  end
 
@@ -67,9 +69,12 @@ module ApplicationHelper
    end
  end
 
- class OptionalValidator < ActiveModel::EachValidator
+ class DefaultValidator < ActiveModel::EachValidator
    def validate_each(record, attribute, value)
-     # workaround because validates must take some validation 
+     if !value
+       record[attribute] = value  
+     end
+     # this means field is optional, and it gets its default from the validations instance. 
    end
  end
 

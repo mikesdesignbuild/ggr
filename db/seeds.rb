@@ -7,28 +7,28 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 Member.destroy_all
-Member.create([
-{ email: 'mikesdesignbuild@gmail.com', password: 'x'}
-])
+Member.create!([ { email: 'xxmikesdesignbuild@gmail.com', password: 'x'} ])
 
 MemberProfile.destroy_all
-MemberProfile.create([
-{ member: Member.last, name: 'Mike', interests: 'books', purpose: 'time'}
-])
-
-Boat.destroy_all
-Boat.create([
-{ name: 'Gannet', seats: 6 }, { name: 'Annie B', seats: 6 }
-])
+#MemberProfile.create!([
+#{ member: Member.last, name: 'Mike', interests: 'books', purpose: 'time'}
+#])
 
 Location.destroy_all
-Location.create([
-{ name: 'MG', description: 'dock at Maritime Gloucester', address: '1 Harbor Loop'},
+Location.create!([
+{ name: 'MG', description: 'dock at Maritime Gloucester', address: '1 Harbor Loop', is_default: true},
 { name: 'TC', description: 'Treble Cove', address: 'Gloucester, MA'}
 ])
 
+if false
+Boat.destroy_all
+Boat.create!([
+{ name: 'Gannet', seats: 6, location_id: nil }, 
+{ name: 'Annie B', seats: 6, location: nil }
+])
+
 EventCategory.destroy_all
-EventCategory.create([
+EventCategory.create!([
 { name: 'row'},
 { name: 'open_meeting'},
 { name: 'workout'},
@@ -36,14 +36,14 @@ EventCategory.create([
 ])
 
 EventType.destroy_all
-EventType.create([
+EventType.create!([
 { name: 'Rec', long_name: 'Recreational row', description: 'Two breaks' },  # , category: 'row'
 { name: 'Cond', long_name: 'Conditioning row', description: 'One break' },
 { name: 'Race', long_name: 'Race practice', description: 'an intense practice for a race' },
 { name: 'RaceDay', long_name: 'Race on race day', description: 'Actual race on race day' }
 ])
 
-
+end
 
 # Event.create([{ on_date: '2013-12-25', at_time: '7:00', boat: Boat.last }])
 

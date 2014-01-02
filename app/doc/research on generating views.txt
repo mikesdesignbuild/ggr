@@ -134,12 +134,29 @@ Event.columns_hash.keys[0]  has the default ordering that appears in the model.
 search: ruby rails application index.html.erb default works-for-all-models
 
 
+controller_name.classify  to get class model name
 
+list of controller classes is:
+Rails.application.eager_load!
+ApplicationController.descendants
+PostsController.action_methods
 
+ApplicationController.descendants
+PostsController.action_methods
 
+In a controller “LocationsController”
 
+params[:controller].classify  RETURNS “Location”
 
+Given a name of a class, how to get the class object?
 
+set default values in before_validation
 
+validators_on(:name) => [first validation, another validation]
+
+—
+Debugging: render :text => @some_object.inspect
+Rails.logger.debug("My object: #{@some_object.inspect}")
+<%= debug(@some_object) %>
 
 

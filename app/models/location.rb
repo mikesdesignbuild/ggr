@@ -5,7 +5,7 @@ class Location < ActiveRecord::Base
   validates :name, presence: true, uniqueness: true, simple_word: true
   validates :description, presence: true, simple_text: true
   validates :address, presence: true, simple_text: true
-  validates :is_default, presence:true, boolean: true
+  validates :is_default, boolean: true
 end
 
 

@@ -1,14 +1,12 @@
 class LocationsController < ApplicationController
   before_action :set_location, only: [:show, :edit, :update, :destroy]
 
-  # GET /locations
-  # GET /locations.json
   def index
-    @instances = Location.all
+    render action: 'new'
+    #@instances = class.all  
+    #@field_order = class.field_order || class.columns_hash.keys
   end
 
-  # GET /locations/1
-  # GET /locations/1.json
   def show
   end
 

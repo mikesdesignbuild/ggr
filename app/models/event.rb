@@ -5,10 +5,10 @@ class Event < ActiveRecord::Base
     validates :type, presence: true
 
   has_one     :location
-    validates :location, presence: true
+    validates :location, default: Location.first
   
   has_one     :boat
-    validates :boat, optional: true  # references boat by id
+    validates :boat, default: Boat.first  # references boat by id
 
   validates :on_date, presence: true, date: true  #, on_or_after: :today 
   validates :at_time, presence: true, time: true  # :between => '6:00am'...'9:00pm'    # ???

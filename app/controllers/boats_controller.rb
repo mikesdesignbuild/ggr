@@ -1,15 +1,7 @@
+#before_filter :authenticate_member!
 class BoatsController < ApplicationController
-  before_filter :authenticate_member!
   before_action :set_boat, only: [:show, :edit, :update, :destroy]
 
-  # GET /boats
-  # GET /boats.json
-  def index
-    @boats = Boat.all
-  end
-
-  # GET /boats/1
-  # GET /boats/1.json
   def show
   end
 

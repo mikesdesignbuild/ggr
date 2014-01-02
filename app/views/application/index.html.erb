@@ -1,32 +1,31 @@
-<% @field_order = @instances.first.class.columns_hash.keys %>
 <h1>Listing ___TBD___ </h1>
 
 <table>
   <thead>
     <tr>
-      <% @field_order.each do |key| %>
-       <th><%= key %></th>
-      <% end %>
+      <%# @field_order.each do |key| %>
+       <th><%#= key %></th>
+      <%# end %>
       <th></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @instances.each do |instance| %>
+    <%# @instances.each do |instance| %>
       <tr>
-        <% @field_order.each do |key| %>
-         <td><%= instance[key] %></td>
+        <%# @field_order.each do |key| %>
+         <td><%#= instance[key] %></td>
         <% end %>
         <td>
-          <%= link_to 'Show', participation %>
-          <%= link_to 'Edit', edit_participation_path(participation) %>
-          <%= link_to 'Destroy', participation, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <%#= link_to 'Show', participation %>
+          <%#= link_to 'Edit', edit_participation_path(participation) %>
+          <%#= link_to 'Destroy', participation, method: :delete, data: { confirm: 'Are you sure?' } %>
         </td>
       </tr>
-    <% end %>
+    <%# end %>
   </tbody>
 </table>
 
 <br>
 
-<%= link_to 'New __TBD___', new_participation_path %>
+<%#= link_to 'New __TBD___', new_participation_path %>
