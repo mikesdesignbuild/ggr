@@ -1,4 +1,4 @@
-class CreateBaseSchemas < ActiveRecord::Migration
+class BaseSchema < ActiveRecord::Migration
   def change
     create_table(:members) do |t|
 
@@ -31,8 +31,6 @@ class CreateBaseSchemas < ActiveRecord::Migration
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
       
-      t.boolean  :admin
-
       t.timestamps
     end
 
