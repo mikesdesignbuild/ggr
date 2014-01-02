@@ -9,4 +9,5 @@ class Boat < ActiveRecord::Base
     validates :location, presence: true
 
   has_many :events, inverse_of: :boat
+
 end

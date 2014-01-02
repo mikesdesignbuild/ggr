@@ -8,6 +8,7 @@ group :development do   #, :test do
     gem "better_errors"
     gem "binding_of_caller"
     gem "faker"  # to create sample data 
+    gem "hirb"
 end
 
 group :production do # , :staging do

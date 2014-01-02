@@ -1,3 +1,4 @@
+# probably should be named "User" because it doesn't relate to membership, MemberProfile does
 class Member < ActiveRecord::Base
   include ApplicationHelper
 
@@ -6,7 +7,7 @@ class Member < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  validates :email, presence: true, uniqueness: true
+  validates :email, presence: true, uniqueness: true   # find_by_email
 
   validates :encrypted_password, optional: true
   validates :reset_password_token, optional: true
@@ -21,10 +22,7 @@ class Member < ActiveRecord::Base
   validates :created_at, datetime: true
   validates :updated_at, datetime: true
 
-  has_one  :profile, inverse_of: :member, class_name: "MemberProfile"
-
-  has_many :participations, inverse_of: :member
-  has_many :events, through: :participations
+  belongs_to :profile, class_name: "MemberProfile", inverse_of: :member
 
 end
 

@@ -1,8 +1,8 @@
 class Event < ActiveRecord::Base
   include ApplicationHelper
 
-  has_one     :event_type, class_name: "Event"
-    validates :event_type, presence: true
+  has_one     :type, class_name: "EventType"
+    validates :type, presence: true
 
   has_one     :location
     validates :location, presence: true
@@ -15,7 +15,6 @@ class Event < ActiveRecord::Base
 
   has_one :participation  # workaround. not stored in database.  here so that accepts_nested_attributes_for will work
   accepts_nested_attributes_for :participation
-
 
   has_many :participations, inverse_of: :event, dependent: :destroy
 

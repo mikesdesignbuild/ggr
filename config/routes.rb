@@ -1,13 +1,10 @@
 Ggr::Application.routes.draw do
-  get "events/new"
-  get "events/create"
-  get "events/show"
-  get "events/index"
+
   resources :event_categories
 
   resources :event_types
 
-  resources :event_locations
+  resources :locations
 
   resources :member_profiles
 

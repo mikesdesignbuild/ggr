@@ -1,6 +1,54 @@
+# reset entire database: DANGER for development only
+# rm db/development.sqlite3; rm db/schema.rb; rake db:migrate; rake db:reset; rake db:seed
 class BaseSchema < ActiveRecord::Migration
   def change
-    create_table(:members) do |t|
+
+    create_table :boats do |t|
+      t.string :name
+      t.string :description
+      t.integer :seats
+      t.references :location
+
+      t.timestamps
+    end
+
+    create_table :events do |t|
+      t.references :type
+      t.references :location 
+      t.references :boat
+
+      t.date :on_date
+      t.time :at_time
+ 
+      t.timestamps
+    end
+    add_index :events, :on_date
+
+    create_table :event_categories do |t|
+      t.string :name     
+    
+      t.timestamps
+    end
+
+    create_table :event_types do |t|
+      t.string :name
+      t.string :long_name
+      t.string :description
+      t.references :category
+
+      t.timestamps
+    end
+
+    create_table :locations do |t|
+      t.string :name
+      t.string :description
+      t.string :address
+      t.boolean :is_default
+
+      t.timestamps
+    end
+
+    create_table :members do |t|
 
       ## Database authenticatable
       t.string :email,              null: false, default: ""
@@ -39,68 +87,35 @@ class BaseSchema < ActiveRecord::Migration
     # add_index :members, :confirmation_token,   :unique => true
     # add_index :members, :unlock_token,         :unique => true
 
+
     create_table :member_profiles do |t|
       t.references :member  # use just a member id
       t.string :name
       t.string :interests
       t.string :purpose # why I like to row
-      # t.integer :coxswain  # what year did you get approved for a coxswain
-      # t.integer :captain   # what year did you get approved for a captain
-      # t.image :face_photo
+      t.datetime :coxswain  # what year did you get approved for a coxswain
+      t.datetime :captain   # what year did you get approved for a captain
+
+      t.datetime :guest_on   # what year did you get approved for a captain
+      t.datetime :joined_on   # what year did you get approved for a captain
+      t.datetime :expired_on   # what year did you get approved for a captain
 
       t.timestamps
     end
     add_index :member_profiles, :name
 
-    create_table :boats do |t|
-      t.string :name
-      t.integer :seats
-
-      t.timestamps
-    end
-
-    create_table :event_locations do |t|
-      t.string :name
-      t.string :description
-      t.string :address
-
-      t.timestamps
-    end
-
-    create_table :event_categories do |t|
-      t.string :name
-
-      t.timestamps
-    end
-
-    create_table :event_types do |t|
-      t.string :name
-      t.string :long_name
-      t.string :description
-      t.integer :category_id
-
-      t.timestamps
-    end
-
-    create_table :events do |t|
-      t.date :on_date
-      t.time :at_time
-      #t.references :boat
-      t.string :boat_id
-      #t.integer :event_types
-      t.integer :type_id
-      t.integer :location_id 
-
-      t.timestamps
-    end
-    add_index :events, :on_date
-
     create_table :participations do |t|
       t.references :event
       t.references :member
+      
+      t.datetime :joined_on
+      t.datetime :left_on
 
+      t.string :rower
       t.string :captain
       t.string :coxswain
+      t.string :guest
+
       t.boolean :missed
       t.boolean :late
 

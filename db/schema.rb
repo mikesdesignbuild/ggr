@@ -15,21 +15,15 @@ ActiveRecord::Schema.define(version: 20140101140320) do
 
   create_table "boats", force: true do |t|
     t.string   "name"
+    t.string   "description"
     t.integer  "seats"
+    t.integer  "location_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "event_categories", force: true do |t|
     t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "event_locations", force: true do |t|
-    t.string   "name"
-    t.string   "description"
-    t.string   "address"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -44,22 +38,36 @@ ActiveRecord::Schema.define(version: 20140101140320) do
   end
 
   create_table "events", force: true do |t|
-    t.date     "on_date"
-    t.time     "at_time"
-    t.string   "boat_id"
     t.integer  "type_id"
     t.integer  "location_id"
+    t.integer  "boat_id"
+    t.date     "on_date"
+    t.time     "at_time"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "events", ["on_date"], name: "index_events_on_on_date"
 
+  create_table "locations", force: true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.string   "address"
+    t.boolean  "is_default"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "member_profiles", force: true do |t|
     t.integer  "member_id"
     t.string   "name"
     t.string   "interests"
     t.string   "purpose"
+    t.datetime "coxswain"
+    t.datetime "captain"
+    t.datetime "guest_on"
+    t.datetime "joined_on"
+    t.datetime "expired_on"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -77,7 +85,6 @@ ActiveRecord::Schema.define(version: 20140101140320) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.boolean  "admin"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -88,8 +95,12 @@ ActiveRecord::Schema.define(version: 20140101140320) do
   create_table "participations", force: true do |t|
     t.integer  "event_id"
     t.integer  "member_id"
+    t.datetime "joined_on"
+    t.datetime "left_on"
+    t.string   "rower"
     t.string   "captain"
     t.string   "coxswain"
+    t.string   "guest"
     t.boolean  "missed"
     t.boolean  "late"
     t.datetime "created_at"

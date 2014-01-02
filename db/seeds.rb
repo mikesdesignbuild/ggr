@@ -21,8 +21,8 @@ Boat.create([
 { name: 'Gannet', seats: 6 }, { name: 'Annie B', seats: 6 }
 ])
 
-EventLocation.destroy_all
-EventLocation.create([
+Location.destroy_all
+Location.create([
 { name: 'MG', description: 'dock at Maritime Gloucester', address: '1 Harbor Loop'},
 { name: 'TC', description: 'Treble Cove', address: 'Gloucester, MA'}
 ])

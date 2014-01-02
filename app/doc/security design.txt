@@ -1,0 +1,47 @@
+Security design
+
+Don’t authorize by roles.  Authorize by activity.
+
+Assign activities to roles.  People get assigned roles (and activities?)
+
+Avoid hard-coding roles (or activities) into the code.  
+
+Each class and method can associate with an activity.  
+
+What about pieces of a view?  Should those be moved into a separate file so the right file can be loaded using the current role?
+
+Instead of having to search through potentially millions of lines of code to find everywhere that a role is checked, provide a single, consolidated location for the role’s permissions.
+
+authorization system based on activities instead of roles
+
+For example, a controller that edits user accounts can be secured with very little code:
+class AccountsController < ApplicationController
+  authorize_resource
+end
+
+How should views change based on security permissions?  Ideally, dynamically generated views can take advantage of the security model to show only things a user is authorized to do.  Alternatively, use CSS class to describe an activity and then insert a style tag that hides anything a user shouldn’t access.  
+
+So, if classA has fields X,Y,Z, and “EditingActivity” only lets you edit X, view Y, and hide Z, then add:
+<style> 
+ .classA {
+   .fieldZ { display:none; }  /* hides both _edit and _show */
+   .fieldY_edit { display:none; }
+ }
+</style>
+
+If dynamically generating view, then each field knows how to show a hidden, aware, read-only and editable version.  
+
+hidden: user doesn’t know that the field exists
+aware: user knows the name of the field, but not it’s value
+read-only: user sees value
+editable: user can edit value
+removable: user can delete field
+
+Then, have some security language like CSS to define permissions.  Everything except _, only ___, 
+
+.current_user .person .ssn { view: edit }
+.admin .person .ssn { view: aware }
+.ssn { view: current_user, aware: admin }
+
+
+

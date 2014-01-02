@@ -1,10 +1,12 @@
+# rails generate scaffold Zarticipation event:reference  member:reference joined_on:datetime left_on:datetime rower:string captain:string
+
 class Participation < ActiveRecord::Base
   include ApplicationHelper
 
-  belongs_to  :event, inverse_of: :participations
+  has_one     :event, inverse_of: :participations
     validates :event, presence: true
 
-  belongs_to  :member, inverse_of: :participations
+  has_one     :member, inverse_of: :participations
     validates :member, presence: true
 
   validates :joined_on, presence: true, datetime: true
@@ -15,9 +17,9 @@ class Participation < ActiveRecord::Base
   validates :coxswain, cant_want_would: true # any active member
   validates :guest, cant_want_would: true    # open to non-members
 
-  validates :missed, inclusion: { in: [nil, true] }
-  validates :late, inclusion: { in: [nil, true] }
-
+  validates :missed, boolean: true
+  validates :late, boolean: true
+  
 #  def confirmed?
 #  	left_on.blank?
 #  end
