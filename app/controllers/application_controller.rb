@@ -16,6 +16,7 @@ class ApplicationController < ActionController::Base
 
   def index
     @instances = @model.all
+    cookies[:instance_ids] = @instances.map { |a| a.id }.join(',')
     #Rails.logger.debug("in index with: #{@instance}, #{@model}, #{@field_order}")
   end
 

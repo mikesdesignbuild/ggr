@@ -314,6 +314,15 @@ migrate file: 20140101140320_schema.rb  will generate schema.rb with:
   ActiveRecord::Schema.define(version: 20140101140320) do
   Notice that the number
 
+@user = User.find(params[:id])
+@user.students << current_user
+
+
+  has_many :teacher_links, :foreign_key => :student_id, :dependent => :destroy, :class_name => "TeacherStudentLink"
+  has_many :student_links, :foreign_key => :teacher_id, :dependent => :destroy, :class_name => "TeacherStudentLink"
+  has_many :students, :through => :student_links
+  has_many :teachers, :through => :teacher_links
+
 --------
 
 SHARE: best debugging is to get error in browser with command listener.  debug
@@ -327,8 +336,15 @@ DONE: New and update not working.  Don't show "id" or "created_at" "updated_at".
   Now, New is blanking the inputs.  Update isn't saving to the database.
 DONE: show all models in nav
 
+TODO: implement NEXT and PREV buttons when looking at a show view.
+   http://stackoverflow.com/questions/5452937/rails-previous-and-next-record-from-previous-query
+
 TODO: get foreign_key fields to show @instances in a pop-up. 
 TODO: dispatch field render based on field type
+
+
+Search: ruby rails model foreign-key
+
 
 
 

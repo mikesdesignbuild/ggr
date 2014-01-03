@@ -6,7 +6,7 @@ class Boat < ActiveRecord::Base
   validates :seats, default: 0, numericality: { only_integer: true, greater_than: 0, less_than: 100 }  # small_positive_integer  
 
   has_one     :location   # can be changed by captain 
-    validates :location, default: "MG", presence: true
+    validates :location, default: "MG" #, presence: true
 
   has_many :events, inverse_of: :boat
 

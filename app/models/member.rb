@@ -1,26 +1,23 @@
-# probably should be named "User" because it doesn't relate to membership, MemberProfile does
 class Member < ActiveRecord::Base
   include ApplicationHelper
 
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+  has_one   :member, inverse_of: :profile
+    validates :member, default: nil
 
-  validates :email, presence: true, uniqueness: true   # find_by_email
+  validates :name, presence: true, uniqueness: true, format: { with: /\A[a-zA-Z]+\z/, message: "only allows letters" }, length: { in: 2..8 } 
+ 
+  validates :interests, simple_text: true , default: ""
+  validates :purpose, simple_text: true, default: ""
 
-  validates :encrypted_password, default: ""
-  validates :reset_password_token, default: ""
-  validates :reset_password_sent_at, default: nil #, datetime: true
-  validates :remember_created_at, datetime: true, default: ""
-  validates :sign_in_count, default: 0 #, numericality: { only_integer: true, greater_than: 0, less_than: 100 }
+  validates :coxswain, date: true, default: nil
+  validates :captain, date: true, default: nil
 
-  validates :current_sign_in_at, datetime: true, default: nil
-  validates :last_sign_in_at, datetime: true, default: nil
-  validates :current_sign_in_ip, ip_address: true, default: nil
-  validates :last_sign_in_ip, ip_address: true, default: nil
+  validates :guest_on, date: true, default: nil
+  validates :joined_on, date: true, default: nil
+  validates :expired_on, date: true, default: nil
+  # def validates :active if joined_on is before today and expired_on is after today
 
-  belongs_to :profile, class_name: "MemberProfile", inverse_of: :member
+  has_many :participations, inverse_of: :member
+  has_many :events, through: :participations
 
 end
-

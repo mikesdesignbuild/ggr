@@ -48,6 +48,7 @@ class BaseSchema < ActiveRecord::Migration
       t.timestamps
     end
 
+=begin
     create_table :members do |t|
 
       ## Database authenticatable
@@ -85,10 +86,11 @@ class BaseSchema < ActiveRecord::Migration
     add_index :members, :reset_password_token, unique: true
     # add_index :members, :confirmation_token,   :unique => true
     # add_index :members, :unlock_token,         :unique => true
+=end
 
 
-    create_table :member_profiles do |t|
-      t.references :member  # use just a member id
+    create_table :members do |t|
+      #t.references :user  # use just a member id
       t.string :name
       t.string :interests
       t.string :purpose # why I like to row
@@ -101,7 +103,7 @@ class BaseSchema < ActiveRecord::Migration
 
       t.timestamps
     end
-    add_index :member_profiles, :name
+    add_index :members, :name
 
     create_table :participations do |t|
       t.references :event

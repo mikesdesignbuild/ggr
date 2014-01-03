@@ -1,5 +1,26 @@
 module ApplicationHelper
- #include ActiveModel::Validations   # needed??
+
+  # TBD: see  http://stackoverflow.com/questions/5452937/rails-previous-and-next-record-from-previous-query
+  def prev_next_links
+    output = ""
+    instance_ids = cookies[:instance_ids].split(",")
+    current_index = instance_ids.index(@instance.id.to_s)
+    prev_index = current_index - 1
+       prev_index < 0 ? prev_index=nil : nil
+    next_index = current_index + 1 
+       next_index >= instance_ids.length ? next_index=nil : nil
+    model_name = @model.name.pluralize.underscore
+    if !prev_index.nil? 
+      prev_id = instance_ids[prev_index]
+      output += link_to "< Prev", "/#{model_name}/#{prev_id}" # TODO: better way to construct links?
+    end
+    if !next_index.nil? 
+      next_id = instance_ids[next_index]
+      output += link_to "Next >", "/#{model_name}/#{next_id}" # TODO: better way to construct links?
+    end
+    output.html_safe
+  end
+
  def labelize(model)
   model.name.underscore.humanize
  end
@@ -93,9 +114,9 @@ module ApplicationHelper
 
  class DefaultValidator < ActiveModel::EachValidator
    def validate_each(record, attribute, value)
-     if !value
-       record[attribute] = value  
-     end
+     #if !value
+       #record[attribute] = value  
+     #end
      # this means field is optional, and it gets its default from the validations instance. 
    end
  end

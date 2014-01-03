@@ -7,9 +7,11 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 Member.destroy_all
-Member.create!([ { email: 'xxmikesdesignbuild@gmail.com', password: 'x'} ])
+Member.create!([ 
+{ name: 'MikeS', interests: 'books', purpose: 'time' }
+])
 
-MemberProfile.destroy_all
+#MemberProfile.destroy_all
 #MemberProfile.create!([
 #{ member: Member.last, name: 'Mike', interests: 'books', purpose: 'time'}
 #])
@@ -20,13 +22,14 @@ Location.create!([
 { name: 'TC', description: 'Treble Cove', address: 'Gloucester, MA'}
 ])
 
-if false
+
 Boat.destroy_all
 Boat.create!([
-{ name: 'Gannet', seats: 6, location_id: nil }, 
-{ name: 'Annie B', seats: 6, location: nil }
+#{ name: 'Gannet', seats: 6, location_id: nil }, 
+{ name: 'Annie B', seats: 6 }
 ])
 
+if false
 EventCategory.destroy_all
 EventCategory.create!([
 { name: 'row'},

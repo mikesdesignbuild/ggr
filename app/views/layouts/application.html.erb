@@ -16,11 +16,12 @@
   <% end %>
  </nav>
 
- <% if member_signed_in? %>
-  <%= link_to current_member.email, "/static_pages/account" %>
- <% else %>
-  <%= link_to "Login", member_session_path %> | <%= link_to "Create Login", new_member_registration_path %>
- <% end %>
+
+ <%# if member_signed_in? %>
+  <%#= link_to current_member.email, "/static_pages/account" %>
+ <%# else %>
+  <%#= link_to "Login", member_session_path %>  <%#= link_to "Create Login", new_member_registration_path %>
+ <%# end %>
 
  <div class="container">
   <%= yield %>

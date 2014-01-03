@@ -1,5 +1,5 @@
 <h2><%= labelize @model %></h2>
-<%= link_to "< " + labelize(@model), action: :index %> 
+<%= link_to "< " + labelize(@model).pluralize, action: :index %> 
 <%= link_to "Edit", action: :edit, id: @instance.id %>
 <% @field_order.each do |field_name| %>
  <p>
@@ -7,4 +7,5 @@
   <%= @instance[field_name] %>
  </p>
 <% end %>
+<%= prev_next_links %>
 

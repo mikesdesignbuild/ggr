@@ -1,19 +1,11 @@
 Ggr::Application.routes.draw do
 
   resources :event_categories
-
   resources :event_types
-
   resources :locations
-
-  resources :member_profiles
-
-  devise_for :members
-  
+  resources :members  
   resources :boats
-
   resources :participations
-
   resources :events
 
   get "static_pages/home"
