@@ -1,5 +1,25 @@
-<h1>Editing</h1>
+<h1>Edit <%= @model %></h1>
 
-<%= render 'form' %>
+<%= form_for(@instance) do |f| %>
+  <div class="actions">
+    <%= f.submit %>
+    <%= back_button %>
+  </div>
+  <% if @instance.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@instance.errors.count, "error") %> prohibited this instance from being saved:</h2>
+      <ul>
+      <% @instance.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-<%= link_to 'Back', "previous view" %>
+  <% @field_order.each do |field_name| %>
+    <div class="field">
+      <%= f.label field_name %><br>
+      <%= f.text_field field_name %>
+    </div>
+  <% end %>
+<% end %>

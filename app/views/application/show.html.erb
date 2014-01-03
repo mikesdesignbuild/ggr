@@ -1,12 +1,10 @@
 <p id="notice"><%= notice %></p>
-
+<%= back_button %> 
+<%= link_to "Edit", action: :edit, id: @instance.id %>
 <% @field_order.each do |field_name| %>
  <p>
   <strong><%= field_name %></strong>
   <%= @instance[field_name] %>
  </p>
 <% end %>
-
-<%#= link_to 'Edit', edit_boat_path(@boat) %> |
-<%#= link_to 'Back', boats_path %>
 

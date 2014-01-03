@@ -1,5 +1,24 @@
-<h1>New boat</h1>
+<h1>New <%= @model %></h1>
+<%= form_for(@instance) do |f| %>
+  <div class="actions">
+    <%= f.submit %>
+    <%= back_button %>
+  </div>
+  <% if @instance.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@instance.errors.count, "error") %> prohibited this instance from being saved:</h2>
+      <ul>
+      <% @instance.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-<%= render 'form' %>
-
-<%= link_to 'Back', "boats_path" %>
+  <% @field_order.each do |field_name| %>
+    <div class="field">
+      <%= f.label field_name %><br>
+      <%= f.text_field field_name %>
+    </div>
+  <% end %>
+<% end %>

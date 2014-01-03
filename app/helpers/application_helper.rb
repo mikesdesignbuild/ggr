@@ -1,6 +1,9 @@
 module ApplicationHelper
  #include ActiveModel::Validations   # needed??
-
+ def back_button
+    render inline: '<input action="action" type="button" value="&lt; Back TBD" onclick="history.back()" />'
+ end
+  
  class EmailValidator < ActiveModel::EachValidator  # used in models as:  validates :useremail, email: true
   def validate_each(record, attribute, value)
     if value && value =~ /\A([^@\s])@((?:[-a-z0-9]\.)[a-z]{2,})\z/i
