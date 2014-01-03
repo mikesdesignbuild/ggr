@@ -159,4 +159,4 @@ Debugging: render :text => @some_object.inspect
 Rails.logger.debug("My object: #{@some_object.inspect}")
 <%= debug(@some_object) %>
 
-
+params["controller"].classify    RETURNS “Location”

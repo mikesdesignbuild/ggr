@@ -8,9 +8,9 @@ class ApplicationController < ActionController::Base
 
   def index
     Rails.logger.debug("My object 27327")
-    #klass = params[:class].constantize
-    #@instances = klass.all  
-    #@field_order = klass.columns_hash.keys # klass.field_order || klass.columns_hash.keys
+    klass = params["controller"].classify.constantize
+    @instances = klass.all  
+    @field_order = klass.columns_hash.keys # klass.field_order || klass.columns_hash.keys
     render action: 'index878'
   end
 
@@ -74,7 +74,7 @@ class ApplicationController < ActionController::Base
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_instance
-      klass = params[:class].constantize
+      klass = params["controller"].classify.constantize
       @instance = klass.find(params[:id])
     end
 
