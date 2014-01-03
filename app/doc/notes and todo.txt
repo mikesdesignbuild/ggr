@@ -316,15 +316,19 @@ migrate file: 20140101140320_schema.rb  will generate schema.rb with:
 
 --------
 
+SHARE: best debugging is to get error in browser with command listener.  debug
+
 DONE: show index.html    index and show don't work.  Why?  Had views. 
 WAIT: class var and @ vs. @@ vs. self vs. initial vs. ???   
 DONE: need to understand how to calculate paths for links.  implement now.
 DONE: button on instance row in index
 DONE: back button should go back to index page.
-
 DONE: New and update not working.  Don't show "id" or "created_at" "updated_at".  
   Now, New is blanking the inputs.  Update isn't saving to the database.
+DONE: show all models in nav
 
-TODO: show all models in nav
 TODO: get foreign_key fields to show @instances in a pop-up. 
+TODO: dispatch field render based on field type
+
+
 

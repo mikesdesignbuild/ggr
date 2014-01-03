@@ -1,9 +1,9 @@
-<h2><%= @model %></h2>
-<%= link_to "< "+@model.name.pluralize, action: :index %> 
+<h2><%= labelize @model %></h2>
+<%= link_to "< " + labelize(@model), action: :index %> 
 <%= link_to "Edit", action: :edit, id: @instance.id %>
 <% @field_order.each do |field_name| %>
  <p>
-  <strong><%= field_name %></strong>
+  <strong><%= field_name.humanize %></strong>
   <%= @instance[field_name] %>
  </p>
 <% end %>

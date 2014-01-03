@@ -1,5 +1,9 @@
 module ApplicationHelper
  #include ActiveModel::Validations   # needed??
+ def labelize(model)
+  model.name.underscore.humanize
+ end
+
  def back_button
     link_to '< Back', :back 
  end

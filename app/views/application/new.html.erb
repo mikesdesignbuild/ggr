@@ -1,4 +1,4 @@
-<h1>New <%= @model %></h1>
+<h1>New <%= labelize @model %></h1>
 <%= form_for(@instance) do |f| %>
   <div class="actions">
     <%= f.submit "Done" %>
@@ -17,7 +17,7 @@
 
   <% @field_order.each do |field_name| %>
     <div class="field">
-      <%= f.label field_name %><br>
+      <%= f.label field_name.humanize %><br>
       <%= f.text_field field_name %>
     </div>
   <% end %>

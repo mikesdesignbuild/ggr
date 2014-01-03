@@ -1,10 +1,11 @@
-<h1>Edit <%= @model %></h1>
+<h1>Edit <%= labelize @model %></h1>
 
 <%= form_for(@instance) do |f| %>
   <div class="actions">
     <%= f.submit "Done" %>
     <%= link_to 'Cancel', :back %>
   </div>
+
   <% if @instance.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@instance.errors.count, "error") %> prohibited this instance from being saved:</h2>
@@ -18,7 +19,7 @@
 
   <% @field_order.each do |field_name| %>
     <div class="field">
-      <%= f.label field_name %><br>
+      <%= f.label field_name.humanize %><br>
       <%= f.text_field field_name %>
     </div>
   <% end %>

@@ -34,8 +34,12 @@ class ApplicationController < ActionController::Base
     @instance = @model.new(safe_params)
 
     respond_to do |format|
-      if @instance.save
-        format.html { redirect_to @instance, notice: 'Successfully created.' }
+      if @instance.save 
+        format.html do 
+          flash[:notice] = 'Successfully created.'
+          index  # to update @instances
+          render :index
+        end
         format.json { render action: 'show', status: :created, location: @instance }
       else
         format.html { render action: 'new' }
