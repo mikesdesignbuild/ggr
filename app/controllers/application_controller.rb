@@ -2,28 +2,24 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
 
+  before_action :set_model, only: [:index, :new]
   before_action :set_instance, only: [:show, :edit, :update, :destroy]
+  #before_action :set_class, only: [:show, :edit, :update, :destroy]
   protect_from_forgery with: :exception
 
 
   def index
-    Rails.logger.debug("My object 27327")
-    klass = params["controller"].classify.constantize
-    @instances = klass.all  
-    @field_order = klass.columns_hash.keys # klass.field_order || klass.columns_hash.keys
-    render action: 'index878'
+    Rails.logger.debug("in index with: ", @instance, @model, @field_order)
   end
 
   def show
-    render action: 'index9848'
+    Rails.logger.debug("in index with: ", @instance, @model, @field_order)
   end
 
   # GET /boats/new
   def new
-    #klass = controller_name.classify  # .constantize
-    # echo classname(this)
-    #@instance = klass.new
-    render action: 'index6632'
+    @instance = @model.new
+    Rails.logger.debug("in index with: ", @instance, @model, @field_order)
   end
 
 
@@ -34,7 +30,7 @@ class ApplicationController < ActionController::Base
   # POST /boats
   # POST /boats.json
   def create
-    @instance = Instance.new(safe_params)
+    @instance = @model.new(safe_params)
 
     respond_to do |format|
       if @instance.save
@@ -56,7 +52,7 @@ class ApplicationController < ActionController::Base
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
-        format.json { render json: @boat.errors, status: :unprocessable_entity }
+        format.json { render json: @instance.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -73,14 +69,19 @@ class ApplicationController < ActionController::Base
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    def set_model
+      @model = params["controller"].classify.constantize
+      @field_order = @model.columns_hash.keys # klass.field_order || klass.columns_hash.keys
+    end
+
     def set_instance
-      klass = params["controller"].classify.constantize
-      @instance = klass.find(params[:id])
+      set_model
+      @instance = @model.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def safe_params  #TBD
-      params  #  UNSAFE REVISE!!  .require(:boat).permit(:name, :seats)
+    def safe_params  #TBD.  use security settings to set safe_params
+      params  # TODO UNSAFE REVISE!!  .require(:boat).permit(:name, :seats)
     end
 
 end

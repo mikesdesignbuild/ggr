@@ -1,1 +1,12 @@
-<H1>Show.html.erb</H1>
+<p id="notice"><%= notice %></p>
+
+<% @field_order.each do |field_name| %>
+ <p>
+  <strong><%= field_name %></strong>
+  <%= @instance[field_name] %>
+ </p>
+<% end %>
+
+<%#= link_to 'Edit', edit_boat_path(@boat) %> |
+<%#= link_to 'Back', boats_path %>
+
