@@ -1,4 +1,4 @@
-<h1><%= @model %> <small> <%= link_to "New", action: :new %> </small></h1>
+<h1><%= @model.model_name.human.pluralize %> <small> <%= link_to "New", action: :new %> </small></h1>
 <%= back_button %>
 <table>
   <thead>

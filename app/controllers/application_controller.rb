@@ -37,7 +37,7 @@ class ApplicationController < ActionController::Base
   end
 
   def create
-    @instance = model.new(safe_params)
+    @instance = @model.new(safe_params)
 
     respond_to do |format|
       if @instance.save
