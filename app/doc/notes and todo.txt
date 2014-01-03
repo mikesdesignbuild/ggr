@@ -320,5 +320,10 @@ DONE: show index.html    index and show don't work.  Why?  Had views.
 WAIT: class var and @ vs. @@ vs. self vs. initial vs. ???   
 DONE: need to understand how to calculate paths for links.  implement now.
 DONE: button on instance row in index
+DONE: back button should go back to index page.
 
-TODO FIX: back button should go back to index page.
+TODO: New and update not working.  Don't show "id" or "created_at" "updated_at".  
+  Now, New is blanking the inputs.  Update isn't saving to the database.
+
+TODO: get foreign_key fields to show @instances in a pop-up. 
+

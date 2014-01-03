@@ -1,7 +1,4 @@
 class ApplicationController < ActionController::Base
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
-  # in each controller class define two lines:
   #  @@model = Boat
   #  @@field_order = Boat.columns_hash.keys 
 
@@ -23,15 +20,12 @@ class ApplicationController < ActionController::Base
   end
 
   def show
-    #Rails.logger.debug("in show with: #{@instance}, #{@model}, #{@field_order}")
   end
 
   # GET /boats/new
   def new
     @instance = @model.new
-    #Rails.logger.debug("in new with: #{@instance}, #{@model}, #{@field_order}")
   end
-
 
   def edit
   end
@@ -79,12 +73,12 @@ class ApplicationController < ActionController::Base
 
     def set_model
       @model = params["controller"].classify.constantize
-      @field_order = @model.columns_hash.except(:id, :created_at, :updated_at).keys 
+      @field_order = @model.columns_hash.except("id", "created_at", "updated_at").keys  # TODO HACK. Should use permissions matrix
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def safe_params  #TBD.  use security settings to set safe_params
-      params[params["controller"]]  # TODO UNSAFE REVISE!!  .require(:boat).permit(:name, :seats)
+      params.require(@model.to_s.underscore).permit @field_order
     end
 
 end
