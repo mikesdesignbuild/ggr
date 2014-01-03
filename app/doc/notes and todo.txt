@@ -316,12 +316,11 @@ migrate file: 20140101140320_schema.rb  will generate schema.rb with:
 
 --------
 
-TODO: show index.html    index and show don't work.  Why?  Had views.  DONE
+DONE: show index.html    index and show don't work.  Why?  Had views. 
+WAIT: class var and @ vs. @@ vs. self vs. initial vs. ???   
+DONE: need to understand how to calculate paths for links.  implement now.
 
-TODO: class var and @ vs. @@ vs. self vs. initial vs. ???   WAIT
-
-TODO: need to understand how to calculate paths for links.  DONE.  implement now.
-
+TODO: button on instance row in index
 
 
 

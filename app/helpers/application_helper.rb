@@ -1,8 +1,17 @@
 module ApplicationHelper
  #include ActiveModel::Validations   # needed??
  def back_button
-    render inline: '<input action="action" type="button" value="&lt; Back TBD" onclick="history.back()" />'
+    link_to '< Back', :back 
  end
+
+ def show_instance(instance)
+   url = url_for controller: params[:controller], action: :show, id: instance.id 
+   "window.location='" + url + "'"
+ end
+
+# def back_button2
+#    render inline: link_to "&lt; Back", document.referrer 
+# end
   
  class EmailValidator < ActiveModel::EachValidator  # used in models as:  validates :useremail, email: true
   def validate_each(record, attribute, value)

@@ -22,4 +22,7 @@
       <%= f.text_field field_name %>
     </div>
   <% end %>
+
+  <%= link_to 'Delete', @instance, method: :delete, data: { confirm: 'Are you sure?' } %>
+
 <% end %>

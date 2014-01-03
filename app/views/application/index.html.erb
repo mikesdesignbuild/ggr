@@ -1,4 +1,4 @@
-<h1>Listing ___TBD___ </h1>
+<h1><%= @model %> <small> <%= link_to "New", action: :new %> </small></h1>
 <%= back_button %>
 <table>
   <thead>
@@ -6,25 +6,18 @@
       <% @field_order.each do |key| %>
        <th><%#= key %></th>
       <% end %>
-      <th></th>
     </tr>
   </thead>
-
   <tbody>
     <% @instances.each do |instance| %>
-      <tr>
+      <tr onclick=<%= show_instance instance %> >
         <% @field_order.each do |key| %>
          <td><%= instance[key] %></td>
         <% end %>
-        <td>
-          <%= link_to 'Show', "TODO participation" %>
-          <%= link_to 'Edit', "TODO edit_participation_path(participation)" %>
-          <%= link_to 'Destroy', "TODO participation", method: :delete, data: { confirm: 'Are you sure?' } %>
-        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 
-<%#= link_to 'New __TBD___', new_participation_path %>
+
