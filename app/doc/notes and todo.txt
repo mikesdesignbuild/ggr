@@ -314,9 +314,9 @@ migrate file: 20140101140320_schema.rb  will generate schema.rb with:
   ActiveRecord::Schema.define(version: 20140101140320) do
   Notice that the number
 
-
-
-
+--------
+TODO: need to understand how to calculate paths for links.
+TODO: show index.html    index and show don't work.  Why?
 
 
 

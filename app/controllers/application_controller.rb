@@ -9,17 +9,18 @@ class ApplicationController < ActionController::Base
 
 
   def index
-    Rails.logger.debug("in index with: ", @instance, @model, @field_order)
+    @instances = @model.all
+    Rails.logger.debug("in index with: #{@instance}, #{@model}, #{@field_order}")
   end
 
   def show
-    Rails.logger.debug("in index with: ", @instance, @model, @field_order)
+    Rails.logger.debug("in show with: #{@instance}, #{@model}, #{@field_order}")
   end
 
   # GET /boats/new
   def new
     @instance = @model.new
-    Rails.logger.debug("in index with: ", @instance, @model, @field_order)
+    Rails.logger.debug("in new with: #{@instance}, #{@model}, #{@field_order}")
   end
 
 
