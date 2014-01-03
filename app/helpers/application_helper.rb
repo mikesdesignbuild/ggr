@@ -9,6 +9,12 @@ module ApplicationHelper
    "window.location='" + url + "'"
  end
 
+ def all_controller_names
+  Dir.glob(Rails.root.to_s + '/app/models/*.rb').map do |filename| 
+    filename.match(/[^\/]*(?=[.][a-zA-Z]+$)/).to_s.pluralize  # converts "/Users/mike/dev/ggr/app/models/boat.rb" to "boat"
+  end
+ end
+
 # def back_button2
 #    render inline: link_to "&lt; Back", document.referrer 
 # end
