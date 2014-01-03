@@ -318,7 +318,7 @@ migrate file: 20140101140320_schema.rb  will generate schema.rb with:
 TODO: need to understand how to calculate paths for links.
 TODO: show index.html    index and show don't work.  Why?
 
-
+TODO: class var and @ vs. @@ vs. self vs. initial vs. ???
 
 
 
