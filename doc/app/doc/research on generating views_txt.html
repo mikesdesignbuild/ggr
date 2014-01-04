@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+<title>research on generating views - RDoc Documentation</title>
+
+<link type="text/css" media="screen" href="../../rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/darkfish.js"></script>
+
+
+<body class="file">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="../../index.html">Home</a>
+    <a href="../../table_of_contents.html#classes">Classes</a>
+    <a href="../../table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="../../Gemfile.html">Gemfile</a>
+  
+    <li class="file"><a href="../../README_rdoc.html">README</a>
+  
+    <li class="file"><a href="../../Rakefile.html">Rakefile</a>
+  
+    <li class="file"><a href="../../app/doc/generate schema from model_txt.html">generate schema from model</a>
+  
+    <li class="file"><a href="../../app/doc/howto_txt.html">howto</a>
+  
+    <li class="file"><a href="../../app/doc/navigation_txt.html">navigation</a>
+  
+    <li class="file"><a href="../../app/doc/notes and todo_txt.html">notes and todo</a>
+  
+    <li class="file"><a href="../../app/doc/research on generating views_txt.html">research on generating views</a>
+  
+    <li class="file"><a href="../../app/doc/security design_txt.html">security design</a>
+  
+    <li class="file"><a href="../../public/robots_txt.html">robots</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../../ApplicationHelper.html">ApplicationHelper</a>
+  
+    <li><a href="../../ApplicationHelper/BooleanValidator.html">ApplicationHelper::BooleanValidator</a>
+  
+    <li><a href="../../ApplicationHelper/CantWantWouldValidator.html">ApplicationHelper::CantWantWouldValidator</a>
+  
+    <li><a href="../../ApplicationHelper/DateValidator.html">ApplicationHelper::DateValidator</a>
+  
+    <li><a href="../../ApplicationHelper/DatetimeValidator.html">ApplicationHelper::DatetimeValidator</a>
+  
+    <li><a href="../../ApplicationHelper/DefaultValidator.html">ApplicationHelper::DefaultValidator</a>
+  
+    <li><a href="../../ApplicationHelper/EmailValidator.html">ApplicationHelper::EmailValidator</a>
+  
+    <li><a href="../../ApplicationHelper/IpAddressValidator.html">ApplicationHelper::IpAddressValidator</a>
+  
+    <li><a href="../../ApplicationHelper/SimpleTextValidator.html">ApplicationHelper::SimpleTextValidator</a>
+  
+    <li><a href="../../ApplicationHelper/SimpleWordValidator.html">ApplicationHelper::SimpleWordValidator</a>
+  
+    <li><a href="../../ApplicationHelper/TimeValidator.html">ApplicationHelper::TimeValidator</a>
+  
+    <li><a href="../../ActiveSupport.html">ActiveSupport</a>
+  
+    <li><a href="../../ActiveSupport/TestCase.html">ActiveSupport::TestCase</a>
+  
+    <li><a href="../../Ggr.html">Ggr</a>
+  
+    <li><a href="../../Ggr/Application.html">Ggr::Application</a>
+  
+    <li><a href="../../ApplicationController.html">ApplicationController</a>
+  
+    <li><a href="../../BaseSchema.html">BaseSchema</a>
+  
+    <li><a href="../../Boat.html">Boat</a>
+  
+    <li><a href="../../BoatTest.html">BoatTest</a>
+  
+    <li><a href="../../BoatsController.html">BoatsController</a>
+  
+    <li><a href="../../BoatsControllerTest.html">BoatsControllerTest</a>
+  
+    <li><a href="../../BoatsHelperTest.html">BoatsHelperTest</a>
+  
+    <li><a href="../../Event.html">Event</a>
+  
+    <li><a href="../../EventCategoriesController.html">EventCategoriesController</a>
+  
+    <li><a href="../../EventCategoriesControllerTest.html">EventCategoriesControllerTest</a>
+  
+    <li><a href="../../EventCategoriesHelperTest.html">EventCategoriesHelperTest</a>
+  
+    <li><a href="../../EventCategory.html">EventCategory</a>
+  
+    <li><a href="../../EventCategoryTest.html">EventCategoryTest</a>
+  
+    <li><a href="../../EventLocationTest.html">EventLocationTest</a>
+  
+    <li><a href="../../EventLocationsControllerTest.html">EventLocationsControllerTest</a>
+  
+    <li><a href="../../EventLocationsHelperTest.html">EventLocationsHelperTest</a>
+  
+    <li><a href="../../EventTest.html">EventTest</a>
+  
+    <li><a href="../../EventType.html">EventType</a>
+  
+    <li><a href="../../EventTypeTest.html">EventTypeTest</a>
+  
+    <li><a href="../../EventTypesController.html">EventTypesController</a>
+  
+    <li><a href="../../EventTypesControllerTest.html">EventTypesControllerTest</a>
+  
+    <li><a href="../../EventTypesHelperTest.html">EventTypesHelperTest</a>
+  
+    <li><a href="../../EventsController.html">EventsController</a>
+  
+    <li><a href="../../EventsControllerTest.html">EventsControllerTest</a>
+  
+    <li><a href="../../EventsHelperTest.html">EventsHelperTest</a>
+  
+    <li><a href="../../Location.html">Location</a>
+  
+    <li><a href="../../LocationsController.html">LocationsController</a>
+  
+    <li><a href="../../Member.html">Member</a>
+  
+    <li><a href="../../MemberProfileTest.html">MemberProfileTest</a>
+  
+    <li><a href="../../MemberProfilesControllerTest.html">MemberProfilesControllerTest</a>
+  
+    <li><a href="../../MemberProfilesHelperTest.html">MemberProfilesHelperTest</a>
+  
+    <li><a href="../../MemberTest.html">MemberTest</a>
+  
+    <li><a href="../../MembersController.html">MembersController</a>
+  
+    <li><a href="../../Object.html">Object</a>
+  
+    <li><a href="../../Participation.html">Participation</a>
+  
+    <li><a href="../../ParticipationTest.html">ParticipationTest</a>
+  
+    <li><a href="../../ParticipationsController.html">ParticipationsController</a>
+  
+    <li><a href="../../ParticipationsControllerTest.html">ParticipationsControllerTest</a>
+  
+    <li><a href="../../ParticipationsHelperTest.html">ParticipationsHelperTest</a>
+  
+    <li><a href="../../StaticPagesController.html">StaticPagesController</a>
+  
+    <li><a href="../../StaticPagesControllerTest.html">StaticPagesControllerTest</a>
+  
+    <li><a href="../../StaticPagesHelper.html">StaticPagesHelper</a>
+  
+    <li><a href="../../UserMailer.html">UserMailer</a>
+  
+    <li><a href="../../UserMailerTest.html">UserMailerTest</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation" class="description">
+  
+<p>Research on how to generate views from class models</p>
+
+<p>MUST use model.rb files  NOT a static generator using the command line
+args.</p>
+
+<p>Generates views for index, show, edit, … Generates controller to handle
+new, update, etc.</p>
+
+<p>Uses model relationships to generate select options. Includes javascript
+validations on the client.</p>
+
+<p>rails generate views Person rails generate controllers Person</p>
+
+<p>search: rails ruby generate-view-from-model search: ruby rails generate
+view and controller form model</p>
+
+<p>—— Best match so far: Pat Shaughnessy started a project like this called
+viewmapper (<a
+href="https://rubygems.org/gems/view_mapper/versions/0.3.4">rubygems.org/gems/view_mapper/versions/0.3.4</a>,
+<a
+href="https://github.com/patshaughnessy/view_mapper">github.com/patshaughnessy/view_mapper</a>)
+4 years ago. Updated it for Rails 3, but current <a
+href="http://scaffoldhub.org">scaffoldhub.org</a> is no longer active.
+There is a github project, but it looks abandoned.</p>
+
+<p><a
+href="http://patshaughnessy.net/2009/7/24/generating-view-scaffolding-code-for-existing-models">patshaughnessy.net/2009/7/24/generating-view-scaffolding-code-for-existing-models</a></p>
+
+<p>Some interesting introspection code: <a
+href="https://github.com/patshaughnessy/view_mapper/blob/master/lib/view_mapper/model_info.rb">github.com/patshaughnessy/view_mapper/blob/master/lib/view_mapper/model_info.rb</a></p>
+
+<p>— New search: create or generate schema.rb or migrations from class model</p>
+
+<pre>Note: lots of examples of people creating models from existing schema</pre>
+
+<p>Search: create-schema generate-schema.rb  from-model using-introspection</p>
+
+<p>Found tool that uses model introspection to generate class and controller
+diagrams.</p>
+
+<pre>http://railroad.rubyforge.org</pre>
+
+<p>ggr git:(master) ✗ railroad -M
+/Library/Ruby/Gems/2.0.0/gems/railroad-0.5.0/lib/railroad/app_diagram.rb:54:in
+`disable_stdout&#39;: uninitialized constant AppDiagram::PLATFORM
+(NameError)</p>
+
+<p>Left with: error.</p>
+
+<p>Some code using introspection. <a
+href="https://github.com/patshaughnessy/view_mapper/blob/master/lib/view_mapper/model_info.rb">github.com/patshaughnessy/view_mapper/blob/master/lib/view_mapper/model_info.rb</a></p>
+
+<p>Final analysis: after searching for over 1 hour, no good examples of using
+an existing Ruby-on-Rails model to generate either views, controllers, or
+schemas.  Too bad.</p>
+
+<p>Scaffold commands can’t representing the full complexity of models.  Should
+be able to dynamically generate standard views and controllers that support
+the model, but also support having the user customize specific views and
+controllers as necessary.</p>
+
+<p>Solution: either manually generate all the views and controllers, or
+manually create complex scaffold_controller commands to make a first pass
+at generating the views and controllers.</p>
+
+<p>What I found:</p>
+
+<pre>the most code generated was for views/_form, show and index (*.html.erb)
+and controller method zarticipation_params.  
+most of those will vary based on roles and create vs. update.</pre>
+
+<p>So, just do the work for those forms.</p>
+
+<p>Could I create a dynamic view that uses Model to display fields based on
+their type and role?</p>
+
+<p>Search: rails dynamically-generated views based on model’s runtime
+meta-data</p>
+
+<p>Microsoft has: Visual Studio 2008 Service Pack 1&#39;s new ASP.NET Dynamic
+Data templates automatically generate code for DataGrid, ListView,
+DetailsView, and FormView display and editing controls on dynamic pages
+derived from a master page and CSS stylesheet</p>
+
+<p><a
+href="http://people.csail.mit.edu/aleks/website/papers/onward13-red.pdf">people.csail.mit.edu/aleks/website/papers/onward13-red.pdf</a>
+Aleksandar Milicevic, Daniel Jackson, Model-Based, Event-Driven Programming
+Paradigm for Interactive Web Applications.  Used Ruby for declarative
+approach.</p>
+
+<p>— make dynamically generated forms, by: given a model class, use
+introspection to get field names for the instance, and it’s meta-info such
+as type and presentation</p>
+
+<p>each type of field has a .erb template to display it.  For class <a
+href="../../Member.html">Member</a>, see that it has a “name” and
+“birthdate”. class <a href="../../Member.html">Member</a></p>
+
+<pre>validates :name, presence: true, short_name: true, present_as: one_column
+validates :birthdate, date: true, present_as: two_columns</pre>
+
+<p>end</p>
+
+<p>member_field.two_column.html.erb &lt;tr&gt;&lt;td&gt;&lt;%= @field_name
+%&gt;&lt;/td&gt;&lt;td&gt;&lt;%= @field_value %&gt;&lt;/td&gt;&lt;/tr&gt;</p>
+
+<p>member_field.one_column.html.erb &lt;tr&gt;&lt;td colspan=2&gt;&lt;%=
+@field_name %&gt;&lt;br/&gt;&lt;%= @field_value %&gt;&lt;/td&gt;&lt;/tr&gt;</p>
+
+<p>have files: short_name.html.erb &lt;%= text_input %&gt;</p>
+
+<p>date &lt;%= date_input %&gt;</p>
+
+<p>Given a current_member’s role, calc how/if to display each field and
+action.</p>
+
+<p>—— Search: ruby rails introspection model fields validates</p>
+
+<p>SomeClass.validators_on(:some_field)</p>
+
+<p><a
+href="http://stackoverflow.com/questions/13190724/rails-list-accepted-values-of-validates-inclusion-field">stackoverflow.com/questions/13190724/rails-list-accepted-values-of-validates-inclusion-field</a></p>
+
+<p>Member.validators_on(“email”) y Member.validators_on(“email”)</p>
+
+<p>Question.validators_on(:kind).select{|v| v.kind_of?
+ActiveModel::Validations::InclusionValidator}.first.options</p>
+<ul><li>
+<p>!ruby/object:ActiveRecord::Validations::PresenceValidator</p>
+</li><li>
+<p>!ruby/object:ActiveRecord::Validations::UniquenessValidator</p>
+</li><li>
+<p>!ruby/object:ActiveRecord::Validations::FormatValidator</p>
+</li></ul>
+
+<p>At console, how to format objects: <a
+href="http://stackoverflow.com/questions/1224525/how-to-get-nice-formatting-in-the-rails-console">stackoverflow.com/questions/1224525/how-to-get-nice-formatting-in-the-rails-console</a>
+require &#39;hirb&#39; Hirb.enable</p>
+
+<p>SomeClass.columns_hash</p>
+
+<pre>.name
+.type
+.primary
+.sql_type   “INTEGER”</pre>
+
+<p><a href="http://"created_at”">Boat.columns_hash</a></p>
+
+<pre>.datetime
+.type    =  :integer  or :datetime</pre>
+
+<p>Could create a custom render method that loops through preferred ordering
+of fields of a class and looks for a field template based on type.</p>
+
+<p>@user.column_for_attribute(:name)</p>
+
+<p>def column_for_attribute(name)</p>
+
+<pre class="ruby"><span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">columns_hash</span>[<span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_s</span>]
+</pre>
+
+<p>end</p>
+
+<p><a href="http://0">Event.columns_hash.keys</a>  has the default ordering
+that appears in the model.</p>
+
+<p>—— search: ruby rails application index.html.erb default
+works-for-all-models</p>
+
+<p>controller_name.classify  to get class model name</p>
+
+<p>list of controller classes is: Rails.application.eager_load!
+ApplicationController.descendants PostsController.action_methods</p>
+
+<p>ApplicationController.descendants PostsController.action_methods</p>
+
+<p>In a controller “LocationsController”</p>
+
+<p><a href="http://:controller">params</a>.classify  RETURNS “Location”</p>
+
+<p>Given a name of a class, how to get the class object?</p>
+
+<p>set default values in before_validation</p>
+
+<p>validators_on(:name) =&gt; [first validation, another validation]</p>
+
+<p>— Debugging: render :text =&gt; @some_object.inspect Rails.logger.debug(“My
+object: #{@some_object.inspect}”) &lt;%= debug(@some_object) %&gt;</p>
+
+<p><a href="http://"controller"">params</a>.classify    RETURNS “Location”</p>
+
+</div>
+
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.2.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

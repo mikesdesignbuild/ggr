@@ -26,6 +26,7 @@ class ApplicationController < ActionController::Base
   # GET /boats/new
   def new
     @instance = @model.new
+    debug
   end
 
   def edit

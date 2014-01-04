@@ -336,14 +336,142 @@ DONE: New and update not working.  Don't show "id" or "created_at" "updated_at".
   Now, New is blanking the inputs.  Update isn't saving to the database.
 DONE: show all models in nav
 
-TODO: implement NEXT and PREV buttons when looking at a show view.
+DONE: implement NEXT and PREV buttons when looking at a show view.
    http://stackoverflow.com/questions/5452937/rails-previous-and-next-record-from-previous-query
+
+WAIT: flag on field to say that objects should be visible and nested.  destroy=true??
+  visible and nested object shouldn't show values for the object they are shown in.
+  an event
+    a participation
+      member
+      (hidden event)
+      joined_on
+    a participation
+  if has_one, then show one.  if has_many, then show list of instances.
+
+DONE try to save boat when given a location in a text field
 
 TODO: get foreign_key fields to show @instances in a pop-up. 
 TODO: dispatch field render based on field type
 
-
 Search: ruby rails model foreign-key
+
+---
+Search: ruby rails from model class, introspect to find has_many has_one relationships meta-data
+
+
+
+-----
+Each controller sets field order for user based on permissions. 
+
+Rights:
+
+Admin:
+  Id 
+  Created_at=read
+  Foo=aware
+  Yum=initialiZe 
+  Action=change/execute
+  BoatController
+     class=hidden
+     Somefield=change
+     Line_items=append
+     Foo=method returns value given instance.  
+
+Owner
+  Call predicate to get info
+
+Specific user can have permissions
+
+What about data driven permissions?  Can't change past event. 
+
+  Event
+    Class=
+
+Where to use?
+Setting field order on controller. 
+Looping through fields in view
+Showing buttons on form
+Rendering navigation
+Before filter on generic controller to look at action. 
+
+How to represent creating fields?
+  Ex: line items in order. 
+
+How to represent 
+
+Customize any methods that generate UI for showing actions or data. Form_for. 
+
+POSTPONE!!
+
+Temp: how to show id, but not edit
+
+Permissions:
+  id = :read
+  Created_at=:read
+  Updated_at=:read
+
+Ability to edit ones own profile. 
+
+
+For a new session, create permission object for user. 
+
+"Meta over manual". in addition to: Convention over configuration. 
+
+TODO: What method gets called to render instances in partial view?  Needs to check field order. <% render @instances%>
+
+Post.reflections[:comments].table_name # => "comments"
+Post.reflections[:comments].macro # => :has_many
+Post.reflections[:comments].primary_key_name # => "message_id"
+
+_meta.comments = { display: inline }
+
+admin can set defaults for each field for each model. On index listing, click "set defaults" see form with inputs. Gets data from database. Row with special id. 0. Can set dynamic values. {1.hour.ago}
+
+ Packaging into gem. 
+Inherit from new application controller. And helper. 
+Default views. 
+Tests 
+To use: remove generated files for views and controllers. 
+Need: generate model only. Add validates and default for all fields. 
+
+Generate database schema from model. 
+Generate a diff between two database schemas as a migration. 
+
+Rails generate schema --All
+Rails generate schema Model1.rb Model2.rb
+
+Generator loads all the models, then for each, generates migration file. 
+Looks at columns validates to get 
+
+Does column hash exist without database? No? 
+
+Dynamically add field in model needs to add columns in database. 
+
+Need diff between two models!
+
+Convert diff into database migration!
+
+Easier: generate full schema from model. Find/create tool to take diff of schemas to create migration. 
+
+How to know indexes to create from a model? Look for find methods by name convention. 
+
+So, generate schema from model file and or in memory. 
+
+Cancan?
+Works for actions on controllers but not fields. Could be used for fields? Requires editing views through if statements. 
+
+Search for examples of permission files and data formats. 
+
+Concepts of all, 
+Fields, action. 
+
+——
+TODO: show field based on type. 
+   TODO: How to tell if field is foreign key from meta-field info?  (ends with _id)
+use reflections to get "has_many" or "has_one"
+
+Goal: when modifying a boat, select a location from a popup
 
 
 

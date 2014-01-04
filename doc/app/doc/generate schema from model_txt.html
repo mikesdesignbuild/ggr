@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+<title>generate schema from model - RDoc Documentation</title>
+
+<link type="text/css" media="screen" href="../../rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/darkfish.js"></script>
+
+
+<body class="file">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="../../index.html">Home</a>
+    <a href="../../table_of_contents.html#classes">Classes</a>
+    <a href="../../table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="../../Gemfile.html">Gemfile</a>
+  
+    <li class="file"><a href="../../README_rdoc.html">README</a>
+  
+    <li class="file"><a href="../../Rakefile.html">Rakefile</a>
+  
+    <li class="file"><a href="../../app/doc/generate schema from model_txt.html">generate schema from model</a>
+  
+    <li class="file"><a href="../../app/doc/howto_txt.html">howto</a>
+  
+    <li class="file"><a href="../../app/doc/navigation_txt.html">navigation</a>
+  
+    <li class="file"><a href="../../app/doc/notes and todo_txt.html">notes and todo</a>
+  
+    <li class="file"><a href="../../app/doc/research on generating views_txt.html">research on generating views</a>
+  
+    <li class="file"><a href="../../app/doc/security design_txt.html">security design</a>
+  
+    <li class="file"><a href="../../public/robots_txt.html">robots</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../../ApplicationHelper.html">ApplicationHelper</a>
+  
+    <li><a href="../../ApplicationHelper/BooleanValidator.html">ApplicationHelper::BooleanValidator</a>
+  
+    <li><a href="../../ApplicationHelper/CantWantWouldValidator.html">ApplicationHelper::CantWantWouldValidator</a>
+  
+    <li><a href="../../ApplicationHelper/DateValidator.html">ApplicationHelper::DateValidator</a>
+  
+    <li><a href="../../ApplicationHelper/DatetimeValidator.html">ApplicationHelper::DatetimeValidator</a>
+  
+    <li><a href="../../ApplicationHelper/DefaultValidator.html">ApplicationHelper::DefaultValidator</a>
+  
+    <li><a href="../../ApplicationHelper/EmailValidator.html">ApplicationHelper::EmailValidator</a>
+  
+    <li><a href="../../ApplicationHelper/IpAddressValidator.html">ApplicationHelper::IpAddressValidator</a>
+  
+    <li><a href="../../ApplicationHelper/SimpleTextValidator.html">ApplicationHelper::SimpleTextValidator</a>
+  
+    <li><a href="../../ApplicationHelper/SimpleWordValidator.html">ApplicationHelper::SimpleWordValidator</a>
+  
+    <li><a href="../../ApplicationHelper/TimeValidator.html">ApplicationHelper::TimeValidator</a>
+  
+    <li><a href="../../ActiveSupport.html">ActiveSupport</a>
+  
+    <li><a href="../../ActiveSupport/TestCase.html">ActiveSupport::TestCase</a>
+  
+    <li><a href="../../Ggr.html">Ggr</a>
+  
+    <li><a href="../../Ggr/Application.html">Ggr::Application</a>
+  
+    <li><a href="../../ApplicationController.html">ApplicationController</a>
+  
+    <li><a href="../../BaseSchema.html">BaseSchema</a>
+  
+    <li><a href="../../Boat.html">Boat</a>
+  
+    <li><a href="../../BoatTest.html">BoatTest</a>
+  
+    <li><a href="../../BoatsController.html">BoatsController</a>
+  
+    <li><a href="../../BoatsControllerTest.html">BoatsControllerTest</a>
+  
+    <li><a href="../../BoatsHelperTest.html">BoatsHelperTest</a>
+  
+    <li><a href="../../Event.html">Event</a>
+  
+    <li><a href="../../EventCategoriesController.html">EventCategoriesController</a>
+  
+    <li><a href="../../EventCategoriesControllerTest.html">EventCategoriesControllerTest</a>
+  
+    <li><a href="../../EventCategoriesHelperTest.html">EventCategoriesHelperTest</a>
+  
+    <li><a href="../../EventCategory.html">EventCategory</a>
+  
+    <li><a href="../../EventCategoryTest.html">EventCategoryTest</a>
+  
+    <li><a href="../../EventLocationTest.html">EventLocationTest</a>
+  
+    <li><a href="../../EventLocationsControllerTest.html">EventLocationsControllerTest</a>
+  
+    <li><a href="../../EventLocationsHelperTest.html">EventLocationsHelperTest</a>
+  
+    <li><a href="../../EventTest.html">EventTest</a>
+  
+    <li><a href="../../EventType.html">EventType</a>
+  
+    <li><a href="../../EventTypeTest.html">EventTypeTest</a>
+  
+    <li><a href="../../EventTypesController.html">EventTypesController</a>
+  
+    <li><a href="../../EventTypesControllerTest.html">EventTypesControllerTest</a>
+  
+    <li><a href="../../EventTypesHelperTest.html">EventTypesHelperTest</a>
+  
+    <li><a href="../../EventsController.html">EventsController</a>
+  
+    <li><a href="../../EventsControllerTest.html">EventsControllerTest</a>
+  
+    <li><a href="../../EventsHelperTest.html">EventsHelperTest</a>
+  
+    <li><a href="../../Location.html">Location</a>
+  
+    <li><a href="../../LocationsController.html">LocationsController</a>
+  
+    <li><a href="../../Member.html">Member</a>
+  
+    <li><a href="../../MemberProfileTest.html">MemberProfileTest</a>
+  
+    <li><a href="../../MemberProfilesControllerTest.html">MemberProfilesControllerTest</a>
+  
+    <li><a href="../../MemberProfilesHelperTest.html">MemberProfilesHelperTest</a>
+  
+    <li><a href="../../MemberTest.html">MemberTest</a>
+  
+    <li><a href="../../MembersController.html">MembersController</a>
+  
+    <li><a href="../../Object.html">Object</a>
+  
+    <li><a href="../../Participation.html">Participation</a>
+  
+    <li><a href="../../ParticipationTest.html">ParticipationTest</a>
+  
+    <li><a href="../../ParticipationsController.html">ParticipationsController</a>
+  
+    <li><a href="../../ParticipationsControllerTest.html">ParticipationsControllerTest</a>
+  
+    <li><a href="../../ParticipationsHelperTest.html">ParticipationsHelperTest</a>
+  
+    <li><a href="../../StaticPagesController.html">StaticPagesController</a>
+  
+    <li><a href="../../StaticPagesControllerTest.html">StaticPagesControllerTest</a>
+  
+    <li><a href="../../StaticPagesHelper.html">StaticPagesHelper</a>
+  
+    <li><a href="../../UserMailer.html">UserMailer</a>
+  
+    <li><a href="../../UserMailerTest.html">UserMailerTest</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation" class="description">
+  
+<p>Search: ruby rails generate database schema from model</p>
+
+<p>Did not find any tools for generating the schema from a model.  Found many
+going the other way. Issue, all the info is encoded in the ruby much more
+detailed data in model. Could use tool to create models from your existing
+database, but then update the model and generate the database. Issue is
+that SQL scripts can have more complexities.</p>
+
+<p>Boat.reflections.keys =&gt; [:location, :events] <a
+href="http://:location">Boat.reflections</a>.active_record =&gt; <a
+href="../../Boat.html">Boat</a> (class)</p>
+
+<p>def is_singular?(str)</p>
+
+<pre>str.pluralize.singularize == str</pre>
+
+<p>end has_on_p?  <a href="http://x">reflection</a>.collection</p>
+
+<p>User.find_by_email(</p>
+
+<pre class="ruby"><span class="ruby-identifier">add_index</span> :<span class="ruby-identifier">users</span>, :<span class="ruby-identifier">email</span>, :<span class="ruby-identifier">unique</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>
+</pre>
+
+<p>has_many :order_invites, :foreign_key =&gt; &#39;email&#39;, :primary_key
+=&gt; &#39;email&#39;    Invitations? how to know?</p>
+
+<pre>add_index :invitations, :email</pre>
+
+<p>add_index :conversations, [:subject_id, :subject_type]</p>
+
+<p>y Boat.reflections</p>
+
+<p>:location: !ruby/object:ActiveRecord::Reflection::AssociationReflection</p>
+
+<pre>macro: :has_one
+name: :location
+scope: 
+options: {}
+active_record: Boat
+plural_name: locations
+collection: false</pre>
+
+<p>:events: !ruby/object:ActiveRecord::Reflection::AssociationReflection</p>
+
+<pre>macro: :has_many
+name: :events
+scope: 
+options:
+  :inverse_of: :boat
+active_record: *1
+plural_name: events
+collection: true</pre>
+
+<p>Get list of model names. (see nav helper)  constantize model Load or
+populate model using Model.all.count  (make sure data is loaded) for each
+model table_name = model.name.pluralize create_table :#{table_name} do |t|</p>
+
+<pre>for_each field
+ t.{type} :{field_name}
+ t.timestamps</pre>
+
+<p>end</p>
+
+<p>class <a href="../../EventType.html">EventType</a> &lt; ActiveRecord::Base</p>
+
+<pre>include ApplicationHelper
+
+belongs_to  :event, inverse_of: :type
+
+validates :name, presence: true, uniqueness: true
+validates :description, presence: true, uniqueness: true
+
+has_one     :category, inverse_of: :event_type, class_name: &quot;EventCategory&quot;
+  validates :category, presence: true</pre>
+
+<p>end</p>
+
+<p>Creates:</p>
+
+<pre class="ruby"><span class="ruby-identifier">create_table</span> :<span class="ruby-identifier">event_types</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">t</span><span class="ruby-operator">|</span>
+  <span class="ruby-identifier">t</span>.<span class="ruby-identifier">string</span> :<span class="ruby-identifier">name</span>
+  <span class="ruby-identifier">t</span>.<span class="ruby-identifier">string</span> :<span class="ruby-identifier">long_name</span>
+  <span class="ruby-identifier">t</span>.<span class="ruby-identifier">string</span> :<span class="ruby-identifier">description</span>
+  <span class="ruby-identifier">t</span>.<span class="ruby-identifier">references</span> :<span class="ruby-identifier">category</span>
+
+  <span class="ruby-identifier">t</span>.<span class="ruby-identifier">timestamps</span>
+<span class="ruby-keyword">end</span>
+</pre>
+
+</div>
+
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.2.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

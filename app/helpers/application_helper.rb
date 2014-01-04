@@ -36,7 +36,7 @@ module ApplicationHelper
 
  def all_controller_names
   Dir.glob(Rails.root.to_s + '/app/models/*.rb').map do |filename| 
-    filename.match(/[^\/]*(?=[.][a-zA-Z]+$)/).to_s.pluralize  # converts "/Users/mike/dev/ggr/app/models/boat.rb" to "boat"
+    filename.match(/[^\/]*(?=[.][a-zA-Z]+$)/).to_s.pluralize  # converts "/Users/mike/dev/ggr/app/models/boat.rb" to "boats"
   end
  end
 

@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+<title>notes and todo - RDoc Documentation</title>
+
+<link type="text/css" media="screen" href="../../rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/darkfish.js"></script>
+
+
+<body class="file">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="../../index.html">Home</a>
+    <a href="../../table_of_contents.html#classes">Classes</a>
+    <a href="../../table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="../../Gemfile.html">Gemfile</a>
+  
+    <li class="file"><a href="../../README_rdoc.html">README</a>
+  
+    <li class="file"><a href="../../Rakefile.html">Rakefile</a>
+  
+    <li class="file"><a href="../../app/doc/generate schema from model_txt.html">generate schema from model</a>
+  
+    <li class="file"><a href="../../app/doc/howto_txt.html">howto</a>
+  
+    <li class="file"><a href="../../app/doc/navigation_txt.html">navigation</a>
+  
+    <li class="file"><a href="../../app/doc/notes and todo_txt.html">notes and todo</a>
+  
+    <li class="file"><a href="../../app/doc/research on generating views_txt.html">research on generating views</a>
+  
+    <li class="file"><a href="../../app/doc/security design_txt.html">security design</a>
+  
+    <li class="file"><a href="../../public/robots_txt.html">robots</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../../ApplicationHelper.html">ApplicationHelper</a>
+  
+    <li><a href="../../ApplicationHelper/BooleanValidator.html">ApplicationHelper::BooleanValidator</a>
+  
+    <li><a href="../../ApplicationHelper/CantWantWouldValidator.html">ApplicationHelper::CantWantWouldValidator</a>
+  
+    <li><a href="../../ApplicationHelper/DateValidator.html">ApplicationHelper::DateValidator</a>
+  
+    <li><a href="../../ApplicationHelper/DatetimeValidator.html">ApplicationHelper::DatetimeValidator</a>
+  
+    <li><a href="../../ApplicationHelper/DefaultValidator.html">ApplicationHelper::DefaultValidator</a>
+  
+    <li><a href="../../ApplicationHelper/EmailValidator.html">ApplicationHelper::EmailValidator</a>
+  
+    <li><a href="../../ApplicationHelper/IpAddressValidator.html">ApplicationHelper::IpAddressValidator</a>
+  
+    <li><a href="../../ApplicationHelper/SimpleTextValidator.html">ApplicationHelper::SimpleTextValidator</a>
+  
+    <li><a href="../../ApplicationHelper/SimpleWordValidator.html">ApplicationHelper::SimpleWordValidator</a>
+  
+    <li><a href="../../ApplicationHelper/TimeValidator.html">ApplicationHelper::TimeValidator</a>
+  
+    <li><a href="../../ActiveSupport.html">ActiveSupport</a>
+  
+    <li><a href="../../ActiveSupport/TestCase.html">ActiveSupport::TestCase</a>
+  
+    <li><a href="../../Ggr.html">Ggr</a>
+  
+    <li><a href="../../Ggr/Application.html">Ggr::Application</a>
+  
+    <li><a href="../../ApplicationController.html">ApplicationController</a>
+  
+    <li><a href="../../BaseSchema.html">BaseSchema</a>
+  
+    <li><a href="../../Boat.html">Boat</a>
+  
+    <li><a href="../../BoatTest.html">BoatTest</a>
+  
+    <li><a href="../../BoatsController.html">BoatsController</a>
+  
+    <li><a href="../../BoatsControllerTest.html">BoatsControllerTest</a>
+  
+    <li><a href="../../BoatsHelperTest.html">BoatsHelperTest</a>
+  
+    <li><a href="../../Event.html">Event</a>
+  
+    <li><a href="../../EventCategoriesController.html">EventCategoriesController</a>
+  
+    <li><a href="../../EventCategoriesControllerTest.html">EventCategoriesControllerTest</a>
+  
+    <li><a href="../../EventCategoriesHelperTest.html">EventCategoriesHelperTest</a>
+  
+    <li><a href="../../EventCategory.html">EventCategory</a>
+  
+    <li><a href="../../EventCategoryTest.html">EventCategoryTest</a>
+  
+    <li><a href="../../EventLocationTest.html">EventLocationTest</a>
+  
+    <li><a href="../../EventLocationsControllerTest.html">EventLocationsControllerTest</a>
+  
+    <li><a href="../../EventLocationsHelperTest.html">EventLocationsHelperTest</a>
+  
+    <li><a href="../../EventTest.html">EventTest</a>
+  
+    <li><a href="../../EventType.html">EventType</a>
+  
+    <li><a href="../../EventTypeTest.html">EventTypeTest</a>
+  
+    <li><a href="../../EventTypesController.html">EventTypesController</a>
+  
+    <li><a href="../../EventTypesControllerTest.html">EventTypesControllerTest</a>
+  
+    <li><a href="../../EventTypesHelperTest.html">EventTypesHelperTest</a>
+  
+    <li><a href="../../EventsController.html">EventsController</a>
+  
+    <li><a href="../../EventsControllerTest.html">EventsControllerTest</a>
+  
+    <li><a href="../../EventsHelperTest.html">EventsHelperTest</a>
+  
+    <li><a href="../../Location.html">Location</a>
+  
+    <li><a href="../../LocationsController.html">LocationsController</a>
+  
+    <li><a href="../../Member.html">Member</a>
+  
+    <li><a href="../../MemberProfileTest.html">MemberProfileTest</a>
+  
+    <li><a href="../../MemberProfilesControllerTest.html">MemberProfilesControllerTest</a>
+  
+    <li><a href="../../MemberProfilesHelperTest.html">MemberProfilesHelperTest</a>
+  
+    <li><a href="../../MemberTest.html">MemberTest</a>
+  
+    <li><a href="../../MembersController.html">MembersController</a>
+  
+    <li><a href="../../Object.html">Object</a>
+  
+    <li><a href="../../Participation.html">Participation</a>
+  
+    <li><a href="../../ParticipationTest.html">ParticipationTest</a>
+  
+    <li><a href="../../ParticipationsController.html">ParticipationsController</a>
+  
+    <li><a href="../../ParticipationsControllerTest.html">ParticipationsControllerTest</a>
+  
+    <li><a href="../../ParticipationsHelperTest.html">ParticipationsHelperTest</a>
+  
+    <li><a href="../../StaticPagesController.html">StaticPagesController</a>
+  
+    <li><a href="../../StaticPagesControllerTest.html">StaticPagesControllerTest</a>
+  
+    <li><a href="../../StaticPagesHelper.html">StaticPagesHelper</a>
+  
+    <li><a href="../../UserMailer.html">UserMailer</a>
+  
+    <li><a href="../../UserMailerTest.html">UserMailerTest</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation" class="description">
+  
+<p>GGR Git</p>
+
+<p>created new account at github.com</p>
+
+<p>generate local SSH RSA keys:</p>
+
+<p>ssh-keygen -t rsa -C “mikesdesignbuild@gmail.com”</p>
+
+<p>add SSH key to github and get content from file in .ssh/id_rsa.pub</p>
+
+<p><a
+href="https://github.com/mikesdesignbuild/ggr.git">github.com/mikesdesignbuild/ggr.git</a></p>
+
+<p>git remote add origin <a
+href="https://github.com/mikesdesignbuild/ggr.git">github.com/mikesdesignbuild/ggr.git</a>
+git push -u origin master</p>
+
+<p>HEROKU setup: heroku keys:add heroku create –stack cedar</p>
+
+<p><a
+href="http://vast-everglades-3866.herokuapp.com/">vast-everglades-3866.herokuapp.com/</a>
+git push heroku master heroku open heroku rename gloucestergigrowers</p>
+
+<pre>Gem::Installer::ExtensionBuildError: ERROR: Failed to build gem native extension.</pre>
+
+<p>gem ‘sqlite3’   # should be:</p>
+
+<p>group :development, :test do</p>
+
+<pre>gem &quot;sqlite3&quot;
+gem &quot;better_errors&quot;
+gem &quot;binding_of_caller&quot;</pre>
+
+<p>end</p>
+
+<p>group :production, :staging do</p>
+
+<pre>gem &quot;pg&quot;</pre>
+
+<p>end</p>
+
+<p>How to bundle install with “development” option? bundle install –without
+production    # but it didn’t work. FIX: used gem ‘pg’ with version number.</p>
+
+<p>How to reset the database and erase all data in Ruby on Rails? rake
+db:reset    then    rake db:migrate</p>
+
+<p>—— Development: Creating static page: Creating controller:</p>
+
+<p>rails new ggr</p>
+
+<p>rails generate scaffold User name:string email:string TODO: commit after
+each generate command. rake db:migrate RAILS_ENV=development</p>
+
+<p>TODO: create events, participants</p>
+
+<p>When application.js has //= require jquery   where does the jquery live?
+app? vendor? other? ??? tried to put bootstrap in lib and vendor, but
+application.js could not find it.</p>
+
+<p>bundle exec rake -P</p>
+
+<p>—— GOT application error on heroku.  Why?? How to view logs on heroku?
+WARNINGS:</p>
+
+<pre>Include &#39;rails_12factor&#39; gem to enable all platform features</pre>
+
+<p>— TODO: create events resource</p>
+
+<p>rails generate scaffold Participant user:integer event:integer
+captain:boolean coxswain:boolean participated:boolean late:boolean</p>
+<hr style="height: 1px">
+
+<p>TODO: show id’s on all resources: users, events, participants.  Done. Show
+only on index and show because they are read-only. DONE.</p>
+
+<p>set a current user as controller on user.</p>
+
+<p>where does a “edit_user_path” variable get defined?  routes.db — how to
+break at a line and show console in debug mode??</p>
+
+<p>create sample events, sample participants, random numbers.</p>
+
+<p>/events   new=&gt; create =&gt;  /events/1 when new event is created, show
+form for add participant</p>
+
+<p>/events/1/participants /events/1/participants/3 =&gt; /users/22       is 3
+the user id or the participant number?  /events/1/participants/new  (use
+current user as default)</p>
+
+<p>add member directory.</p>
+
+<p>member lookup count max per hour, day, week, month, year.</p>
+
+<p>/members/1</p>
+
+<p>member can be publicly listed.  Encouraged for “public” figures such as
+training, committee chairs, etc.</p>
+
+<p>on any user, select options: phone call, email, text, message??</p>
+
+<p>rake db:migrate</p>
+
+<p>SQLite3::SQLException: duplicate column name: email: ALTER TABLE “users”
+ADD “email” varchar(255) DEFAULT &#39;&#39; NOT NULL/Library/Ruby/Gems/2.0.</p>
+
+<p>when calling rake db:reset, get: uninitialized constant Admin I had tried
+to get rid of all traces of Admin.  isn’t database deleted?</p>
+
+<p>When submitting from: <a
+href="http://localhost:3000/users/sign_in">localhost:3000/users/sign_in</a>,
+get error;</p>
+
+<p>undefined method `encrypted_password=&#39; for
+#&lt;User:0x007ff796c51120&gt;</p>
+
+<p>User.new.respond_to?(:encrypted_password=)   SHOULD return true. <a
+href="https://github.com/plataformatec/devise/issues/589">github.com/plataformatec/devise/issues/589</a></p>
+
+<p>user_signed_in?  current_user</p>
+
+<p>Done: got email to be sent out through console TODO: get email sent through
+web app in dev env</p>
+
+<p>TODO: use console to create a sample member, sample event, and then add a
+participation through the event.</p>
+
+<p>TODO: show all participants on a row/event</p>
+
+<pre>add “name” to member DONE.</pre>
+
+<p>TODO: create member profile using current member.</p>
+
+<p>TODO: add “admin” field to member</p>
+
+<p>TODO: how to receive different button presses “Join” vs. “Update” vs.
+“Cancel”.  Which controller takes action?</p>
+
+<p>accepts_nested_attributes_for   reject_if fields_for</p>
+
+<p>f.checkbox :_destroy</p>
+
+<p>Nested forms: <a
+href="http://railscasts.com/episodes/196-nested-model-form-part-1">railscasts.com/episodes/196-nested-model-form-part-1</a></p>
+
+<p><a
+href="http://railscasts.com/episodes/197-nested-model-form-part-2">railscasts.com/episodes/197-nested-model-form-part-2</a></p>
+
+<p>—— TODO: Have a controller method on events that handles participation</p>
+
+<pre>/events/1/add_participation.html?captain=x&amp;coxswain=y</pre>
+
+<p>Use receives sub fields for x.  Make seed that creates some sample data</p>
+
+<p>REQ: auto cancel rows if &lt;2 people the day of the row. REQ: notify
+member if tomorrow&#39;s row has seats available where user has asked</p>
+
+<p>TODO:  &lt;% render @participations %&gt;   will use
+_participation.html.erb</p>
+
+<p>event.participation.create!</p>
+
+<pre>.build takes keyed args
+.count</pre>
+
+<p>class <a href="../../Participation.html">Participation</a> &lt;
+ActiveRecord::Base</p>
+
+<pre>validates :event_id, presence: true</pre>
+
+<p>create_table participations end add index :participations, [:event_id,
+:created_at]</p>
+
+<p>event</p>
+
+<pre>has_many :participations, dependent: destroy
+has_one: type, as: event_type
+has_one: location, as: event_location
+has_one: category, as: event_category</pre>
+
+<p>1.hour.ago 1.hour.from_now</p>
+
+<p>use seeds (or unknown???) to create data for database.</p>
+<hr style="height: 3px">
+
+<p>make method that takes classes to export and it creates one file per class
+in the db/seed_data directory.  Typically called from command line
+manually:</p>
+
+<p>export_seed_data_for_classes (EventLocation, <a
+href="../../EventType.html">EventType</a>) db/seed_data</p>
+
+<pre>event_locations.txt
+event_type.txt</pre>
+
+<p>event_locations.txt: mg|maritime|1 harbor loop</p>
+
+<p>method to read in data that is put in seeds.rb:</p>
+
+<p>import_seed_data_for_classes (EventLocation, <a
+href="../../EventType.html">EventType</a>) <a
+href="https://github.com/kevTheDev/seed_dumper">github.com/kevTheDev/seed_dumper</a></p>
+
+<p>MS: couldn&#39;t find any existing utilities for this.  Not too important
+for now.  Could just use seed_dumper if ruby syntax is ok. Should be tool
+that looks at field types in class and calls appropriate conversion.</p>
+<hr style="height: 2px">
+
+<p>TODO: 1/1 make event using type and location pull-downs.  Use date picker,
+but use default date. generate new views for event controller.  Can you use
+existing model and database to generate controller and views?</p>
+
+<pre>No.</pre>
+
+<p>Q: when creating associations, in migrations, use t.references
+:something_id or  t.integer :something  or  ??? Q: how to find an object by
+its unique key?  event_type.by_name.row (or similar) 
+EventType.find(:username “fred”)</p>
+
+<p>class Book &lt; ActiveRecord::Base</p>
+
+<pre class="ruby"><span class="ruby-identifier">belongs_to</span> :<span class="ruby-identifier">subject</span>
+<span class="ruby-identifier">validates_presence_of</span> :<span class="ruby-identifier">title</span>
+<span class="ruby-identifier">validates_numericality_of</span> :<span class="ruby-identifier">price</span>, :<span class="ruby-identifier">message=</span><span class="ruby-operator">&gt;</span><span class="ruby-string">&quot;Error Message&quot;</span>
+</pre>
+
+<p>end</p>
+
+<p>How to generate create_table from model??</p>
+
+<p>$ rails generate migration AddUserRefToProducts user:references</p>
+
+<pre>creates user_id field</pre>
+
+<p>$ rails generate migration AddDetailsToProducts price:decimal{5,2}
+supplier:references{polymorphic}</p>
+
+<p>limit Sets the maximum size of the string/text/binary/integer fields
+precision Defines the precision for the decimal fields scale Defines the
+scale for the decimal fields polymorphic Adds a type column for belongs_to
+associations null Allows or disallows NULL values in the column.</p>
+
+<p>validates :foreign_key, uniqueness: true  belongs_to :client,
+counter_cache: true</p>
+
+<p>Q: Should you modify models directly, or use generator to generate the
+migrations/create_table and models.</p>
+
+<p>Client.find_by first_name: &#39;Lifo&#39;   ===   Client.where(first_name:
+&#39;Lifo&#39;).take</p>
+
+<p>User.find_each(start: 2000, batch_size: 5000) do |user|</p>
+
+<pre>NewsLetter.weekly_deliver(user)</pre>
+
+<p>end</p>
+
+<p>Client.where(“orders_count = ? AND locked = ?”, <a
+href="http://:orders">params</a>, false) Client.where(“created_at &gt;=
+:start_date AND created_at &lt;= :end_date”,</p>
+
+<pre class="ruby"> {<span class="ruby-identifier">start_date</span><span class="ruby-operator">:</span> <span class="ruby-identifier">params</span>[:<span class="ruby-identifier">start_date</span>], <span class="ruby-identifier">end_date</span><span class="ruby-operator">:</span> <span class="ruby-identifier">params</span>[:<span class="ruby-identifier">end_date</span>]})
+
+ <span class="ruby-constant">Author</span>.<span class="ruby-identifier">joins</span>(:<span class="ruby-identifier">posts</span>).<span class="ruby-identifier">where</span>(<span class="ruby-identifier">posts</span><span class="ruby-operator">:</span> {<span class="ruby-identifier">author</span><span class="ruby-operator">:</span> <span class="ruby-identifier">author</span>})
+
+ <span class="ruby-constant">Client</span>.<span class="ruby-identifier">order</span>(<span class="ruby-identifier">created_at</span><span class="ruby-operator">:</span> :<span class="ruby-identifier">desc</span>)
+
+ <span class="ruby-constant">Client</span>.<span class="ruby-identifier">select</span>(:<span class="ruby-identifier">name</span>).<span class="ruby-identifier">distinct</span>
+
+ <span class="ruby-constant">Client</span>.<span class="ruby-identifier">limit</span>(<span class="ruby-value">5</span>).<span class="ruby-identifier">offset</span>(<span class="ruby-value">30</span>)
+ <span class="ruby-constant">Order</span>.<span class="ruby-identifier">select</span>(<span class="ruby-string">&quot;date(created_at) as ordered_date, sum(price) as total_price&quot;</span>).<span class="ruby-identifier">group</span>(<span class="ruby-string">&quot;date(created_at)&quot;</span>)
+
+ .<span class="ruby-identifier">group</span>(<span class="ruby-string">&quot;date(created_at)&quot;</span>).<span class="ruby-identifier">having</span>(<span class="ruby-string">&quot;sum(price) &gt; ?&quot;</span>, <span class="ruby-value">100</span>)
+
+ <span class="ruby-constant">SomeModel</span>.<span class="ruby-identifier">none</span> <span class="ruby-comment"># returns an empty Relation and fires no queries.</span>
+ <span class="ruby-constant">Client</span>.<span class="ruby-identifier">readonly</span>.<span class="ruby-identifier">first</span>
+
+<span class="ruby-constant">Scoping</span> <span class="ruby-identifier">allows</span> <span class="ruby-identifier">you</span> <span class="ruby-identifier">to</span> <span class="ruby-identifier">specify</span> <span class="ruby-identifier">commonly</span><span class="ruby-operator">-</span><span class="ruby-identifier">used</span> <span class="ruby-identifier">queries</span> <span class="ruby-identifier">which</span> <span class="ruby-identifier">can</span> <span class="ruby-identifier">be</span> <span class="ruby-identifier">referenced</span> <span class="ruby-identifier">as</span> <span class="ruby-identifier">method</span> <span class="ruby-identifier">calls</span> <span class="ruby-identifier">on</span> <span class="ruby-identifier">the</span> <span class="ruby-identifier">association</span> <span class="ruby-identifier">objects</span> <span class="ruby-keyword">or</span> <span class="ruby-identifier">models</span>.  <span class="ruby-constant">Scopes</span> <span class="ruby-identifier">are</span> <span class="ruby-identifier">also</span> <span class="ruby-identifier">chainable</span> <span class="ruby-identifier">within</span> <span class="ruby-identifier">scopes</span>.
+
+<span class="ruby-identifier">class</span> <span class="ruby-constant">Post</span> <span class="ruby-operator">&lt;</span> <span class="ruby-constant">ActiveRecord</span><span class="ruby-operator">::</span><span class="ruby-constant">Base</span>
+ <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">published</span>
+   <span class="ruby-identifier">where</span>(<span class="ruby-identifier">published</span><span class="ruby-operator">:</span> <span class="ruby-keyword">true</span>)
+ <span class="ruby-keyword">end</span>
+ <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">published_and_commented</span>
+   <span class="ruby-identifier">published</span>.<span class="ruby-identifier">where</span>(<span class="ruby-string">&quot;comments_count &gt; :x&quot;</span>, {<span class="ruby-identifier">x</span><span class="ruby-operator">:</span> <span class="ruby-value">3</span>})   <span class="ruby-comment">#  or published.where(&quot;comments_count &gt; ?&quot;, 3)</span>
+ <span class="ruby-keyword">end</span>
+</pre>
+
+<p>end</p>
+
+<p>Client.select(:name).distinct Client.select(:name, :created_by).distinct  
+??? does this work??</p>
+
+<p>Post.joins(:category, :comments) SELECT posts.* FROM posts</p>
+
+<pre>INNER JOIN categories ON posts.category_id = categories.id
+INNER JOIN comments ON comments.post_id = posts.id</pre>
+
+<p>time_range = (Time.now.midnight - 1.day)..Time.now.midnight
+Client.joins(:orders).where(orders: {created_at: time_range})</p>
+
+<p>Post.includes(:category, :comments)</p>
+
+<p>Applying a default scope def self.default_scope</p>
+
+<pre># Should return an ActiveRecord::Relation.</pre>
+
+<p>end</p>
+
+<p>find_or_create_by returns either the record that already exists or the new
+record</p>
+
+<p>class Person &lt; ActiveRecord::Base</p>
+
+<pre>self.primary_key = &quot;person_id&quot;</pre>
+
+<p>end</p>
+
+<p>.exists?</p>
+
+<p>TODO: add roles using gem .</p>
+
+<p>EventTypes.find_by :first_name “mike”</p>
+
+<p>validates_uniqueness_of :user_name</p>
+
+<p>MS: should be able to generate create_table from model class definition. 
+Command line for scaffold would be difficult to maintain and isn&#39;t a
+good way to store the model.  A model should have all the info.  params
+should use model to identify inputs.  If you set the primary_key in a
+model, will it use that instead of creating “id” field?</p>
+
+<p>Would need a construct to define a field without any validations, but that
+would basically be a no-op, similar to not-null. Would need introspection
+to get at the names, types, and constrains on fields. A set of models
+SHOULD contain the information to create a complete schema.rb</p>
+
+<pre>All the join tables would be created automatically.
+Doesn&#39;t seem to be a commonly used utility to do that.</pre>
+
+<p>Currently, Rails has three places to fully define a data model.  Model.rb,
+schema.rb &amp; migrations, and the command-line from the generator.  I
+strongly feel that it should be one place – the model.rb.  MS: workaround
+is to manually update the “base” migration.</p>
+
+<p>migrate file: 20140101140320_schema.rb  will generate schema.rb with:</p>
+
+<pre>ActiveRecord::Schema.define(version: 20140101140320) do
+Notice that the number</pre>
+
+<p>@user = <a href="http://:id">User.find(params</a>) @user.students &lt;&lt;
+current_user</p>
+
+<pre class="ruby"><span class="ruby-identifier">has_many</span> :<span class="ruby-identifier">teacher_links</span>, :<span class="ruby-identifier">foreign_key</span> =<span class="ruby-operator">&gt;</span> :<span class="ruby-identifier">student_id</span>, :<span class="ruby-identifier">dependent</span> =<span class="ruby-operator">&gt;</span> :<span class="ruby-identifier">destroy</span>, :<span class="ruby-identifier">class_name</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;TeacherStudentLink&quot;</span>
+<span class="ruby-identifier">has_many</span> :<span class="ruby-identifier">student_links</span>, :<span class="ruby-identifier">foreign_key</span> =<span class="ruby-operator">&gt;</span> :<span class="ruby-identifier">teacher_id</span>, :<span class="ruby-identifier">dependent</span> =<span class="ruby-operator">&gt;</span> :<span class="ruby-identifier">destroy</span>, :<span class="ruby-identifier">class_name</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;TeacherStudentLink&quot;</span>
+<span class="ruby-identifier">has_many</span> :<span class="ruby-identifier">students</span>, :<span class="ruby-identifier">through</span> =<span class="ruby-operator">&gt;</span> :<span class="ruby-identifier">student_links</span>
+<span class="ruby-identifier">has_many</span> :<span class="ruby-identifier">teachers</span>, :<span class="ruby-identifier">through</span> =<span class="ruby-operator">&gt;</span> :<span class="ruby-identifier">teacher_links</span>
+</pre>
+<hr style="height: 6px">
+
+<p>SHARE: best debugging is to get error in browser with command listener. 
+debug</p>
+
+<p>DONE: show index.html    index and show don&#39;t work.  Why?  Had views. 
+WAIT: class var and @ vs. @@ vs. self vs. initial vs. ???</p>
+
+<p>DONE: need to understand how to calculate paths for links.  implement now.
+DONE: button on instance row in index DONE: back button should go back to
+index page. DONE: New and update not working.  Don&#39;t show “id” or
+“created_at” “updated_at”.</p>
+
+<pre>Now, New is blanking the inputs.  Update isn&#39;t saving to the database.</pre>
+
+<p>DONE: show all models in nav</p>
+
+<p>DONE: implement NEXT and PREV buttons when looking at a show view.</p>
+
+<pre>http://stackoverflow.com/questions/5452937/rails-previous-and-next-record-from-previous-query</pre>
+
+<p>WAIT: flag on field to say that objects should be visible and nested. 
+destroy=true??</p>
+
+<pre>visible and nested object shouldn&#39;t show values for the object they are shown in.
+an event
+  a participation
+    member
+    (hidden event)
+    joined_on
+  a participation
+if has_one, then show one.  if has_many, then show list of instances.</pre>
+
+<p>DONE try to save boat when given a location in a text field</p>
+
+<p>TODO: get foreign_key fields to show @instances in a pop-up.  TODO:
+dispatch field render based on field type</p>
+
+<p>Search: ruby rails model foreign-key</p>
+<hr style="height: 1px">
+
+<p>Search: ruby rails from model class, introspect to find has_many has_one
+relationships meta-data</p>
+<hr style="height: 3px">
+
+<p>Each controller sets field order for user based on permissions.</p>
+
+<p>Rights:</p>
+
+<p>Admin:</p>
+
+<pre class="ruby"><span class="ruby-constant">Id</span> 
+<span class="ruby-constant">Created_at</span>=<span class="ruby-identifier">read</span>
+<span class="ruby-constant">Foo</span>=<span class="ruby-identifier">aware</span>
+<span class="ruby-constant">Yum</span>=<span class="ruby-identifier">initialiZe</span> 
+<span class="ruby-constant">Action</span>=<span class="ruby-identifier">change</span><span class="ruby-operator">/</span><span class="ruby-identifier">execute</span>
+<span class="ruby-constant">BoatController</span>
+   <span class="ruby-identifier">class</span>=<span class="ruby-identifier">hidden</span>
+   <span class="ruby-constant">Somefield</span>=<span class="ruby-identifier">change</span>
+   <span class="ruby-constant">Line_items</span>=<span class="ruby-identifier">append</span>
+   <span class="ruby-constant">Foo</span>=<span class="ruby-identifier">method</span> <span class="ruby-identifier">returns</span> <span class="ruby-identifier">value</span> <span class="ruby-identifier">given</span> <span class="ruby-identifier">instance</span>.
+</pre>
+
+<p>Owner</p>
+
+<pre>Call predicate to get info</pre>
+
+<p>Specific user can have permissions</p>
+
+<p>What about data driven permissions?  Can&#39;t change past event.</p>
+
+<pre>Event
+  Class=</pre>
+
+<p>Where to use? Setting field order on controller.  Looping through fields in
+view Showing buttons on form Rendering navigation Before filter on generic
+controller to look at action.</p>
+
+<p>How to represent creating fields?</p>
+
+<pre>Ex: line items in order.</pre>
+
+<p>How to represent</p>
+
+<p>Customize any methods that generate UI for showing actions or data.
+Form_for.</p>
+
+<p>POSTPONE!!</p>
+
+<p>Temp: how to show id, but not edit</p>
+
+<p>Permissions:</p>
+
+<pre>id = :read
+Created_at=:read
+Updated_at=:read</pre>
+
+<p>Ability to edit ones own profile.</p>
+
+<p>For a new session, create permission object for user.</p>
+
+<p>“Meta over manual”. in addition to: Convention over configuration.</p>
+
+<p>TODO: What method gets called to render instances in partial view?  Needs
+to check field order. &lt;% render @instances%&gt;</p>
+
+<p><a href="http://:comments">Post.reflections</a>.table_name # =&gt;
+“comments” <a href="http://:comments">Post.reflections</a>.macro # =&gt;
+:has_many <a href="http://:comments">Post.reflections</a>.primary_key_name
+# =&gt; “message_id”</p>
+
+<p>_meta.comments = { display: inline }</p>
+
+<p>admin can set defaults for each field for each model. On index listing,
+click “set defaults” see form with inputs. Gets data from database. Row
+with special id. 0. Can set dynamic values. {1.hour.ago}</p>
+
+<pre>Packaging into gem.</pre>
+
+<p>Inherit from new application controller. And helper.  Default views.  Tests
+To use: remove generated files for views and controllers.  Need: generate
+model only. Add validates and default for all fields.</p>
+
+<p>Generate database schema from model.  Generate a diff between two database
+schemas as a migration.</p>
+
+<p>Rails generate schema –All Rails generate schema Model1.rb Model2.rb</p>
+
+<p>Generator loads all the models, then for each, generates migration file. 
+Looks at columns validates to get</p>
+
+<p>Does column hash exist without database? No?</p>
+
+<p>Dynamically add field in model needs to add columns in database.</p>
+
+<p>Need diff between two models!</p>
+
+<p>Convert diff into database migration!</p>
+
+<p>Easier: generate full schema from model. Find/create tool to take diff of
+schemas to create migration.</p>
+
+<p>How to know indexes to create from a model? Look for find methods by name
+convention.</p>
+
+<p>So, generate schema from model file and or in memory.</p>
+
+<p>Cancan? Works for actions on controllers but not fields. Could be used for
+fields? Requires editing views through if statements.</p>
+
+<p>Search for examples of permission files and data formats.</p>
+
+<p>Concepts of all,  Fields, action.</p>
+
+<p>—— TODO: show field based on type.</p>
+
+<pre>TODO: How to tell if field is foreign key from meta-field info?  (ends with _id)</pre>
+
+<p>use reflections to get “has_many” or “has_one”</p>
+
+<p>Goal: when modifying a boat, select a location from a popup</p>
+
+</div>
+
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.2.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

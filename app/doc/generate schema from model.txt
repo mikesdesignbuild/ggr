@@ -1,0 +1,78 @@
+Search: ruby rails generate database schema from model
+
+Did not find any tools for generating the schema from a model.  Found many going the other way.
+Issue, all the info is encoded in the ruby much more detailed data in model.
+Could use tool to create models from your existing database, but then update the model and generate the database.
+Issue is that SQL scripts can have more complexities.  
+
+Boat.reflections.keys => [:location, :events]
+Boat.reflections[:location].active_record => Boat (class)
+
+def is_singular?(str)
+  str.pluralize.singularize == str
+end
+has_on_p?  reflection[x].collection
+
+User.find_by_email(
+  add_index :users, :email, :unique => true
+
+has_many :order_invites, :foreign_key => 'email', :primary_key => 'email'    Invitations? how to know?
+  add_index :invitations, :email
+
+add_index :conversations, [:subject_id, :subject_type]
+
+
+y Boat.reflections
+
+:location: !ruby/object:ActiveRecord::Reflection::AssociationReflection
+  macro: :has_one
+  name: :location
+  scope: 
+  options: {}
+  active_record: Boat
+  plural_name: locations
+  collection: false
+
+:events: !ruby/object:ActiveRecord::Reflection::AssociationReflection
+  macro: :has_many
+  name: :events
+  scope: 
+  options:
+    :inverse_of: :boat
+  active_record: *1
+  plural_name: events
+  collection: true
+
+Get list of model names. (see nav helper)  constantize model
+Load or populate model using Model.all.count  (make sure data is loaded)
+for each model
+table_name = model.name.pluralize
+create_table :#{table_name} do |t|
+  for_each field
+   t.{type} :{field_name}
+   t.timestamps
+end
+
+class EventType < ActiveRecord::Base
+  include ApplicationHelper
+
+  belongs_to  :event, inverse_of: :type
+
+  validates :name, presence: true, uniqueness: true
+  validates :description, presence: true, uniqueness: true
+
+  has_one     :category, inverse_of: :event_type, class_name: "EventCategory"
+    validates :category, presence: true
+end
+
+Creates:
+
+    create_table :event_types do |t|
+      t.string :name
+      t.string :long_name
+      t.string :description
+      t.references :category
+
+      t.timestamps
+    end
+

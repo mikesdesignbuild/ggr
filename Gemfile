@@ -9,6 +9,8 @@ group :development do   #, :test do
     gem "binding_of_caller"
     gem "faker"  # to create sample data 
     gem "hirb"
+    gem "rdoc"
+    gem "rspec"
 end
 
 group :production do # , :staging do
