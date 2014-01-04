@@ -1,0 +1,15 @@
+<% @models.each do |model| %>
+create_table :<%= model.name.underscore.pluralize %> do |t|
+  <% model.columns_hash.except("id","created_at","updated_at").keys.each do |field_name| %>
+   <% if /_id$/.match(field_name) %>
+  t.references :<%= field_name[0..-4] %>
+   <% else %>
+   <% type = model.columns_hash[field_name].type[0..-1] %>
+  t.<%= type %> :<%= field_name %>
+   <% end %>
+  <% end %>
+
+  t.timestamps
+end
+
+<% end %>
