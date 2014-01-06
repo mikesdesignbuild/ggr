@@ -42,9 +42,12 @@ end
   end
 
   private
-     def all_model_names
-	  Dir.glob(Rails.root.to_s + '/app/models/*.rb').map do |filename| 
-	    filename.match(/[^\/]*(?=[.][a-zA-Z]+$)/).to_s.classify  # converts "/Users/mike/dev/ggr/app/models/boat.rb" to "boats"
-	 end
- end
+
+   def all_model_names
+    Dir.glob(Rails.root.to_s + '/app/models/*.rb').map do |filepath| 
+      filename = filepath.match(/[^\/]*(?=[.][a-zA-Z]+$)/).to_s.classify 
+      filename=="ApplicationModel" ? nil : filename  # converts "/Users/mike/dev/ggr/app/models/boat.rb" to "boats"
+    end.compact
+   end
+
 end

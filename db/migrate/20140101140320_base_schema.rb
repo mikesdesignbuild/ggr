@@ -1,5 +1,6 @@
 # reset entire database: DANGER for development only
 # rm db/development.sqlite3; rm db/schema.rb; rake db:migrate; rake db:reset; rake db:seed
+# generate schema from model using: # http://localhost:4000/static_pages/schema.txt
 class BaseSchema < ActiveRecord::Migration
   def change
 
@@ -49,7 +50,7 @@ class BaseSchema < ActiveRecord::Migration
     end
 
 =begin
-    create_table :members do |t|
+    create_table :users do |t|
 
       ## Database authenticatable
       t.string :email,              null: false, default: ""
@@ -88,10 +89,15 @@ class BaseSchema < ActiveRecord::Migration
     # add_index :members, :unlock_token,         :unique => true
 =end
 
-
     create_table :members do |t|
       #t.references :user  # use just a member id
       t.string :name
+      t.string :street
+       t.boolean :street_shown
+      t.string :mobile_number
+       t.boolean :mobile_number_shown
+      t.string :email
+       t.boolean :email_shown
       t.string :interests
       t.string :purpose # why I like to row
       t.datetime :coxswain  # what year did you get approved for a coxswain
@@ -104,6 +110,7 @@ class BaseSchema < ActiveRecord::Migration
       t.timestamps
     end
     add_index :members, :name
+
 
     create_table :participations do |t|
       t.references :event

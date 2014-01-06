@@ -3,15 +3,17 @@
 <table>
   <thead>
     <tr>
+      <th>id</th> <!-- TODO HACK -->
       <% @field_order.each do |key| %>
-       <th><%#= key %></th>
+       <th><%= key %></th>
       <% end %>
     </tr>
   </thead>
   <tbody>
     <% @instances.each do |instance| %>
       <tr onclick=<%= show_instance instance %> >
-        <% @field_order.each do |key| %>
+         <th><%= instance.id %></th>
+         <% @field_order.each do |key| %>
          <td><%= instance[key] %></td>
         <% end %>
       </tr>

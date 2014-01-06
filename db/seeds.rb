@@ -37,18 +37,15 @@ EventCategory.create!([
 { name: 'workout'},
 { name: 'meeting'}
 ])
+# EventCategory.create!([{ name: 'row'}])
 
 EventType.destroy_all
 EventType.create!([
-{ name: 'Rec', long_name: 'Recreational row', description: 'Two breaks', category: EventCategory.find_name('row') },  # , category: 'row'
-{ name: 'Cond', long_name: 'Conditioning row', description: 'One break', category: EventCategory.find_name('row') },
-{ name: 'Race', long_name: 'Race practice', description: 'an intense practice for a race', category: EventCategory.find_name('workout') },
-{ name: 'RaceDay', long_name: 'Race on race day', description: 'Actual race on race day', category: EventCategory.find_name('workout') }
+{ name: 'Rec', long_name: 'Recreational row', description: 'Two breaks', category_id: EventCategory.id_for('row') },
+{ name: 'Cond', long_name: 'Conditioning row', description: 'One break', category_id: EventCategory.id_for('row') },
+{ name: 'Race', long_name: 'Race practice', description: 'an intense practice for a race', category_id: EventCategory.id_for('workout') },
+{ name: 'RaceDay', long_name: 'Race on race day', description: 'Actual race on race day', category_id: EventCategory.id_for('workout') }
 ])
-
-if false
-
-end
 
 # Event.create([{ on_date: '2013-12-25', at_time: '7:00', boat: Boat.last }])
 

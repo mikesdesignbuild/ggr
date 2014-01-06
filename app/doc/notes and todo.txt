@@ -480,5 +480,15 @@ Idea: could start with models completely in memory (not persisted), then create_
    ActiveModel for in-memory object model.  vs. ActiveRecord
 Idea: integrate a SVG diagram graphing tool so people can see model relationships
 
+----
+Add ApplicationModel on SLOtility
+Create seeds using find_name
+
+LESSON: create method expects an id string for fields that contain an object.  Don't pass an object.
+
+# EventType.create!([{ name: 'Rec', long_name: 'Recreational row', description: 'Two breaks', category_id: '30' }])
+# EventType.create!([{ name: 'Rec', long_name: 'Recreational row', description: 'Two breaks', category: '30' }])
+# NameError: uninitialized constant EventType::Category  Solution: needed category_id, not category
+
 
 

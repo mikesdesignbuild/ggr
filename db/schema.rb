@@ -60,6 +60,12 @@ ActiveRecord::Schema.define(version: 20140101140320) do
 
   create_table "members", force: true do |t|
     t.string   "name"
+    t.string   "street"
+    t.boolean  "street_shown"
+    t.string   "mobile_number"
+    t.boolean  "mobile_number_shown"
+    t.string   "email"
+    t.boolean  "email_shown"
     t.string   "interests"
     t.string   "purpose"
     t.datetime "coxswain"
