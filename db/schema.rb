@@ -83,7 +83,6 @@ ActiveRecord::Schema.define(version: 20140101140320) do
   create_table "participations", force: true do |t|
     t.integer  "event_id"
     t.integer  "member_id"
-    t.datetime "joined_on"
     t.datetime "left_on"
     t.string   "rower"
     t.string   "captain"

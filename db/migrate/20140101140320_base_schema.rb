@@ -119,7 +119,7 @@ class BaseSchema < ActiveRecord::Migration
       t.belongs_to :event
       t.belongs_to :member
       
-      t.datetime :joined_on
+      # Using system-generated created_at field for: t.datetime :joined_on
       t.datetime :left_on
 
       t.string :rower

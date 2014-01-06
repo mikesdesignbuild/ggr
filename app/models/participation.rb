@@ -5,7 +5,7 @@ class Participation  < ApplicationModel
   belongs_to  :member, inverse_of: :participations
   #  validates :member, presence: true
 
-  validates :joined_on, presence: true, datetime: true
+  # use created_at timestamp.  validates :joined_on, presence: true, datetime: true
   validates :left_on, datetime: true
 
   validates :rower, cant_want_would: true  # only if an active member

@@ -8,7 +8,8 @@
 
 Member.destroy_all
 Member.create!([ 
-{ name: 'MikeS', interests: 'books', purpose: 'time' }
+{ name: 'MikeS', interests: 'books', purpose: 'racing' },
+{ name: 'HeidiH', interests: 'books', purpose: 'exercise' }
 ])
 
 #MemberProfile.destroy_all
@@ -51,16 +52,7 @@ EventType.create!([
 #Event.create!([{ event_type: Event.first, location: Location.first, boat: Boat.first, on_date: 1.day.from_now, at_time: 1.hour.from_now }])
 Event.create!([{ event_type: EventType.first, location: Location.first, boat: Boat.first, start_datetime: 24.hours.from_now, end_datetime: 25.hours.from_now }])
 
-# FAILED:  ActiveSupport::TimeZone['UTC'].parse("10/17/2008")
-# WORKED: ActiveSupport::TimeZone['UTC'].parse("2008-12-17"), failed in create
-
-
-# SQLite3::SQLException: no such column: event_types.event_category_id:   event_types.event_category_id
-# Event.create([{ on_date: '2013-12-25', at_time: '7:00', boat: Boat.last }])
-
-# Participation.create([{ event: Event.all[0].id, member: Member.all[0].id, captain: true }])
-
-#participation = Participation.create([{ event_id: events[0].id, member_id: members[0].id, captain: true }])
+Event.first.participations.create!([{ member: Member.first }, { member: Member.last }])
 
 
 #include 'open-uri'
