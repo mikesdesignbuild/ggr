@@ -8,5 +8,10 @@
   <%= @instance[field_name] %>
  </p>
 <% end %>
+ <p>Created <%= time_ago_in_words(@instance.created_at) %> ago 
+   <%- if @instance.created_at != @instance.updated_at -%>, 
+    modified <%= time_ago_in_words(@instance.updated_at) %> ago
+   <% end %>
+ </p>
 <%= prev_next_links %>
 

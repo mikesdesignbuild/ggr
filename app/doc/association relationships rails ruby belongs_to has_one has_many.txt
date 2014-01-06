@@ -1,0 +1,14 @@
+
+if X belongs_to Y, then create table Y with belongs_to: X
+  table X has foreign_key to Y 
+  table Y can have many X’s
+
+if X has_one Y, then create table Y with belongs_to: X
+  table Y has foreign_key to X
+
+So, has_one is an actual 1:1 mapping. X has one Y and Y has one X.
+  
+Belongs_to paired with has_many.  
+
+Only the table with the foreign key has the belongs_to schema column.
+  not the table with a has_one relation
