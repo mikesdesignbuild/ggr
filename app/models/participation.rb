@@ -1,9 +1,9 @@
 class Participation  < ApplicationModel
-  has_one     :event, inverse_of: :participations
-    validates :event, presence: true
+  belongs_to  :event, inverse_of: :participations
+  #  validates :event, presence: true
 
-  has_one     :member, inverse_of: :participations
-    validates :member, presence: true
+  belongs_to  :member, inverse_of: :participations
+  #  validates :member, presence: true
 
   validates :joined_on, presence: true, datetime: true
   validates :left_on, datetime: true

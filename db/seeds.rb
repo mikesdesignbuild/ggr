@@ -22,11 +22,10 @@ Location.create!([
 { name: 'TC', description: 'Treble Cove', address: 'Gloucester, MA'}
 ])
 
-
 Boat.destroy_all
 Boat.create!([
-#{ name: 'Gannet', seats: 6, location_id: nil }, 
-{ name: 'Annie B', seats: 6 }
+{ name: 'Gannet', seats: 6, location: Location.last }, 
+{ name: 'Annie B', seats: 6, location: Location.first }
 ])
 
 
@@ -37,16 +36,26 @@ EventCategory.create!([
 { name: 'workout'},
 { name: 'meeting'}
 ])
+# EventCategory.first.event_types
 # EventCategory.create!([{ name: 'row'}])
 
 EventType.destroy_all
 EventType.create!([
-{ name: 'Rec', long_name: 'Recreational row', description: 'Two breaks', category_id: EventCategory.id_for('row') },
-{ name: 'Cond', long_name: 'Conditioning row', description: 'One break', category_id: EventCategory.id_for('row') },
-{ name: 'Race', long_name: 'Race practice', description: 'an intense practice for a race', category_id: EventCategory.id_for('workout') },
-{ name: 'RaceDay', long_name: 'Race on race day', description: 'Actual race on race day', category_id: EventCategory.id_for('workout') }
+{ name: 'Rec', long_name: 'Recreational row', description: 'Two breaks', event_category: EventCategory.first },
+{ name: 'Cond', long_name: 'Conditioning row', description: 'One break', event_category: EventCategory.first },
+{ name: 'Race', long_name: 'Race practice', description: 'an intense practice for a race', event_category_id: EventCategory.last.id.to_s },
+{ name: 'RaceDay', long_name: 'Race on race day', description: 'Actual race on race day', event_category_id: EventCategory.last.id.to_s }
 ])
 
+# Event.destroy_all
+#Event.create!([{ event_type: Event.first, location: Location.first, boat: Boat.first, on_date: 1.day.from_now, at_time: 1.hour.from_now }])
+Event.create!([{ event_type: EventType.first, location: Location.first, boat: Boat.first, start_datetime: 24.hours.from_now, end_datetime: 25.hours.from_now }])
+
+# FAILED:  ActiveSupport::TimeZone['UTC'].parse("10/17/2008")
+# WORKED: ActiveSupport::TimeZone['UTC'].parse("2008-12-17"), failed in create
+
+
+# SQLite3::SQLException: no such column: event_types.event_category_id:   event_types.event_category_id
 # Event.create([{ on_date: '2013-12-25', at_time: '7:00', boat: Boat.last }])
 
 # Participation.create([{ event: Event.all[0].id, member: Member.all[0].id, captain: true }])

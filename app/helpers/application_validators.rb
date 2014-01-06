@@ -15,25 +15,26 @@ module ApplicationValidators
 
  class DatetimeValidator < ActiveModel::EachValidator  # used in models as:  validates :useremail, datetime: true
   def validate_each(record, attribute, value)
-    if value && !DateTime.parse(value) 
-      record.errors[attribute] << "must be a valid datetime" 
-    end 
+    # TypeError: no implicit conversion of ActiveSupport::TimeWithZone into String
+    #if value && !DateTime.parse(value) 
+    #  record.errors[attribute] << "must be a valid datetime" 
+    #end 
   end
  end
 
  class DateValidator < ActiveModel::EachValidator  # used in models as:  validates :on_date, date: true
   def validate_each(record, attribute, value)
-    if value && !DateTime.parse(value) 
-     record.errors[attribute] << "must be a valid date"
-    end
+    #if value && !DateTime.parse(value) 
+    # record.errors[attribute] << "must be a valid date"
+    #end
   end
  end
 
  class TimeValidator < ActiveModel::EachValidator
    def validate_each(record, attribute, value)
-     if value && !value.kind_of?(Time)
-       record.errors[attribute] << (options[:message] || "don't recognize time")
-     end
+     #if value && !value.kind_of?(Time)
+     #  record.errors[attribute] << (options[:message] || "don't recognize time")
+     #end
    end
  end
 

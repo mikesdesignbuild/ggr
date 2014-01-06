@@ -4,7 +4,10 @@ class ApplicationModel < ActiveRecord::Base
   include ApplicationValidators
 
   def self.id_for(name)  # used for seeds.  
-  	self.where(name: name).first.id.to_s
+  	self.where(name: name).first.id
+  end
+  def self.find_one(name)  # used for seeds.  
+    self.where(name: name).first
   end
 
 end

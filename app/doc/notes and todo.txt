@@ -490,5 +490,5 @@ LESSON: create method expects an id string for fields that contain an object.  D
 # EventType.create!([{ name: 'Rec', long_name: 'Recreational row', description: 'Two breaks', category: '30' }])
 # NameError: uninitialized constant EventType::Category  Solution: needed category_id, not category
 
-
+class using belongs_to for field "foo" means that it has a database field "foo_id"
 

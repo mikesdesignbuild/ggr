@@ -14,10 +14,10 @@
 ActiveRecord::Schema.define(version: 20140101140320) do
 
   create_table "boats", force: true do |t|
+    t.integer  "location_id"
     t.string   "name"
     t.string   "description"
     t.integer  "seats"
-    t.integer  "location_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -29,25 +29,26 @@ ActiveRecord::Schema.define(version: 20140101140320) do
   end
 
   create_table "event_types", force: true do |t|
+    t.integer  "event_category_id"
     t.string   "name"
     t.string   "long_name"
     t.string   "description"
-    t.integer  "category_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "events", force: true do |t|
-    t.integer  "type_id"
+    t.integer  "event_type_id"
     t.integer  "location_id"
     t.integer  "boat_id"
-    t.date     "on_date"
-    t.time     "at_time"
+    t.datetime "start_datetime"
+    t.datetime "end_datetime"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "events", ["on_date"], name: "index_events_on_on_date"
+  add_index "events", ["end_datetime"], name: "index_events_on_end_datetime"
+  add_index "events", ["start_datetime"], name: "index_events_on_start_datetime"
 
   create_table "locations", force: true do |t|
     t.string   "name"

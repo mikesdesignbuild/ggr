@@ -1,28 +1,25 @@
 class Event < ApplicationModel
-  include ApplicationHelper
+  belongs_to  :event_type  #, class_name: "EventType"
+  #  validates :type, presence: true
+  belongs_to  :location
+  #  validates :location, default: Location.first  
+  belongs_to  :boat
+  #  validates :boat, default: Boat.first  # references boat by id
 
-  has_one     :type, class_name: "EventType"
-    validates :type, presence: true
+  #validates :on_date, presence: true, date: true  #, on_or_after: :today     # not saved? see start_datetime
+  #validates :at_time, presence: true, time: true  # :between => '6:00am'...'9:00pm'    # not saved? see start_datetime
+  #validates :duration, default: 1  # in hours   # not saved? see end_datetime  
 
-  has_one     :location
-    validates :location, default: Location.first
-  
-  has_one     :boat
-    validates :boat, default: Boat.first  # references boat by id
+  # calculated.  saved in database
+  validates :start_datetime , datetime: true  # after sunrise
+  validates :end_datetime, datetime: true  # before sunset
 
-  validates :on_date, presence: true, date: true  #, on_or_after: :today 
-  validates :at_time, presence: true, time: true  # :between => '6:00am'...'9:00pm'    # ???
-
-  has_one :participation  # workaround. not stored in database.  here so that accepts_nested_attributes_for will work
+  has_one :participation  # needed? workaround. not stored in database.  here so that accepts_nested_attributes_for will work
   accepts_nested_attributes_for :participation
 
-  has_many :participations, inverse_of: :event, dependent: :destroy
+  has_many :participations #, inverse_of: :event, dependent: :destroy
 
-  has_many :members, through: :participations
-
-  # calculated:
-  validates :start_datetime, datetime: true  # after sunrise
-  validates :end_datetime, datetime: true  # before sunset
+  has_many :members #, through: :participations
 
   # duration  default: 1.hour
   def captain
@@ -40,6 +37,10 @@ class Event < ApplicationModel
   def end_datetime
     # start_datetime + duration
   end
+
+  #def duration
+  #  end_datetime - start_datetime
+  #end
 
   def my_participation   # for current user  # ideally rename to participation
     # Event.where(member: current_user)

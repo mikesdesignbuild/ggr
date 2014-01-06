@@ -1,41 +1,44 @@
 # reset entire database: DANGER for development only
-# rm db/development.sqlite3; rm db/schema.rb; rake db:migrate; rake db:reset; rake db:seed
+# rm db/development.sqlite3; rm db/schema.rb; rake db:migrate; rake db:reset
 # generate schema from model using: # http://localhost:4000/static_pages/schema.txt
 class BaseSchema < ActiveRecord::Migration
   def change
 
     create_table :boats do |t|
+      t.belongs_to :location
+
       t.string :name
       t.string :description
       t.integer :seats
-      t.references :location
 
       t.timestamps
     end
 
     create_table :events do |t|
-      t.references :type
-      t.references :location 
-      t.references :boat
+      t.belongs_to :event_type
+      t.belongs_to :location 
+      t.belongs_to :boat
 
-      t.date :on_date
-      t.time :at_time
+      t.datetime :start_datetime
+      t.datetime :end_datetime
  
       t.timestamps
     end
-    add_index :events, :on_date
+    add_index :events, :start_datetime
+    add_index :events, :end_datetime
 
     create_table :event_categories do |t|
-      t.string :name     
+      t.string :name
     
       t.timestamps
     end
 
     create_table :event_types do |t|
+      t.belongs_to :event_category
+
       t.string :name
       t.string :long_name
       t.string :description
-      t.references :category
 
       t.timestamps
     end
@@ -113,8 +116,8 @@ class BaseSchema < ActiveRecord::Migration
 
 
     create_table :participations do |t|
-      t.references :event
-      t.references :member
+      t.belongs_to :event
+      t.belongs_to :member
       
       t.datetime :joined_on
       t.datetime :left_on
