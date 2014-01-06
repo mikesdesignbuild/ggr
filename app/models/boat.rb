@@ -1,5 +1,4 @@
-class Boat < ActiveRecord::Base 
-  include ApplicationHelper
+class Boat  < BaseModel # ActiveRecord::Base
 
   validates :name, presence: true, uniqueness: true, simple_word: true
   validates :description, default: "", simple_text: true
