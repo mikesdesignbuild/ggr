@@ -3,19 +3,24 @@
 <head>
   <title>Ggr</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
- <p class="notice"><%= notice %></p>
- <p class="alert"><%= alert %></p>
+  <% flash.each do |key, value| %>
+    <div class="flash <%= key %>">
+      <div class="container container_12 clearfix">
+        <div class="grid_12">
+          <p><%= value %></p>
+        </div>
+      </div>
+    </div>
+  <%- end -%>
 
  <nav>
   <% all_controller_names.each do |name| %>
     <%= link_to name.humanize, "/"+name %>
   <% end %>
  </nav>
-
 
  <%# if member_signed_in? %>
   <%#= link_to current_member.email, "/static_pages/account" %>
@@ -26,5 +31,6 @@
  <div class="container">
   <%= yield %>
  </div>
+ <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
 </body>
 </html>

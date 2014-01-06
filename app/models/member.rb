@@ -5,7 +5,14 @@ class Member < ActiveRecord::Base
     validates :member, default: nil
 
   validates :name, presence: true, uniqueness: true, format: { with: /\A[a-zA-Z]+\z/, message: "only allows letters" }, length: { in: 2..8 } 
- 
+
+  validates :street, length: 50
+    validates :street_shown, length: 50
+  validates :mobile_number, phone: true
+    validates :mobile_number_shown, default: nil
+  validates :email, email: true
+    validates :email_shown, default: nil
+
   validates :interests, simple_text: true , default: ""
   validates :purpose, simple_text: true, default: ""
 

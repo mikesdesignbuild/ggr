@@ -14,7 +14,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-
-//    require lib/assets/javascript/bootstrap.js   ERROR: couldn't find file 'lib/assets/javascript/bootstrap.js'
-//= require bootstrap.min
+//= require_self
 //= require_tree .
+
+$('.flash').delay(500).fadeIn(function() {
+	$(this).delay(2500).fadeOut();
+});

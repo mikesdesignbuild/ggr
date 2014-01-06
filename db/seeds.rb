@@ -29,7 +29,7 @@ Boat.create!([
 { name: 'Annie B', seats: 6 }
 ])
 
-if false
+
 EventCategory.destroy_all
 EventCategory.create!([
 { name: 'row'},
@@ -40,11 +40,13 @@ EventCategory.create!([
 
 EventType.destroy_all
 EventType.create!([
-{ name: 'Rec', long_name: 'Recreational row', description: 'Two breaks' },  # , category: 'row'
-{ name: 'Cond', long_name: 'Conditioning row', description: 'One break' },
-{ name: 'Race', long_name: 'Race practice', description: 'an intense practice for a race' },
-{ name: 'RaceDay', long_name: 'Race on race day', description: 'Actual race on race day' }
+{ name: 'Rec', long_name: 'Recreational row', description: 'Two breaks', category: EventCategory.find_name('row') },  # , category: 'row'
+{ name: 'Cond', long_name: 'Conditioning row', description: 'One break', category: EventCategory.find_name('row') },
+{ name: 'Race', long_name: 'Race practice', description: 'an intense practice for a race', category: EventCategory.find_name('workout') },
+{ name: 'RaceDay', long_name: 'Race on race day', description: 'Actual race on race day', category: EventCategory.find_name('workout') }
 ])
+
+if false
 
 end
 

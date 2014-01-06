@@ -1,5 +1,10 @@
 module ApplicationHelper
 
+  # given a model like boat, return field_name for displaying instance label identifier
+  def get_display_instance_field(model)  
+    model.columns_hash.keys[1]  
+  end
+
   # TBD: see  http://stackoverflow.com/questions/5452937/rails-previous-and-next-record-from-previous-query
   def prev_next_links
     output = ""

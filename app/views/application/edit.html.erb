@@ -20,7 +20,12 @@
   <% @field_order.each do |field_name| %>
     <div class="field">
       <%= f.label field_name.humanize %><br>
-      <%= f.text_field field_name %>
+      <% if /_id$/.match(field_name) %>
+        <% show_field = get_display_instance_field @model %> <!-- TODO HACK: method on class that return-->
+        <%= select(@model.name.underscore, field_name, @model.all.collect {|p| [ p[show_field], p.id ] }, {include_blank: 'None'}) %>
+      <% else %>
+        <%= f.text_field field_name %>
+      <% end %>
     </div>
   <% end %>
   <%= link_to 'Delete', @instance, method: :delete, data: { confirm: 'Are you sure?' } %>

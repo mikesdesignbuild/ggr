@@ -1,0 +1,6 @@
+<h1>New <%= labelize @model %></h1>
+
+<%= semantic_form_for @instance do |f| %>
+  <%= f.inputs %>
+  <%= f.actions %>
+<% end %>

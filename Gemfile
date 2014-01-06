@@ -8,7 +8,7 @@ group :development do   #, :test do
     gem "better_errors"
     gem "binding_of_caller"
     gem "faker"  # to create sample data 
-    gem "hirb"
+    gem "hirb"   # ??? for printing objects?
     gem "rdoc"
     gem "rspec"
 end
@@ -42,6 +42,8 @@ gem 'turbolinks'
 gem "therubyracer"
 gem "less-rails"
 gem 'less-rails-bootstrap'
+
+gem 'formtastic'
 
 gem 'devise'
 

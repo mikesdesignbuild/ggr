@@ -472,7 +472,13 @@ TODO: show field based on type.
 use reflections to get "has_many" or "has_one"
 
 Goal: when modifying a boat, select a location from a popup
+  when show/view, show first field on instance
+<%#= collection_select(:event, :boat, Boat.all, :id, :name) %>
 
+----
+Idea: could start with models completely in memory (not persisted), then create_tables when needed to persist objects
+   ActiveModel for in-memory object model.  vs. ActiveRecord
+Idea: integrate a SVG diagram graphing tool so people can see model relationships
 
 
 

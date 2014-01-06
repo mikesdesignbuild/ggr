@@ -10,5 +10,27 @@
  *
  *= require bootstrap.min
  *= require_self
+ *= require formtastic
  *= require_tree .
  */
+
+.flash {
+  &.error {
+    border: solid 2px #900;
+          background-color: #FF8585;
+        }
+  &.notice {
+    border: solid 2px #26722D;
+          background-color: #C4E7C0;
+        }
+  color: black;
+  z-index: 999;
+  position: fixed;
+  font-weight: bold;
+  width: 96%;
+  margin: 20px;
+        p {
+                font-size: 110%;
+                margin: 15px 0;
+        }
+}

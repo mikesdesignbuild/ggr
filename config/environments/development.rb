@@ -20,7 +20,7 @@ Ggr::Application.configure do
   config.active_record.migration_error = :page_load
 
   # Devise
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.default_url_options = { :host => 'localhost:8080' }
 
   # Don't care if the mailer can't send.  MP: actually, I want to see failures.
   config.action_mailer.perform_deliveries = true
