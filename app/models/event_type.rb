@@ -1,6 +1,4 @@
-class EventType < ActiveRecord::Base
-  include ApplicationHelper
-
+class EventType < ApplicationModel
   belongs_to  :event, inverse_of: :type
 
   validates :name, uniqueness: true, presence: true

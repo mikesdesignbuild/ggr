@@ -40,9 +40,10 @@ module ApplicationHelper
  end
 
  def all_controller_names
-  Dir.glob(Rails.root.to_s + '/app/models/*.rb').map do |filename| 
-    filename.match(/[^\/]*(?=[.][a-zA-Z]+$)/).to_s.pluralize  # converts "/Users/mike/dev/ggr/app/models/boat.rb" to "boats"
-  end
+  Dir.glob(Rails.root.to_s + '/app/models/*.rb').map do |filepath| 
+    filename = filepath.match(/[^\/]*(?=[.][a-zA-Z]+$)/).to_s.pluralize 
+    filename=="application_models" ? nil : filename  # converts "/Users/mike/dev/ggr/app/models/boat.rb" to "boats"
+  end.compact
  end
 
 # def back_button2

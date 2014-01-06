@@ -1,4 +1,4 @@
-class Event < ActiveRecord::Base
+class Event < ApplicationModel
   include ApplicationHelper
 
   has_one     :type, class_name: "EventType"

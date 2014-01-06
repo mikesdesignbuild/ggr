@@ -1,8 +1,4 @@
-# rails generate scaffold Zarticipation event:reference  member:reference joined_on:datetime left_on:datetime rower:string captain:string
-
-class Participation < ActiveRecord::Base
-  include ApplicationHelper
-
+class Participation  < ApplicationModel
   has_one     :event, inverse_of: :participations
     validates :event, presence: true
 

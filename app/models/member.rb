@@ -1,6 +1,4 @@
-class Member < ActiveRecord::Base
-  include ApplicationHelper
-
+class Member < ApplicationModel
   has_one   :member, inverse_of: :profile
     validates :member, default: nil
 

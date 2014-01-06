@@ -1,6 +1,4 @@
-class Location < ActiveRecord::Base  
-  include ApplicationHelper
-
+class Location < ApplicationModel
   # belongs_to :boat, :event  polymorphic ???
   validates :name, presence: true, uniqueness: true, simple_word: true
   validates :description, presence: true, simple_text: true

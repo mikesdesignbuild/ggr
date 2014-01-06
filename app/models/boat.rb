@@ -1,4 +1,4 @@
-class Boat  < BaseModel # ActiveRecord::Base
+class Boat < ApplicationModel
 
   validates :name, presence: true, uniqueness: true, simple_word: true
   validates :description, default: "", simple_text: true
