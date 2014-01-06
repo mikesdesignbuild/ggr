@@ -1,6 +1,5 @@
 class Boat < ApplicationModel
   belongs_to :location 
-  #has_one   :location   # can be changed by captain 
   #  validates :location, default: "MG" #, presence: true
 
   validates :name, presence: true, uniqueness: true, simple_word: true

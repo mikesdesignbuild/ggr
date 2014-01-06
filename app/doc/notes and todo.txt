@@ -484,11 +484,50 @@ Idea: integrate a SVG diagram graphing tool so people can see model relationship
 Add ApplicationModel on SLOtility
 Create seeds using find_name
 
-LESSON: create method expects an id string for fields that contain an object.  Don't pass an object.
-
-# EventType.create!([{ name: 'Rec', long_name: 'Recreational row', description: 'Two breaks', category_id: '30' }])
-# EventType.create!([{ name: 'Rec', long_name: 'Recreational row', description: 'Two breaks', category: '30' }])
-# NameError: uninitialized constant EventType::Category  Solution: needed category_id, not category
+KNOW: create method expects an object in "foo" foreign field, but an integer or string in a "foo_id" field.
 
 class using belongs_to for field "foo" means that it has a database field "foo_id"
+
+REMEMBER: belongs_to is for a 1 to many relationship and that belongs_to goes in the model that has a foreign-key to another model.  has_one is for a one-to-one relationship.  belongs_to is part of a 1:M or 1:1 relationship.
+
+--------------------
+NEXT:
+Date input
+
+Goal: UI where I can see all the participations on an event, and can add one for me, the current user.
+   Should also be able to click "remove myself from row" that sets "left_on" datetime.
+
+Search feature: Click "Search" on any object (or home page) and it searches within that object and presents form to fill out. Dynamically searches as you type.  Can select pull-downs.  Ex: on Events, click "search", in boat: select Gannet, in date, select "past" or "future", member: select name, day.
+Pre-defined queries for: recently updated.  
+
+Some models show all instances (locations, boats).  Some show only latest updated (participations).  
+
+Save named searches in cookies.  
+
+Show events coming up in next month, paged by 20, limit 100
+
+In listing, show total number of instances.  
+
+Add user for log-in and with roles.  Use roles for generic views and controllers.  
+
+Guest can add themselves to at most one row.  one rec row that is at least 4 days away that has 4 to 6 participants where no more than 1 other guest rower.
+  Notifies person responsible for guest members
+
+View for showing guest members and rows with guests.
+
+Members can have text field with their role in the club.  Those members are public on the member's page.
+
+Event.my_scheduled_rows
+
+Integrate authentication.
+
+
+
+
+
+
+
+
+
+
 

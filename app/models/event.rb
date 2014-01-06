@@ -8,7 +8,9 @@ class Event < ApplicationModel
 
   #validates :on_date, presence: true, date: true  #, on_or_after: :today     # not saved? see start_datetime
   #validates :at_time, presence: true, time: true  # :between => '6:00am'...'9:00pm'    # not saved? see start_datetime
-  #validates :duration, default: 1  # in hours   # not saved? see end_datetime  
+    # save as military time for sorting.  07:30 
+  #validates :duration, default: 1  # in hours   # not saved? see end_datetime
+  #validates :day_of_week   # set in database and shown and searched on.
 
   # calculated.  saved in database
   validates :start_datetime , datetime: true  # after sunrise
