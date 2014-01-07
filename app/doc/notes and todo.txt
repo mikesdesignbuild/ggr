@@ -359,6 +359,36 @@ Search: ruby rails model foreign-key
 ---
 Search: ruby rails from model class, introspect to find has_many has_one relationships meta-data
 
+http://apidock.com/rails/ActiveRecord/Associations/ClassMethods
+
+Thing.reflections.collect{|a, b| b.class_name if b.macro==:belongs_to}.compact 
+#=> ["Foo", "Bar"]
+
+Event.reflections.collect{|a, b| [a, b.class_name, b.macro] }.compact 
+
+ [[:event_type, "EventType", :belongs_to], [:location, "Location", :belongs_to], [:boat, "Boat", :belongs_to], [:participation, "Participation", :has_one], [:participations, "Participation", :has_many], [:members, "Member", :has_many]]
+
+ Great, returns fields in order they appear in the model!
+
+Event.reflections for location which should   macro :belongs_to, name :location, scope nil, options, active_record Event, plural_name "locations", collection false
+
+So, when showing an @instance, after showing @field_order, show associations for has_one and has_many.
+  show fieldname, then if not nil,
+    view_name = {name.pluralize}  @submodel= field_name.singular.constantize 
+    for has_many, render views/{name.pluralize}/index_nested  and give it: @nested_model and @nested_data 
+    for has_one, render views/{name.pluralize}
+Event.location
+
+  location/views/_show_nested.html.erb
+     _new_nested.html.erb
+     _edit_nested.html.erb
+     _index_nested.html.erb  (for has_many)
+
+Event.members
+  _nested_show
+
+Event.participations
+  _index_nested.html.erb  
 
 
 -----
@@ -521,7 +551,7 @@ Event.my_scheduled_rows
 
 Integrate authentication.
 
-
+in 'show' view, show the created_at and modified_at(?) values using (words method: time_ago_in_words)
 
 
 

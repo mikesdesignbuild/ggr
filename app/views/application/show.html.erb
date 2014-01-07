@@ -1,14 +1,48 @@
 <h2><%= labelize @model %></h2>
 <%= link_to "< " + labelize(@model).pluralize, action: :index %> 
 <%= link_to "Edit", action: :edit, id: @instance.id %>
+
 <% @field_order.each do |field_name| %>
  <p>
   <strong><%= field_name.humanize %></strong>
   <!-- if a foreign_key field, show first field of instance -->
-  <%= @instance[field_name] %>
+  <% if field_name.match(/_id$/) %> <!-- assume belongs_to field -->
+    <% a_model = field_name[0..-4].classify.constantize %>
+    <% a_inst = a_model.find(@instance[field_name]) %>
+       <%= link_to labelize_inst(a_inst), a_inst %>
+  <% else %>
+    <%= @instance[field_name] %>
+  <% end %>
  </p>
 <% end %>
- <p>Created <%= time_ago_in_words(@instance.created_at) %> ago 
+<br/>
+
+<!-- TODO: for all has_one and has_many, render partial views -->
+<% @model.reflections.each do |key, field| %>
+ <% key = key.to_s  %>
+ <% if field.macro != :belongs_to %><!-- and not in @field_order -->
+  <p><strong><%= key.humanize %></strong>
+  <% val = @instance[key]
+     if val == nil %>
+       <%= "" %>
+    <% else  
+        view_name = key.pluralize
+        @nested_model = key.singular.classify.constantize
+        @nested_data = @instance[key]
+        if field.macro == :has_many
+    %>
+       <%= render "views/application/_index_nested.html.erb" %>
+    <%    elif field.macro == :has_one %>
+       <%= render "views/application/_show_nested.html.erb" %>
+    <%    else %>
+          <%= "" %>
+    <%   end
+     end %>
+  </p>
+ <% end %>
+<% end %>
+<br/>
+<p>Created <%= time_ago_in_words(@instance.created_at) %> ago 
    <%- if @instance.created_at != @instance.updated_at -%>, 
     modified <%= time_ago_in_words(@instance.updated_at) %> ago
    <% end %>

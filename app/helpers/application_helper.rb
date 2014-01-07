@@ -10,24 +10,32 @@ module ApplicationHelper
     output = ""
     instance_ids = cookies[:instance_ids].split(",")
     current_index = instance_ids.index(@instance.id.to_s)
-    prev_index = current_index - 1
-       prev_index < 0 ? prev_index=nil : nil
-    next_index = current_index + 1 
-       next_index >= instance_ids.length ? next_index=nil : nil
-    model_name = @model.name.pluralize.underscore
-    if !prev_index.nil? 
-      prev_id = instance_ids[prev_index]
-      output += link_to "< Prev", "/#{model_name}/#{prev_id}" # TODO: better way to construct links?
+    if current_index   # if not coming from an index page, then current_index is nil
+        prev_index = current_index - 1
+           prev_index < 0 ? prev_index=nil : nil
+        next_index = current_index + 1 
+           next_index >= instance_ids.length ? next_index=nil : nil
+        model_name = @model.name.pluralize.underscore
+        if !prev_index.nil? 
+          prev_id = instance_ids[prev_index]
+          output += link_to "< Prev", "/#{model_name}/#{prev_id}" # TODO: better way to construct links?
+        end
+        if !next_index.nil? 
+          next_id = instance_ids[next_index]
+          output += link_to "Next >", "/#{model_name}/#{next_id}" # TODO: better way to construct links?
+        end
+        output.html_safe
+    else
+       ""
     end
-    if !next_index.nil? 
-      next_id = instance_ids[next_index]
-      output += link_to "Next >", "/#{model_name}/#{next_id}" # TODO: better way to construct links?
-    end
-    output.html_safe
   end
 
  def labelize(model)
   model.name.underscore.humanize
+ end
+
+ def labelize_inst(inst)  # use name field if present or id?
+   inst["name"] || inst["id"]
  end
 
  def back_button
