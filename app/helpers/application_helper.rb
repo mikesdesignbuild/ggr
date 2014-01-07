@@ -13,7 +13,8 @@ module ApplicationHelper
   end
 
   def is_foreign_key?(key)
-    /_id$/.match(key)   # ends_with "_id"
+    true
+    #/_id$/.match(key)   # ends_with "_id"
   end
 
   # given a model like boat, return field_name for displaying instance label identifier

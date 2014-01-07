@@ -15,7 +15,8 @@ class ApplicationController < ActionController::Base
 
 
   def index
-    @instances = @model.all # .includes @field_order
+    @instances = @model.all # .includes @field_order  TODO .all is deprecated.  Use .load?
+    # TODO OPTIMIZE QUERY HERE @instances = @model.joins(:event_type, :location, :boat).includes(:event_type, :location, :boat).all
     cookies[:instance_ids] = @instances.map { |a| a.id }.join(',')
     #Rails.logger.debug("in index with: #{@instance}, #{@model}, #{@field_order}")
   end
