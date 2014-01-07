@@ -1,8 +1,16 @@
 module ApplicationHelper
 
+  def is_singular?(str)
+    str.pluralize.singularize == str
+  end
+
   # given a model like boat, return field_name for displaying instance label identifier
   def get_display_instance_field(model)  
     model.columns_hash.keys[1]  
+  end
+
+  def render_controller_action(controller, action)  # default render doesn't take separate "controller" and "view"
+    render controller +"/"+ action rescue render "application/" + action 
   end
 
   # TBD: see  http://stackoverflow.com/questions/5452937/rails-previous-and-next-record-from-previous-query

@@ -1,0 +1,2 @@
+<%= @nested_data.map { |item| link_to(item.display_name, item) }.join(", ").html_safe %>
+<%# ONLY SHOW IF reflections for field is not "through". = link_to "+New" %>

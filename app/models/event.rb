@@ -1,4 +1,8 @@
 class Event < ApplicationModel
+  def display_name
+    # time_ago_in_words(start_datetime) # + " " + event_type.display_name + "-" + boat.display_name
+    start_datetime.to_s + " " + event_type.display_name + "-" + boat.display_name
+  end 
   belongs_to  :event_type  #, class_name: "EventType"
   #  validates :type, presence: true
   belongs_to  :location
@@ -21,24 +25,24 @@ class Event < ApplicationModel
 
   has_many :participations #, inverse_of: :event, dependent: :destroy
 
-  has_many :members #, through: :participations
+  has_many :members, through: :participations  # should be only the current members on the row.
 
   # duration  default: 1.hour
-  def captain
+  #def captain
     # first participation where they want to be captain, then first who would be captain
-  end
+  #end
 
-  def coxswains
+  #def coxswains
     # participations, by date, where coxswain is "want", then participations where coxswain is "would"
-  end
+  #end
 
-  def start_datetime 
+  #def start_datetime 
     # create_timestamp on_date + at_time
-  end
+  #end
   
-  def end_datetime
+  #def end_datetime
     # start_datetime + duration
-  end
+  #end
 
   #def duration
   #  end_datetime - start_datetime

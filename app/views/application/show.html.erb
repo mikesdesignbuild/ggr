@@ -6,9 +6,8 @@
  <p>
   <strong><%= field_name.humanize %></strong>
   <!-- if a foreign_key field, show first field of instance -->
-  <% if field_name.match(/_id$/) %> <!-- assume belongs_to field -->
-    <% a_model = field_name[0..-4].classify.constantize %>
-    <% a_inst = a_model.find(@instance[field_name]) %>
+  <% if field_name.match(/_id$/) %>  <%# assume belongs_to field and shows link %>
+    <% a_inst = @instance.send(field_name[0..-4]) %>
        <%= link_to labelize_inst(a_inst), a_inst %>
   <% else %>
     <%= @instance[field_name] %>
@@ -22,25 +21,26 @@
  <% key = key.to_s  %>
  <% if field.macro != :belongs_to %><!-- and not in @field_order -->
   <p><strong><%= key.humanize %></strong>
-  <% val = @instance[key]
+  <% val = @instance.send(key)
      if val == nil %>
        <%= "" %>
     <% else  
         view_name = key.pluralize
-        @nested_model = key.singular.classify.constantize
-        @nested_data = @instance[key]
+        #@nested_model = key.singularize.classify.constantize  # TODO: call get class on instance
+        @nested_data = val
         if field.macro == :has_many
     %>
-       <%= render "views/application/_index_nested.html.erb" %>
-    <%    elif field.macro == :has_one %>
-       <%= render "views/application/_show_nested.html.erb" %>
+       <%= render_controller_action view_name, "index_nested" %>
+    <%    elsif field.macro == :has_one %>
+       <%= render_controller_action view_name, "show_nested" %>
     <%    else %>
-          <%= "" %>
-    <%   end
-     end %>
+       <%= "" %>
+    <%  end %>
+    <% end %>
   </p>
  <% end %>
 <% end %>
+
 <br/>
 <p>Created <%= time_ago_in_words(@instance.created_at) %> ago 
    <%- if @instance.created_at != @instance.updated_at -%>, 

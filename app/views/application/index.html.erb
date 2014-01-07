@@ -21,5 +21,25 @@
   </tbody>
 </table>
 
+<%# Shows query methods on class %>
+<% @model.user_class_methods.each do |field_name|   # very similar code to show.html.erb %>  
+ <p>
+  <strong><%= field_name.humanize %></strong>
+  <!-- if a foreign_key field, show first field of instance -->
+  <% if is_singular?(field_name) %>
+    <% a_inst = @model.send(field_name) %>
+       <%= link_to labelize_inst(a_inst), a_inst %>
+  <% else %>  <%# should call "show" controller method on model and pass in @instances and nested=true %>
+    <% @nested_data = @model.send(field_name) %> 
+    <% if @nested_data and @nested_data.count > 0 %>
+      <% controller_name = @nested_data[0].class.name.underscore.pluralize  # Ex: showing members, controller = "members" %>
+      <%= render_controller_action controller_name, "index_nested" %>
+    <% end %>
+  <% end %>
+ </p>
+<% end %>
+
+<!-- TODO ADD for all class reflection fields, show them here.  Shows all -->
+
 
 

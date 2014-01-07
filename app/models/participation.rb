@@ -15,6 +15,10 @@ class Participation  < ApplicationModel
 
   validates :missed, boolean: true
   validates :late, boolean: true
+
+  def display_name
+    member.name
+  end
   
 #  def confirmed?
 #  	left_on.blank?

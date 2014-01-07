@@ -24,4 +24,16 @@ class Member < ApplicationModel
   has_many :participations, inverse_of: :member  # participataion.member
   has_many :events, through: :participations     # event.participations ???
 
+  def self.captains
+    where(:captain == true)
+  end 
+
+  def self.coxswains
+    where(:coxswain == true)
+  end 
+
+  def display_name
+    name
+  end
+
 end

@@ -1,5 +1,21 @@
 GGR Git
 
+---
+getting better error messages for syntax errors that tell you file name, line number
+Search: ruby rails getting-filename linenumber syntax-error erb view console load view
+
+template = ERB.new File.new("path/to/template.erb").read, nil, "%"
+template.result
+
+how to load parse all views from command-line
+
+Unix (or ruby) can be used to find all files ending in .erb below some point.
+for each file, use template
+
+SOLUTION: look at server log
+---
+
+
 created new account at github.com
 
 generate local SSH RSA keys:
@@ -552,6 +568,22 @@ Event.my_scheduled_rows
 Integrate authentication.
 
 in 'show' view, show the created_at and modified_at(?) values using (words method: time_ago_in_words)
+
+Member should be able to create a new captain and see captains that have not been approved.  Becomes of a list of potential captain training participants.
+
+---
+getting 
+Search: ruby rails user-defined class methods on model
+
+ Member.methods(false)
+
+ Member.method(:captains)
+
+ if plural, then render _index on value, else (singular) and render _show on value, 
+
+Search: ruby method source_location API metadata introspection
+
+http://ruby-doc.org/core-2.1.0/Method.html
 
 
 
