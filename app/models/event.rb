@@ -48,11 +48,11 @@ class Event < ApplicationModel
   #  end_datetime - start_datetime
   #end
 
-  def my_participation   # for current user  # ideally rename to participation
+  def self.my_events   # for current user  # ideally rename to participation
     # Event.where(member: current_user)
   end
 
-  def self.conflict_with_event?  # another_event using same boat at same time. 
+  def conflict_with_event?  # another_event using same boat at same time. 
   	# ae = another_event
     # events.where(start_datetime <= ae.end_datetime  && end_datetime >= ae.start_datetime
     #   && boat == ae.boat

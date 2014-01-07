@@ -4,6 +4,18 @@ module ApplicationHelper
     str.pluralize.singularize == str
   end
 
+  def mobile_device?
+    if session[:mobile_param]
+      session[:mobile_param] == "1"
+    else
+      request.user_agent =~ /Mobile|webOS/
+    end
+  end
+
+  def is_foreign_key?(key)
+    /_id$/.match(key)   # ends_with "_id"
+  end
+
   # given a model like boat, return field_name for displaying instance label identifier
   def get_display_instance_field(model)  
     model.columns_hash.keys[1]  
@@ -43,7 +55,7 @@ module ApplicationHelper
  end
 
  def labelize_inst(inst)  # use name field if present or id?
-   inst["name"] || inst["id"]
+   inst ? inst["name"] || inst["id"] : "NIL-TODO"
  end
 
  def back_button

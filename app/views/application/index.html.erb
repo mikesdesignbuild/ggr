@@ -3,18 +3,23 @@
 <table>
   <thead>
     <tr>
-      <th>id</th> <!-- TODO HACK -->
+      <!--th>id</th> -->
       <% @field_order.each do |key| %>
-       <th><%= key %></th>
+       <th><%= key.humanize %></th>
       <% end %>
     </tr>
   </thead>
   <tbody>
     <% @instances.each do |instance| %>
       <tr onclick=<%= show_instance instance %> >
-         <th><%= instance.id %></th>
          <% @field_order.each do |key| %>
-         <td><%= instance[key] %></td>
+         <td>
+           <% if is_foreign_key?(key) # .send(key[0..-4])display_name %>
+             <%= instance.send(key[0..-4]).display_name %>
+           <% else %>
+             <%= instance[key] %>
+           <% end %> 
+         </td>
         <% end %>
       </tr>
     <% end %>
@@ -31,7 +36,7 @@
        <%= link_to labelize_inst(a_inst), a_inst %>
   <% else %>  <%# should call "show" controller method on model and pass in @instances and nested=true %>
     <% @nested_data = @model.send(field_name) %> 
-    <% if @nested_data and @nested_data.count > 0 %>
+    <% if @nested_data && @nested_data.count > 0 %>
       <% controller_name = @nested_data[0].class.name.underscore.pluralize  # Ex: showing members, controller = "members" %>
       <%= render_controller_action controller_name, "index_nested" %>
     <% end %>

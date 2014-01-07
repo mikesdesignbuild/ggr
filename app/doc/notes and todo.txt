@@ -585,6 +585,19 @@ Search: ruby method source_location API metadata introspection
 
 http://ruby-doc.org/core-2.1.0/Method.html
 
+----
+In my view, it shows id's in fields rather than objects.  When finding objects, how to specify to create objects one level down?
+Search: ruby rails find fill-object one-level depth
+  Nothing good.
+
+TODO: extend custom render method to dispatch views based on whether viewing on a mobile_device? method
+
+---
+Problem: SyntaxError at /events
+unknown regexp options - tr
+
+Solution: can't put a comment on a line in erb file with <%= some # commend %>
+
 
 
 
