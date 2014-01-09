@@ -597,11 +597,84 @@ Problem: SyntaxError at /events
 unknown regexp options - tr
 
 Solution: can't put a comment on a line in erb file with <%= some # commend %>
+----
+index views (and other views) may have options as to whether to expand a subform (for a search form, ex.) use session cookies to store these options and read the cookie in your view.  Alternatively, use javascript to hide/show that section.  Probably better.
+----
+class User
+  SOME_FIELD = 1
+end
+double-colon references class field.  User::SOME_FIELD
 
+---
+<% yield :named_content %> vs. <% yield %>
+<% content_for :named_content do %>
+ some erb
+<% end %>
 
+<% content_for :named_content, "home" %>
 
+So, a view calls content_for to supply content for the layout view.  
 
+Layout:
+<% if content_for?(:sidebar) %>
+  <div><%= yield :sidebar %></div>
+<% end %>
 
+Use content_tag to surround a ruby output with HTML tag.
+
+In ERB View:
+content_tag_for :li, comment do
+  comment.body
+end
+
+defaults should be defined in a model, and converted into database defaults in a migration.
+A user might also store form defaults (by class).  Default might also be stored in a cookie and set using JavaScript. 
+
+each class should have a set_defaults method that would do things like:
+
+before_create hook:
+
+def set_defaults
+   if new && created_by.exists?  ??
+     t.created_by=current_user
+   if last_updated_by.exists?
+     t.last_updated_by=current_user
+
+   instance.version ||= 1
+   instance.author = user  # or instance.author_id = user.id
+end
+
+add created_by, updated_by fields using macro:
+t.created_updated_by
+
+hooks can be conditional:
+ before_create :do_this, if: :really?
+
+MVP - model-view-presenter pattern
+  maps fields on the model to the presenter  
+  User#email becomes Signup#user_email if MVP is Signup
+
+  class Signup < ActivePresenter::Base   # in app/models/signup.rb
+    before_save :create_associations
+    presents :user, :account
+
+  SignupsController where creating  new one actually creates other objects by name.
+
+if you don't want to save, put in update_attributes
+
+resources :some_controller do
+  member do
+    post :shipping
+    post :billing
+    post :payment
+  end
+end
+
+Need to read chapter 4: Controllers of Anti-patterns.  Specifically, nested controllers 
+
+Responders.  
+ApplicationController respond_to :html, :json, :xml
+respond_with(@instance)  or respond_with(@instances)
 
 
 

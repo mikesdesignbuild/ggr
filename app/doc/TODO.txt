@@ -1,0 +1,7 @@
+WAIT MVP model-view-presenter
+
+TODO see if partials under application (such as _edit_nested.html.erb) should be in views/layouts so they are automatically looked up.
+   combine with render partial: :edit_nested, object: instance
+   render collection: @instances
+
+TODO simplify controller and get rid of json code that I don't understand yet.

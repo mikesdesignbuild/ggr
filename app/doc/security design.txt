@@ -1,47 +1,217 @@
 Security design
 
-Don’t authorize by roles.  Authorize by activity.
+Goal: one place where permissions are set.  Easy for someone to see what they can and can't do.  Security embedded into all generic views and controllers.  Fast to lookup and use without affecting performance.  Scales to 10+ roles and mamy users.  Each role should only specify a minimum set of declarations.  Try to be as generic as possible with Can declarations.
+
+# A CanValue is assigned to a field of an object as well as an object itself
+# hidden: user doesn’t know that the field exists
+# read: user sees data value or disabled button appears
+# append: use can add something to collection data field, but not remove.  create new objects :new??
+# update: user can edit data value or execute action  or can edit any fields of object
+# delete: user can delete field (not common)
+
+class User < ApplicationModel
+  validates: :name, presence: true
+  has_many :roles
+end
+
+class Role < ApplicationModel           # administrator can add and remove roles through UI. 
+  validates :name, presence: true
+  validates :priority, integer: true  # superadmin is 100, :ALL is 0, :Owner is 70, :Author is 40, :Guest is 20
+  has_and_belongs_to_many :users
+end
+
+# class CanFields
+#   can_values = %w(HIDDEN READ APPEND UPDATE DELETE)
+#   validates :*rest, :inclusion => {:in => can_values} 
+# end
+
+class Can < ApplicationModel  # defines what a role can do on an object and fields of an object 
+
+  validates :role, presence: true  # name of role that "Can" is for
+  validates :obj_name, presence: true  # name of class (Model, Controller) or special :ALL
+  validates :index_listing, optional: true  # name of method for returning objects to list.  Typically a class method.
+  #validates :fields, optional: true         # maps field_name to a CanValue
+  serialize :fields, Hash    # stored as a hash object in the database.
+
+  def self.calc_can_prefix
+   raise "Define this method on any class to return a prefix for looking up an object name.  Ex: 'owner' " 
+   # if owner == current_owner "owner_" else ""
+  end
+
+  def self.get_active_roles
+    session.current_user.roles.sort
+  end
+
+  def self.set_cache
+    # sets can_lookup_cache field on session for current_user
+    # Impl: get list of roles and see if there is a can_lookup_cache for the same list of roles.  If so, set it on session.  Done
+    # If not, calculate the can_lookup_cache by:
+    # If there is no "BASE" cache, then:
+    #   Get the obj_name :ANY Can and incorporate
+    #   Get the Can role with :ANYONE Can and incorporate
+    #   Get the obj_name :TOP Can and incorporate.  (for top-level classes)
+    #   Add to cache as "BASE"
+    # Else make a copy of "BASE" and:
+    # Get all Cans for the user (by selecting all Cans with roles in user's roles, sorted by ascending priority in each role)
+    #   Incorporate each one.
+  end
+
+  def self.lookup(obj, field_name)
+   current_session.can_lookup_cache[prefix(obj)][field_name]
+  end
+
+  def field_names(obj)  # or perhaps return fields to exclude
+   cache[prefix(obj)].keys
+  end
+
+end
+
+
+def CanNested
+ # same as Can, without obj_name, prefixes, calc_can_prefix
+end
+
+class Vehicle
+  validates :color
+  validates :num_wheels
+  def drive
+  end
+end
+
+cans = [    # persisted in database 
+Can.new({   # An administrator can view all model and controllers
+  role: :administrator,
+  obj_name: :ALL,
+  field_default: :READ
+}),
+Can.new({   # An administrator can view all fields of a Boat, and can edit the num_wheels.  
+            # The listing shows all boats.  An administrator that is "owner" of a boat can edit all fields.
+ role: :administration,  # belongs_to
+ obj_name: :Boat,
+ field_default: :READ,
+ fields: { color: :READ, num_wheels: :EDIT },
+ index_listing: :all,
+ prefixes: { owner: Can.new({
+   obj_name: :Boat,
+   field_default: :EDIT
+ })
+ # obj prefix is calculated on a instance when edited or viewed(?) 
+ # most common use is for "owner".  "owner-Boat" has different rights than a non-owner of a boat.
+ def calc_field_prefix    # make_calc_field_prefix takes this method and defines it on the class of obj_name if it is a class.
+   if owner == current_user
+     "owner"
+   elsif false
+     "expired"
+   else
+     ""
+   end
+ end
+ }
+})
+]
+
+# Method that converts a "Can" into an English description of their permissions.
+# Method that describes in English what a user can do with their roles.  Visually overlay colors on class diagram.
+
+# When a new session is created, a CanCache is created in session.can_lookup_cache
+# contains hash with keys of {prefix-}obj_name and value of a nested hash with keys of field_name=CanValue
+session.can_lookup_cache = { 
+  Vehicle: { color: :READ, num_wheels: :EDIT },
+  Vehicle-owner: { color: :EDIT, num_wheels: :EDIT },
+  House: { color: :EDIT },
+  captain-Participation: { late: EDIT, noshow: EDIT }  # participation.event.captain == current_user
+}
+
+# could store common can_lookup_caches via roles.  Key is sorted list of role name.  roles.sort.join("_")
+# Can.can_lookup_caches = { "administration_editing" cache_hash, "guest" cache_hash }
+
+# Create pseudo object for "Classes" where fields are the names of Controller and Model classes and CanValue says whether you can see those objects.
+
+
+can_cache.field_names(:Vehicle) # => [:color, :num_wheels, :drive]  # does not include hidden fields 
+
+I think a "prefix" is a dynamically generated "role" for a class.
+ 
+Examples to consider:
+A member can edit their own profile.
+Showing a member should hide the "make_public" fields, such as "mobile_phone_hidden"
+Administrator "Fred" than can add roles to another member.
+The captain of the boat can change the participation fields to update "late?" and "noshow?"
+
+How to assign rights
+  Each user has assigned roles. Ex: admin or paid member.  Roles might be added dynamically by other processes. Ex: paying your dues.
+   Some roles are dynamically calculated at session create. 
+
+How security is used:
+Each new session will set a can_lookup_cache.  An existing can_lookup_cache for the existing set of roles may be used.
+Some of the can_lookup_cache fields might be lazily calculated to reduce costs.
+
+When showing navigation bar:
+  Navigation should be treated like a class and each nav item is a "field"
+
+When showing all models:
+  Show only model classes that are not hidden.
+
+When showing a button for a controller action:
+  VehicleController.drive to get CanValue
+
+When getting the @field_order to display a form:
+  Remove any hidden fields from @field_order
+
+When showing a field (key & value) on a form:
+  Don't show if hidden field
+
+When showing a field value on a form:
+  Show different UI based on CanValue.  Perhaps use CanValue to lookup appropriate partial view to render.
+
+  When showing a has_many field in a form:
+     If :APPEND, show "New" link.  If :EDIT, see "Edit" link.
+
+When showing a column in a table:
+  Remove any hidden fields from @field_order
+
+How to use CanSecurity. 
+  Need to be quick to check for the current session. Each new session, one set of rights calculated from the users role into a can/use-matrix. Parts might be lazy evaled. 
+
+More specific wins over more general. CSS like. So, for a field, check class.field, then class._all, then _all_fields. For an object, check class, then _all_classes. Might just pre-calc all use matrix or lazy eval so you only check class and field at lookup. 
+When looking up class, value is nil and needs to be calculated. Go through all fields of class and set "can" value for each field
+
+Use in UI. When showing a view, calculate field order to use across all objects in view. 
+
+One-time active value. Defines field as method but when accessed, method calculate value and replaces itself with that static value. So, one-time method needs to encode the object and field that it is in and a method to get value. 
+create_active obj field method. 
+
+----
+Index view that shows cards. 
+
+Things about ruby that remind me of water. Mvc. Dynamic. Everything object. Introspection. Active values. Database abstraction with query. HTML output. Simple syntax. Classes and modules are just objects. Use of underscores. REST-ful. 
+
+Some GGR roles: SuperAdministrator, Administrator, Editor, Member, Guest
+
+Don’t authorize by roles.  Authorize by activity.  Huh?  A role can be an activity. Admin vs. Administration
 
 Assign activities to roles.  People get assigned roles (and activities?)
 
-Avoid hard-coding roles (or activities) into the code.  
+Avoid hard-coding roles (or activities) into the code.  MS: YES!
 
 Each class and method can associate with an activity.  
 
 What about pieces of a view?  Should those be moved into a separate file so the right file can be loaded using the current role?
+  Perhaps.
 
-Instead of having to search through potentially millions of lines of code to find everywhere that a role is checked, provide a single, consolidated location for the role’s permissions.
+Instead of having to search through potentially millions of lines of code to find everywhere that a role is checked, provide a single, consolidated location for the role’s permissions.  MS: YES@
 
 authorization system based on activities instead of roles
 
-For example, a controller that edits user accounts can be secured with very little code:
+CANCAN: For example, a controller that edits user accounts can be secured with very little code:
 class AccountsController < ApplicationController
   authorize_resource
 end
 
-How should views change based on security permissions?  Ideally, dynamically generated views can take advantage of the security model to show only things a user is authorized to do.  Alternatively, use CSS class to describe an activity and then insert a style tag that hides anything a user shouldn’t access.  
+How should views change based on security permissions?  Ideally, dynamically generated views can take advantage of the security model to show only things a user is authorized to do.  
 
-So, if classA has fields X,Y,Z, and “EditingActivity” only lets you edit X, view Y, and hide Z, then add:
-<style> 
- .classA {
-   .fieldZ { display:none; }  /* hides both _edit and _show */
-   .fieldY_edit { display:none; }
- }
-</style>
+When showing an "edit" view, should it show the "read"-able fields? yes.
 
 If dynamically generating view, then each field knows how to show a hidden, aware, read-only and editable version.  
-
-hidden: user doesn’t know that the field exists
-aware: user knows the name of the field, but not it’s value
-read-only: user sees value
-editable: user can edit value
-removable: user can delete field
-
-Then, have some security language like CSS to define permissions.  Everything except _, only ___, 
-
-.current_user .person .ssn { view: edit }
-.admin .person .ssn { view: aware }
-.ssn { view: current_user, aware: admin }
-
 
 
