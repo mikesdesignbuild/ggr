@@ -676,6 +676,34 @@ Responders.
 ApplicationController respond_to :html, :json, :xml
 respond_with(@instance)  or respond_with(@instances)
 
+----
+A generic editor:
+Any piece of content on the website should have an attribute that lets you edit that piece when you click on it with a special key.
+Need each field to have a list of types.  
+Change default to optional because they are separate.
+Defaults should be role or group or person specific.  Defaults often change for one sessions.
+Need to have optional help content for each field.
+Ideally Given a field of content, should be able to see all the pages it appears on in context.
+When viewing the site as a content editor, holding down a key and rolling over a piece of content should show the content piece name as overlay.
+By declaring a field as an image, need options on image type to say how and where to store content.  
+Should be able to see lists of objects in card format or table format.  A "key" card can show the name of each piece of content.
+Card format makes a great way to seach by field as well.
+When viewing an instance, can click "New Instance" or "Copy instance" where you select the fields to copy.  And those settings are remembered.
+The height of textareas should be based on the size of the content.
+When showing instances, long text fields should be summarized by number of words.
+After editing an instance, clicking save should show 'read' mode where you have actions like next/prev, delete, find similar, click on related instances, preview.
+When editing, might have auto-save where each field is updated when you leave it vs. wait until save.   When editing, click "Done".  Cancel requires confirmation.
+
+
+
+
+
+
+
+
+
+
+
 
 
 

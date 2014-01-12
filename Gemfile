@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.1'
 
 group :development do   #, :test do
-    gem "sqlite3"
+    #gem "sqlite3"
     gem "better_errors"
     gem "binding_of_caller"
     gem "faker"  # to create sample data 
@@ -13,9 +13,9 @@ group :development do   #, :test do
     gem "rspec"
 end
 
-group :production do # , :staging do
-   gem "pg", '0.12.2' # MP gets error: when bundle install --without "production".  Seems to try to install pg when it shouldn't.
-end
+#group :production do # , :staging do
+   gem "pg"  # , '0.12.2' # MP gets error: when bundle install --without "production".  Seems to try to install pg when it shouldn't.
+#end
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'

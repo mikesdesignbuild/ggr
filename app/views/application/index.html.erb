@@ -15,7 +15,8 @@
          <% @field_order.each do |key| %>
          <td>
            <% if is_foreign_key?(key) # .send(key[0..-4])display_name %>
-             <%= instance.send(key[0..-4]).display_name %>
+             <% obj = instance.send(key[0..-4]) %>
+             <%= obj ? obj.display_name : "" %> 
            <% else %>
              <%= instance[key] %>
            <% end %> 
